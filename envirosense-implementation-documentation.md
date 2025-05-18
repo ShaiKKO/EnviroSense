@@ -131,53 +131,63 @@ A software system to generate realistic environmental and physiological data for
 
 **1. Simulation Engine**
 
-The core component responsible for generating realistic sensor data based on defined parameters and scenarios.
+The core component responsible for generating realistic sensor data based on defined parameters and scenarios. At the heart of the simulation engine is the TimeSeriesGenerator system, which provides robust pattern-based data generation with configurable relationships between parameters.
 
 - **Features**:
-  - Time-series data generation for all sensor types
-  - Configurable sampling rate and noise levels
-  - Realistic patterns based on research data
-  - Support for anomaly injection
+  - Time-series data generation for all sensor types with realistic patterns and relationships
+  - Configurable sampling rate and noise levels through statistical distributions
+  - Realistic patterns including diurnal, seasonal, weekly and custom cycles
+  - Support for anomaly injection and event triggering
   - Reproducible simulation with seeded random generation
+  - Parameter relationships with bidirectional support (e.g., temperature-humidity correlation)
+  - Constraint enforcement such as min/max values and rate of change limits
   
 - **Configuration Parameters**:
-  - Base environmental conditions
+  - Base environmental conditions with configurable patterns
   - Trigger events timing and magnitude
-  - Physiological response characteristics
-  - Sensor accuracy and noise profiles
+  - Physiological response characteristics and relationships to environmental triggers
+  - Sensor accuracy and noise profiles with realistic variation
+  - Parameter relationships and dependency networks
+  
+- **Time Series System Architecture**:
+  - **Parameter System**: Defines parameters with constraints, distributions and metadata
+  - **Pattern System**: Implements various time-based patterns like diurnal and seasonal cycles
+  - **Generator System**: Orchestrates parameter generation with relationships and time progression
 
 **2. Scenario Manager**
 
-Manages predefined scenarios that can be run through the simulation engine.
+Manages predefined scenarios that can be run through the simulation engine. The scenario manager leverages the TimeSeriesGenerator's pattern and event capabilities to create realistic environmental and physiological simulation scenarios.
 
 - **Scenario Types**:
-  - Baseline (normal environmental conditions)
-  - VOC exposure (sudden or gradual increase in specific VOCs)
+  - Baseline (normal environmental conditions with typical diurnal/seasonal patterns)
+  - VOC exposure (sudden or gradual increase in specific VOCs with relationship-based effects)
   - Multiple chemical sensitivity triggers (perfumes, cleaning products, etc.)
-  - Environmental variations (temperature, humidity changes)
-  - Physiological response patterns (immediate, delayed, mild, severe)
+  - Environmental variations (temperature, humidity changes with realistic correlations)
+  - Physiological response patterns (immediate, delayed, mild, severe with trigger thresholds)
 
 - **Scenario Definition Format**:
-  - JSON-based scenario definitions
-  - Time-based event sequences
-  - Parameter adjustment curves
-  - Random variation constraints
+  - JSON-based scenario definitions with detailed parameter configurations
+  - Time-based event sequences with triggers and responses
+  - Parameter adjustment curves with realistic constraints
+  - Random variation constraints using statistical distributions
+  - Parameter relationship definitions (e.g., how humidity relates to temperature)
 
 **3. Data Export Service**
 
-Handles exporting simulation data to other components and storage systems.
+Handles exporting simulation data to other components and storage systems. Built on the TimeSeriesGenerator's export capabilities with additional formatting and streaming options.
 
 - **Export Formats**:
-  - JSON for API responses
-  - CSV for bulk data analysis
-  - MQTT messages for real-time streaming
-  - Custom binary format for efficient storage
+  - JSON for API responses with standardized time series format
+  - CSV for bulk data analysis with timestamp support
+  - MQTT messages for real-time streaming of generated data
+  - Custom binary format for efficient storage of complex time series
 
 - **Features**:
-  - Configurable output formatting
-  - Data streaming to multiple destinations
-  - Historical data storage and retrieval
-  - Batched data export for bulk processing
+  - Configurable output formatting with metadata and unit information
+  - Data streaming to multiple destinations with real-time updates
+  - Historical data storage and retrieval with efficient time-based queries
+  - Batched data export for bulk processing with aggregation options
+  - Parameter correlation annotations for analytics systems
 
 **4. API Endpoints**
 
