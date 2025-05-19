@@ -1,0 +1,213 @@
+{
+  "dataset_id": "envirosense_synthetic_multiroom",
+  "model_results": [
+    {
+      "config_id": "config_1",
+      "config": {
+        "rooms": [
+          {
+            "id": "room_1",
+            "volume": 129.58506855271838,
+            "air_exchange_rate": 1.3223335931049478,
+            "has_source": true
+          },
+          {
+            "id": "room_2",
+            "volume": 133.8337870692616,
+            "air_exchange_rate": 0.7289901033365754,
+            "has_source": false
+          },
+          {
+            "id": "room_3",
+            "volume": 87.09490590794753,
+            "air_exchange_rate": 2.0232614360950123,
+            "has_source": false
+          },
+          {
+            "id": "room_4",
+            "volume": 90.26357774840605,
+            "air_exchange_rate": 2.7473861381816067,
+            "has_source": false
+          }
+        ],
+        "connections": [
+          {
+            "from": "room_1",
+            "to": "room_2",
+            "flow_rate": 15.753111860330616
+          },
+          {
+            "from": "room_1",
+            "to": "room_3",
+            "flow_rate": 31.614606742661536
+          },
+          {
+            "from": "room_2",
+            "to": "room_4",
+            "flow_rate": 36.87682488108072
+          },
+          {
+            "from": "room_3",
+            "to": "room_4",
+            "flow_rate": 25.46112182098603
+          }
+        ],
+        "source_strength": 2.691541546760705,
+        "source_duration": 3.6272195660047526
+      },
+      "metrics": {},
+      "room_metrics": []
+    },
+    {
+      "config_id": "config_2",
+      "config": {
+        "rooms": [
+          {
+            "id": "room_1",
+            "volume": 124.25825531840462,
+            "air_exchange_rate": 0.5078232127809275,
+            "has_source": true
+          },
+          {
+            "id": "room_2",
+            "volume": 111.99738264646909,
+            "air_exchange_rate": 1.893653628951205,
+            "has_source": false
+          },
+          {
+            "id": "room_3",
+            "volume": 111.4837497063694,
+            "air_exchange_rate": 1.1167242031313758,
+            "has_source": false
+          }
+        ],
+        "connections": [
+          {
+            "from": "room_1",
+            "to": "room_3",
+            "flow_rate": 24.12290344091291
+          }
+        ],
+        "source_strength": 5.9984162336765685,
+        "source_duration": 2.703494603736944
+      },
+      "metrics": {},
+      "room_metrics": []
+    },
+    {
+      "config_id": "config_3",
+      "config": {
+        "rooms": [
+          {
+            "id": "room_1",
+            "volume": 129.82501137042777,
+            "air_exchange_rate": 1.6223388032236816,
+            "has_source": true
+          },
+          {
+            "id": "room_2",
+            "volume": 49.7869733735092,
+            "air_exchange_rate": 1.8759802947378554,
+            "has_source": false
+          },
+          {
+            "id": "room_3",
+            "volume": 88.05926422878126,
+            "air_exchange_rate": 0.505866995851991,
+            "has_source": false
+          }
+        ],
+        "connections": [
+          {
+            "from": "room_1",
+            "to": "room_3",
+            "flow_rate": 31.70183888378341
+          }
+        ],
+        "source_strength": 7.669363846407218,
+        "source_duration": 3.2779465613838656
+      },
+      "metrics": {},
+      "room_metrics": []
+    },
+    {
+      "config_id": "config_4",
+      "config": {
+        "rooms": [
+          {
+            "id": "room_1",
+            "volume": 129.49728489723998,
+            "air_exchange_rate": 2.8771784587492197,
+            "has_source": true
+          },
+          {
+            "id": "room_2",
+            "volume": 52.23252809361852,
+            "air_exchange_rate": 1.3907668291342599,
+            "has_source": false
+          }
+        ],
+        "connections": [
+          {
+            "from": "room_1",
+            "to": "room_2",
+            "flow_rate": 31.097958438000557
+          }
+        ],
+        "source_strength": 6.9498138888099525,
+        "source_duration": 1.9722187548829706
+      },
+      "metrics": {},
+      "room_metrics": []
+    },
+    {
+      "config_id": "config_5",
+      "config": {
+        "rooms": [
+          {
+            "id": "room_1",
+            "volume": 43.1935200706355,
+            "air_exchange_rate": 2.5191306402407183,
+            "has_source": true
+          },
+          {
+            "id": "room_2",
+            "volume": 149.78265283064724,
+            "air_exchange_rate": 0.5155816657899288,
+            "has_source": false
+          },
+          {
+            "id": "room_3",
+            "volume": 57.61730740195458,
+            "air_exchange_rate": 1.5063813361960359,
+            "has_source": false
+          }
+        ],
+        "connections": [
+          {
+            "from": "room_1",
+            "to": "room_2",
+            "flow_rate": 16.80492563374305
+          },
+          {
+            "from": "room_1",
+            "to": "room_3",
+            "flow_rate": 44.579254912341256
+          },
+          {
+            "from": "room_2",
+            "to": "room_3",
+            "flow_rate": 20.804146841768162
+          }
+        ],
+        "source_strength": 5.013876878405684,
+        "source_duration": 3.6263663900229113
+      },
+      "metrics": {},
+      "room_metrics": []
+    }
+  ],
+  "aggregated_metrics": {},
+  "validated": true,
+  "timestamp": "2025-05-18T21:43:48.993023"
+}

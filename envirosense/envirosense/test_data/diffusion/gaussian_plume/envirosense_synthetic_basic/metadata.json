@@ -1,0 +1,68 @@
+{
+  "description": "Basic synthetic test cases for Gaussian plume validation",
+  "generated": "2025-05-18T21:43:39.901803",
+  "param_sets": 10,
+  "points_per_set": 100,
+  "parameters": {
+    "set_1": {
+      "source_strength": 27.82907609571285,
+      "wind_speed": 1.7100943444316412,
+      "wind_direction": 47.32742247981819,
+      "stability_class": "D"
+    },
+    "set_2": {
+      "source_strength": 9.587533389976981,
+      "wind_speed": 1.291121172100921,
+      "wind_direction": 174.05890772764468,
+      "stability_class": "B"
+    },
+    "set_3": {
+      "source_strength": 34.19914195107989,
+      "wind_speed": 1.1038314687096487,
+      "wind_direction": 171.59339617032168,
+      "stability_class": "E"
+    },
+    "set_4": {
+      "source_strength": 61.900957823811986,
+      "wind_speed": 9.30077632848268,
+      "wind_direction": 16.625451472455303,
+      "stability_class": "F"
+    },
+    "set_5": {
+      "source_strength": 92.11320875819085,
+      "wind_speed": 7.427928125008506,
+      "wind_direction": 155.9238242227523,
+      "stability_class": "D"
+    },
+    "set_6": {
+      "source_strength": 62.669310630407644,
+      "wind_speed": 3.7941233310308227,
+      "wind_direction": 105.87692826307577,
+      "stability_class": "A"
+    },
+    "set_7": {
+      "source_strength": 52.23410463730684,
+      "wind_speed": 7.882439050849352,
+      "wind_direction": 101.60535919026233,
+      "stability_class": "F"
+    },
+    "set_8": {
+      "source_strength": 49.07691934845759,
+      "wind_speed": 5.929324979910899,
+      "wind_direction": 54.03387578660338,
+      "stability_class": "B"
+    },
+    "set_9": {
+      "source_strength": 80.1813132378936,
+      "wind_speed": 4.356042313179203,
+      "wind_direction": 193.47120098397946,
+      "stability_class": "A"
+    },
+    "set_10": {
+      "source_strength": 93.544853279816,
+      "wind_speed": 9.24860650443258,
+      "wind_direction": 64.83073987981403,
+      "stability_class": "D"
+    }
+  }
+}

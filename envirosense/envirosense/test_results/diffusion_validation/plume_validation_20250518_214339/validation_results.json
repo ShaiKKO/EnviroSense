@@ -1,0 +1,281 @@
+{
+  "dataset_id": "envirosense_synthetic_basic",
+  "model_results": [
+    {
+      "param_set_id": "set_1",
+      "parameters": {
+        "source_strength": 27.82907609571285,
+        "wind_speed": 1.7100943444316412,
+        "wind_direction": 47.32742247981819,
+        "stability_class": "D"
+      },
+      "metrics": {
+        "rmse": 0.0171396182619494,
+        "nrmse": 11.035363842614112,
+        "mae": 0.002834025143013759,
+        "mape": 6.555727819281289,
+        "correlation": 0.3425773927370382,
+        "r_squared": 0.08819061260154837,
+        "fractional_bias": 0.6021503154822371,
+        "fractional_mse": 16.669251740596295,
+        "index_of_agreement": 0.3132165651482899
+      }
+    },
+    {
+      "param_set_id": "set_2",
+      "parameters": {
+        "source_strength": 9.587533389976981,
+        "wind_speed": 1.291121172100921,
+        "wind_direction": 174.05890772764468,
+        "stability_class": "B"
+      },
+      "metrics": {
+        "rmse": 0.0001663354353009996,
+        "nrmse": 1.4976883258328129,
+        "mae": 2.828229256339924e-05,
+        "mape": 0.6073985902413492,
+        "correlation": 0.9996527053132975,
+        "r_squared": 0.9850081242325066,
+        "fractional_bias": -0.07131569863079072,
+        "fractional_mse": 0.17591813788371471,
+        "index_of_agreement": 0.9966558624610068
+      }
+    },
+    {
+      "param_set_id": "set_3",
+      "parameters": {
+        "source_strength": 34.19914195107989,
+        "wind_speed": 1.1038314687096487,
+        "wind_direction": 171.59339617032168,
+        "stability_class": "E"
+      },
+      "metrics": {
+        "rmse": 0.11958230790846745,
+        "nrmse": 12.048266568999491,
+        "mae": 0.02711887516514845,
+        "mape": 21.489445283902086,
+        "correlation": -0.22429163183558073,
+        "r_squared": -0.07108979016730421,
+        "fractional_bias": 1.324199745644634,
+        "fractional_mse": 36.194532523513,
+        "index_of_agreement": 0.14595072211936078
+      }
+    },
+    {
+      "param_set_id": "set_4",
+      "parameters": {
+        "source_strength": 61.900957823811986,
+        "wind_speed": 9.30077632848268,
+        "wind_direction": 16.625451472455303,
+        "stability_class": "F"
+      },
+      "metrics": {
+        "rmse": 0.12346934372257282,
+        "nrmse": 12.403517576545193,
+        "mae": 0.03519392723775731,
+        "mape": 84.42499146543359,
+        "correlation": -0.3058820638938782,
+        "r_squared": -0.09064669306711548,
+        "fractional_bias": 1.9515929327160397,
+        "fractional_mse": 46.8771596515048,
+        "index_of_agreement": 0.18170039897942736
+      }
+    },
+    {
+      "param_set_id": "set_5",
+      "parameters": {
+        "source_strength": 92.11320875819085,
+        "wind_speed": 7.427928125008506,
+        "wind_direction": 155.9238242227523,
+        "stability_class": "D"
+      },
+      "metrics": {
+        "rmse": 0.013061006507246353,
+        "nrmse": 11.035363842614109,
+        "mae": 0.0021596292442975736,
+        "mape": 6.555727819283774,
+        "correlation": 0.3425773927370387,
+        "r_squared": 0.08819061260154937,
+        "fractional_bias": 0.6021503154822337,
+        "fractional_mse": 16.669251740596366,
+        "index_of_agreement": 0.3132165651482899
+      }
+    },
+    {
+      "param_set_id": "set_6",
+      "parameters": {
+        "source_strength": 62.669310630407644,
+        "wind_speed": 3.7941233310308227,
+        "wind_direction": 105.87692826307577,
+        "stability_class": "A"
+      },
+      "metrics": {
+        "rmse": 4.6482978898342966e-05,
+        "nrmse": 0.4690359696164592,
+        "mae": 5.99875051164336e-06,
+        "mape": 0.10731285586817643,
+        "correlation": 0.9999120591598235,
+        "r_squared": 0.9982932838594594,
+        "fractional_bias": -0.022615028471835642,
+        "fractional_mse": 0.030708639951486264,
+        "index_of_agreement": 0.9995893401595906
+      }
+    },
+    {
+      "param_set_id": "set_7",
+      "parameters": {
+        "source_strength": 52.23410463730684,
+        "wind_speed": 7.882439050849352,
+        "wind_direction": 101.60535919026233,
+        "stability_class": "F"
+      },
+      "metrics": {
+        "rmse": 0.12293470524335737,
+        "nrmse": 12.40351757654519,
+        "mae": 0.035041532909183805,
+        "mape": 84.42499146543355,
+        "correlation": -0.30588206389387806,
+        "r_squared": -0.09064669306711548,
+        "fractional_bias": 1.9515929327160395,
+        "fractional_mse": 46.87715965150476,
+        "index_of_agreement": 0.1817003989794277
+      }
+    },
+    {
+      "param_set_id": "set_8",
+      "parameters": {
+        "source_strength": 49.07691934845759,
+        "wind_speed": 5.929324979910899,
+        "wind_direction": 54.03387578660338,
+        "stability_class": "B"
+      },
+      "metrics": {
+        "rmse": 0.00018540307450099123,
+        "nrmse": 1.497688325832741,
+        "mae": 3.152439518195264e-05,
+        "mape": 0.6073985902413732,
+        "correlation": 0.999652705313297,
+        "r_squared": 0.985008124232508,
+        "fractional_bias": -0.07131569863078832,
+        "fractional_mse": 0.17591813788369978,
+        "index_of_agreement": 0.9966558624610071
+      }
+    },
+    {
+      "param_set_id": "set_9",
+      "parameters": {
+        "source_strength": 80.1813132378936,
+        "wind_speed": 4.356042313179203,
+        "wind_direction": 193.47120098397946,
+        "stability_class": "A"
+      },
+      "metrics": {
+        "rmse": 5.1800214022087886e-05,
+        "nrmse": 0.46903596961639327,
+        "mae": 6.684953669767543e-06,
+        "mape": 0.10731285586789337,
+        "correlation": 0.9999120591598228,
+        "r_squared": 0.9982932838594598,
+        "fractional_bias": -0.02261502847183039,
+        "fractional_mse": 0.03070863995147791,
+        "index_of_agreement": 0.9995893401595907
+      }
+    },
+    {
+      "param_set_id": "set_10",
+      "parameters": {
+        "source_strength": 93.544853279816,
+        "wind_speed": 9.24860650443258,
+        "wind_direction": 64.83073987981403,
+        "stability_class": "D"
+      },
+      "metrics": {
+        "rmse": 0.010652855187751033,
+        "nrmse": 11.035363842614105,
+        "mae": 0.0017614429321331625,
+        "mape": 6.5557278192855115,
+        "correlation": 0.3425773927370385,
+        "r_squared": 0.08819061260154881,
+        "fractional_bias": 0.6021503154822316,
+        "fractional_mse": 16.669251740596415,
+        "index_of_agreement": 0.31321656514828955
+      }
+    }
+  ],
+  "aggregated_metrics": {
+    "rmse": {
+      "mean": 0.04072898585340669,
+      "median": 0.011856930847498693,
+      "std": 0.05352284809808325,
+      "min": 4.6482978898342966e-05,
+      "max": 0.12346934372257282,
+      "count": 10
+    },
+    "nrmse": {
+      "mean": 7.389484184083061,
+      "median": 11.035363842614107,
+      "std": 5.263785276146329,
+      "min": 0.46903596961639327,
+      "max": 12.403517576545193,
+      "count": 10
+    },
+    "mae": {
+      "mean": 0.010418192302346082,
+      "median": 0.001960536088215368,
+      "std": 0.014602629480044475,
+      "min": 5.99875051164336e-06,
+      "max": 0.03519392723775731,
+      "count": 10
+    },
+    "mape": {
+      "mean": 21.14360345648386,
+      "median": 6.555727819282532,
+      "std": 32.21199862652274,
+      "min": 0.10731285586789337,
+      "max": 84.42499146543359,
+      "count": 10
+    },
+    "correlation": {
+      "mean": 0.4190805947534019,
+      "median": 0.3425773927370386,
+      "std": 0.5321171004372213,
+      "min": -0.3058820638938782,
+      "max": 0.9999120591598235,
+      "count": 10
+    },
+    "r_squared": {
+      "mean": 0.3978791477687046,
+      "median": 0.08819061260154909,
+      "std": 0.4894285407658134,
+      "min": -0.09064669306711548,
+      "max": 0.9982932838594598,
+      "count": 10
+    },
+    "fractional_bias": {
+      "mean": 0.684597510331817,
+      "median": 0.6021503154822327,
+      "std": 0.7604700618018105,
+      "min": -0.07131569863079072,
+      "max": 1.9515929327160397,
+      "count": 10
+    },
+    "fractional_mse": {
+      "mean": 18.036986060398203,
+      "median": 16.66925174059633,
+      "std": 18.12541684582376,
+      "min": 0.03070863995147791,
+      "max": 46.8771596515048,
+      "count": 10
+    },
+    "index_of_agreement": {
+      "mean": 0.544149162076428,
+      "median": 0.3132165651482899,
+      "std": 0.37492211747348,
+      "min": 0.14595072211936078,
+      "max": 0.9995893401595907,
+      "count": 10
+    }
+  },
+  "validated": true,
+  "timestamp": "2025-05-18T21:43:39.949296"
+}

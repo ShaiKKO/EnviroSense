@@ -1,0 +1,72 @@
+{
+  "datasets": {
+    "epa_aermod_1": {
+      "description": "EPA AERMOD meteorological input test data",
+      "type": "gaussian_plume",
+      "downloaded": false
+    },
+    "epa_aermod_2": {
+      "description": "EPA AERMOD test cases with point sources and multiple terrain types",
+      "type": "gaussian_plume",
+      "downloaded": false
+    },
+    "prairiegrass": {
+      "description": "Project Prairie Grass field experiment data, classic dispersion dataset",
+      "type": "atmospheric",
+      "downloaded": false,
+      "manual_download": true
+    },
+    "kincaid": {
+      "description": "Kincaid power plant SF6 tracer study data",
+      "type": "atmospheric",
+      "downloaded": false
+    },
+    "nist_multizone": {
+      "description": "NIST CONTAM multizone indoor air quality modelling data",
+      "type": "indoor",
+      "downloaded": false,
+      "manual_download": true
+    },
+    "ashrae_62_1": {
+      "description": "ASHRAE 62.1 ventilation test cases (reference document)",
+      "type": "indoor",
+      "downloaded": false,
+      "manual_download": true
+    },
+    "envirosense_synthetic_basic": {
+      "description": "Basic synthetic test cases for Gaussian plume validation",
+      "type": "gaussian_plume",
+      "files": [
+        "metadata.json",
+        "plume_set_1.csv",
+        "plume_set_10.csv",
+        "plume_set_2.csv",
+        "plume_set_3.csv",
+        "plume_set_4.csv",
+        "plume_set_5.csv",
+        "plume_set_6.csv",
+        "plume_set_7.csv",
+        "plume_set_8.csv",
+        "plume_set_9.csv"
+      ],
+      "path": "envirosense\\test_data\\diffusion\\gaussian_plume\\envirosense_synthetic_basic",
+      "generated": true
+    },
+    "envirosense_synthetic_multiroom": {
+      "description": "Multi-room synthetic indoor model test cases",
+      "type": "indoor",
+      "files": [
+        "indoor_config_1.csv",
+        "indoor_config_2.csv",
+        "indoor_config_3.csv",
+        "indoor_config_4.csv",
+        "indoor_config_5.csv",
+        "metadata.json"
+      ],
+      "path": "envirosense\\test_data\\diffusion\\indoor\\envirosense_synthetic_multiroom",
+      "generated": true
+    }
+  },
+  "download_timestamp": "2025-05-18T21:43:39.944362",
+  "version": "1.0.0"
+}
