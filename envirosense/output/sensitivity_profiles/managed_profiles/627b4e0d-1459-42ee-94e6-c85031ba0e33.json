@@ -1,0 +1,29 @@
+{
+  "profile_id": "627b4e0d-1459-42ee-94e6-c85031ba0e33",
+  "created_at": "2025-05-19T12:56:45.272168",
+  "updated_at": "2025-05-19T12:56:45.274243",
+  "version": "1.0.0",
+  "metadata": {},
+  "demographics": {
+    "age": 72,
+    "age_group": "older_adult",
+    "sex": "male",
+    "height": 175,
+    "weight": 70,
+    "bmi": 22.9
+  },
+  "conditions": [
+    "chronic_obstructive_pulmonary_disease",
+    "hypertension"
+  ],
+  "sensitivity_scores": {
+    "respiratory": 2.0,
+    "ocular": 1.2,
+    "dermal": 1.3,
+    "immune": 1.4
+  },
+  "subtype_modifiers": {},
+  "parameter_modifiers": {},
+  "response_curves": {},
+  "symptom_thresholds": {}
+}

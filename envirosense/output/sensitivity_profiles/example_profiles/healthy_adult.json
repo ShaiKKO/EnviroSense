@@ -1,0 +1,23 @@
+{
+  "profile_id": "f1b7e8c0-be8b-4013-a150-c442bc85337b",
+  "created_at": "2025-05-19T00:33:08.495975",
+  "updated_at": "2025-05-19T00:33:08.495981",
+  "version": "1.0.0",
+  "metadata": {},
+  "demographics": {
+    "age": 30,
+    "age_group": "young_adult",
+    "sex": "male",
+    "height": 178,
+    "weight": 75,
+    "bmi": 23.7,
+    "ethnicity": null,
+    "geographic_region": null
+  },
+  "conditions": [],
+  "sensitivity_scores": {},
+  "subtype_modifiers": {},
+  "parameter_modifiers": {},
+  "response_curves": {},
+  "symptom_thresholds": {}
+}

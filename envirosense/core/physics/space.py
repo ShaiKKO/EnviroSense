@@ -211,6 +211,42 @@ class SpatialGrid:
         if cell:
             return cell.get_parameter(name, default)
         return default
+        
+    def get_average_parameter(self, zone_positions: Optional[List[Tuple[int, int, int]]], 
+                              name: str, default: float = 0.0) -> float:
+        """
+        Get the average value of a parameter across multiple positions.
+        
+        Args:
+            zone_positions: List of grid positions to average, or None for all cells
+            name: Parameter name
+            default: Default value if parameter is not present
+            
+        Returns:
+            The average parameter value
+        """
+        if zone_positions is None:
+            # Average across all cells
+            positions = [pos for pos, _ in self.iterate_cells()]
+        else:
+            positions = zone_positions
+            
+        if not positions:
+            return default
+            
+        total = 0.0
+        count = 0
+        
+        for pos in positions:
+            value = self.get_parameter_at(pos, name, None)
+            if value is not None:
+                total += value
+                count += 1
+                
+        if count == 0:
+            return default
+            
+        return total / count
     
     def set_boundary_condition(self, face: str, 
                                parameter: str, 

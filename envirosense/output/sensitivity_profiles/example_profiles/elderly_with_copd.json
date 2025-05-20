@@ -1,0 +1,28 @@
+{
+  "profile_id": "e4405ce7-b0ed-42c8-bf0b-abff69d410e7",
+  "created_at": "2025-05-19T00:33:08.495930",
+  "updated_at": "2025-05-19T00:33:08.495943",
+  "version": "1.0.0",
+  "metadata": {},
+  "demographics": {
+    "age": 72,
+    "age_group": "older_adult",
+    "sex": "female",
+    "height": 160,
+    "weight": 65,
+    "bmi": 25.4,
+    "ethnicity": null,
+    "geographic_region": null
+  },
+  "conditions": [
+    "copd"
+  ],
+  "sensitivity_scores": {
+    "respiratory": 2.0,
+    "cardiovascular": 1.3
+  },
+  "subtype_modifiers": {},
+  "parameter_modifiers": {},
+  "response_curves": {},
+  "symptom_thresholds": {}
+}

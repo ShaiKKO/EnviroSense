@@ -1,0 +1,26 @@
+{
+  "profile_id": "714f7a53-4283-464f-af2a-5d71fe4ed8d0",
+  "created_at": "2025-05-19T12:56:45.271410",
+  "updated_at": "2025-05-19T12:56:45.271438",
+  "version": "1.0.0",
+  "metadata": {},
+  "demographics": {
+    "age": 35,
+    "age_group": "young_adult",
+    "sex": "female",
+    "height": 170,
+    "weight": 65,
+    "bmi": 22.5
+  },
+  "conditions": [],
+  "sensitivity_scores": {
+    "respiratory": 1.0,
+    "ocular": 1.0,
+    "dermal": 1.0,
+    "immune": 1.0
+  },
+  "subtype_modifiers": {},
+  "parameter_modifiers": {},
+  "response_curves": {},
+  "symptom_thresholds": {}
+}

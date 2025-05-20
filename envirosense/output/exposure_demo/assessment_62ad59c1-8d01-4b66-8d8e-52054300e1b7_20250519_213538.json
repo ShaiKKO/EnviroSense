@@ -1,0 +1,110 @@
+{
+  "benzene": {
+    "chemical_id": "benzene",
+    "chemical_name": "Benzene",
+    "status": "assessed",
+    "metrics": {
+      "8hr_twa": 0.7092360245799763,
+      "adjusted_8hr_twa": 1.170239440556961,
+      "24hr_twa": 0.5249473982671999,
+      "adjusted_24hr_twa": 0.86616320714088,
+      "peak_15min": 1.023591129833278,
+      "adjusted_peak_15min": 1.688925364224909,
+      "peak_concentration": 1.1573879305080892,
+      "adjusted_peak_concentration": 1.9096900853383474,
+      "cumulative_dose": 21452.085537373612,
+      "adjusted_cumulative_dose": 35395.941136666464
+    },
+    "threshold_evaluations": {
+      "exceeds_NIOSH_REL": true,
+      "exceeds_OSHA_PEL": false,
+      "exceeds_ACGIH_TLV": true,
+      "exceeds_OSHA_STEL": false
+    },
+    "risk_level": "VERY_HIGH",
+    "assessment_time": "2025-05-19T21:35:38.238455",
+    "guidance": "Very high levels of Benzene detected, significantly above safe limits. Immediate action recommended to reduce exposure. Consider evacuation of the area until levels decrease. Consult with health professionals.\n\nPersonalized recommendations:\n- Your sensitivity profile indicates moderately elevated sensitivity to Benzene. You may experience effects at lower concentrations than the general population.",
+    "personalized": true,
+    "sensitivity_factor": 1.6500000000000001,
+    "adjusted_threshold_evaluations": {
+      "exceeds_adjusted_NIOSH_REL": true,
+      "exceeds_adjusted_OSHA_PEL": true,
+      "exceeds_adjusted_ACGIH_TLV": true,
+      "exceeds_adjusted_OSHA_STEL": false
+    },
+    "standard_risk_level": "SEVERE",
+    "standard_guidance": "SEVERE: Benzene at potentially hazardous levels. Immediate evacuation recommended. Ventilate area thoroughly before re-entry. Seek medical attention if symptoms develop. Emergency services should be notified for severe exposure events.",
+    "predicted_symptoms": {
+      "coughing": 0.98,
+      "congestion": 0.98,
+      "shortness_of_breath": 0.98,
+      "chest_tightness": 0.98,
+      "nasal_irritation": 0.98,
+      "wheezing": 0.98,
+      "sore_throat": 0.98,
+      "sneezing": 0.98
+    }
+  },
+  "co": {
+    "chemical_id": "co",
+    "status": "unknown_chemical",
+    "risk_level": "UNKNOWN",
+    "message": "Unknown chemical: co",
+    "personalized": false
+  },
+  "formaldehyde": {
+    "chemical_id": "formaldehyde",
+    "chemical_name": "Formaldehyde",
+    "status": "assessed",
+    "metrics": {
+      "8hr_twa": 0.07198911145173091,
+      "adjusted_8hr_twa": 0.118782033895356,
+      "24hr_twa": 0.0348989694386551,
+      "adjusted_24hr_twa": 0.05758329957378092,
+      "peak_15min": 0.10938424611863463,
+      "adjusted_peak_15min": 0.18048400609574716,
+      "peak_concentration": 0.1183322402058534,
+      "adjusted_peak_concentration": 0.19524819633965812,
+      "cumulative_dose": 2151.438536652274,
+      "adjusted_cumulative_dose": 3549.873585476252
+    },
+    "threshold_evaluations": {
+      "exceeds_NIOSH_REL": true,
+      "exceeds_OSHA_PEL": false,
+      "exceeds_ACGIH_TLV": false,
+      "exceeds_OSHA_STEL": false,
+      "exceeds_NIOSH_CEILING": true
+    },
+    "risk_level": "SEVERE",
+    "assessment_time": "2025-05-19T21:35:38.238578",
+    "guidance": "SEVERE: Formaldehyde at potentially hazardous levels. Immediate evacuation recommended. Ventilate area thoroughly before re-entry. Seek medical attention if symptoms develop. Emergency services should be notified for severe exposure events.\n\nPersonalized recommendations:\n- Your sensitivity profile indicates moderately elevated sensitivity to Formaldehyde. You may experience effects at lower concentrations than the general population.",
+    "personalized": true,
+    "sensitivity_factor": 1.6500000000000001,
+    "adjusted_threshold_evaluations": {
+      "exceeds_adjusted_NIOSH_REL": true,
+      "exceeds_adjusted_OSHA_PEL": false,
+      "exceeds_adjusted_ACGIH_TLV": true,
+      "exceeds_adjusted_OSHA_STEL": false,
+      "exceeds_adjusted_NIOSH_CEILING": true
+    },
+    "standard_risk_level": "SEVERE",
+    "standard_guidance": "SEVERE: Formaldehyde at potentially hazardous levels. Immediate evacuation recommended. Ventilate area thoroughly before re-entry. Seek medical attention if symptoms develop. Emergency services should be notified for severe exposure events.",
+    "predicted_symptoms": {
+      "coughing": 0.98,
+      "congestion": 0.98,
+      "shortness_of_breath": 0.98,
+      "chest_tightness": 0.98,
+      "nasal_irritation": 0.98,
+      "wheezing": 0.98,
+      "sore_throat": 0.98,
+      "sneezing": 0.98
+    }
+  },
+  "no2": {
+    "chemical_id": "no2",
+    "status": "unknown_chemical",
+    "risk_level": "UNKNOWN",
+    "message": "Unknown chemical: no2",
+    "personalized": false
+  }
+}

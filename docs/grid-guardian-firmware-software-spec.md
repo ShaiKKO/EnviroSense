@@ -2894,4 +2894,16 @@ Configuration parameters for all detection and analysis algorithms:
 | THRESHOLD_ACROLEIN | Detection threshold for acrolein | 5 | 1-20 | ppb |
 | THRESHOLD_PHENOL | Detection threshold for phenol | 20 | 5-100 | ppb |
 | THRESHOLD_CRESOL | Detection threshold for cresol | 15 | 3-75 | ppb |
-| THRESHOLD_GUA
+| THRESHOLD_GUAIACOL | Detection threshold for guaiacol | 10 | 2-50 | ppb |
+| THRESHOLD_CO | Detection threshold for carbon monoxide | 5 | 1-50 | ppm |
+| THRESHOLD_NO2 | Detection threshold for nitrogen dioxide | 100 | 20-500 | ppb |
+| EXPECTED_RATIO_1_MIN | Minimum expected ratio of formaldehyde to acetaldehyde | 0.8 | 0.5-1.5 | ratio |
+| EXPECTED_RATIO_1_MAX | Maximum expected ratio of formaldehyde to acetaldehyde | 1.2 | 1.0-2.0 | ratio |
+| EXPECTED_RATIO_2_MIN | Minimum expected ratio of CO to NO2 | 40 | 20-80 | ratio |
+| EXPECTED_RATIO_2_MAX | Maximum expected ratio of CO to NO2 | 60 | 40-100 | ratio |
+| WEIGHT_CELLULOSE | Weight for cellulose decomposition pattern | 30 | 10-50 | score |
+| WEIGHT_LIGNIN | Weight for lignin decomposition pattern | 25 | 10-40 | score |
+| WEIGHT_COMBUSTION | Weight for early combustion pattern | 40 | 20-60 | score |
+| WEIGHT_RATIO_1 | Weight for ratio 1 match | 15 | 5-25 | score |
+| WEIGHT_RATIO_2 | Weight for ratio 2 match | 15 | 5-25 | score |
+| MAX_PYROLYSIS_SCORE | Maximum possible pyrolysis score | 125 | 100-150 | score |
