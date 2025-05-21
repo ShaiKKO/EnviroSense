@@ -44,3 +44,9 @@ htmlcov/
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# References folder
+envirosense/references/
+
+# PDF files
+*.pdf

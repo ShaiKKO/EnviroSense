@@ -4,41 +4,93 @@ Environmental Monitoring and Health Alert System
 
 ## Overview
 
-EnviroSense™ is a sophisticated platform for monitoring environmental chemical triggers and physiological responses, providing early warnings for potential health reactions. This system includes sensor arrays, wearable devices, edge computing hubs, mobile applications, and cloud infrastructure.
+EnviroSense™ is a sophisticated platform for monitoring environmental chemical triggers and physiological responses, providing early warnings for potential health reactions. This system is built around a three-tier architecture:
 
-This repository contains the implementation of the EnviroSense™ platform following a phased development approach:
+1. **EnviroSense Simulation Engine** - A standalone library focused on modeling environmental conditions, exposures, and physiological responses with no dependencies on web frameworks, APIs, or deployment considerations.
 
-1. **Simulation Environment**: Sensor Simulator, Mobile App, Minimal Cloud Backend
-2. **Core Infrastructure**: Edge Hub Core, Data Analytics Pipeline, ML Training System
-3. **Hardware Implementation**: Sensor Array Firmware, Wearable Component Firmware, Edge Hub Hardware
+2. **EnviroSense Core Platform** - The infrastructure, APIs, and user interfaces that build upon the simulation engine, providing scenario management, visualization, data integration, and developer tools.
+
+3. **Grid Guardian Hardware/Firmware** - The physical hardware, firmware, and backend integration that brings EnviroSense capabilities into the field with specialized utility monitoring capabilities.
+
+## Current Status
+
+As of May 2025:
+- **Simulation Engine**: ✓ COMPLETED
+- **Core Platform**: ⧗ IN PROGRESS (Currently at Platform 1.2 - Temporal Correlation System)
+- **Grid Guardian**: ⧖ PLANNED
 
 ## Project Structure
 
 ```
 envirosense/
-  ├── core/                # Core simulation engine
-  │    ├── time_series/    # Time series generation
-  │    ├── physics/        # Environmental physics engine
-  │    ├── chemical/       # Chemical behavior models
-  │    └── physiological/  # Physiological response models
+  ├── core/                              # Simulation Engine components
+  │    ├── time_series/                  # Time series generation
+  │    ├── physics/                      # Environmental physics engine
+  │    ├── chemical/                     # Chemical behavior models
+  │    ├── exposure/                     # Exposure tracking and response
+  │    ├── physiological/                # Physiological response models
+  │    └── biometrics/                   # Biometric signal generation
   │
-  ├── configuration/       # Configuration and control
-  │    ├── scenario/       # Scenario management
-  │    └── parameters/     # Parameter control
+  ├── platform/                          # Core Platform components
+  │    ├── api/                          # API server
+  │    ├── web/                          # Web interface
+  │    ├── streamer/                     # Real-time data streaming
+  │    ├── correlation/                  # Advanced correlation analysis
+  │    ├── scenario/                     # Scenario management
+  │    └── visualization/                # Data visualization
   │
-  ├── data/                # Data services
-  │    ├── export/         # Data export services
-  │    ├── storage/        # Data storage
-  │    └── api/            # API layer
+  ├── grid_guardian/                     # Grid Guardian components
+  │    ├── firmware/                     # Device firmware
+  │    ├── hardware/                     # Hardware specifications
+  │    └── integration/                  # Backend integration
   │
-  ├── ui/                  # User interface
-  │    ├── control/        # Simulation control UI
-  │    └── visualization/  # Visualization components
+  ├── configuration/                     # Configuration and control
+  │    ├── scenario/                     # Scenario management
+  │    └── parameters/                   # Parameter control
   │
-  ├── utils/               # Utility functions
+  ├── data/                              # Data services
+  │    ├── export/                       # Data export services
+  │    ├── storage/                      # Data storage
+  │    └── api/                          # API layer
   │
-  └── state/               # Development state management
+  ├── ui/                                # User interface
+  │    ├── control/                      # Simulation control UI
+  │    └── visualization/                # Visualization components
+  │
+  ├── utils/                             # Utility functions
+  │
+  ├── testing/                           # Testing framework
+  │    ├── generators/                   # Test data generators
+  │    ├── scenarios/                    # Test scenarios
+  │    ├── validation/                   # Validation tools
+  │    └── runners/                      # Test runners
+  │
+  ├── references/                        # Research references
+  │
+  └── state/                             # Development state management
 ```
+
+## Three-Tier Architecture Benefits
+
+The EnviroSense™ system is built with a clear separation of concerns:
+
+1. **Simulation Engine Benefits**:
+   - Standalone library with no external dependencies
+   - Full simulation capabilities without web infrastructure
+   - Suitable for embedded deployment
+   - Clean, physics-focused API
+
+2. **Core Platform Benefits**:
+   - Builds on simulation engine for sophisticated data analysis
+   - Provides user interfaces and visualization
+   - Handles real-time data streaming and API access
+   - Manages scenarios and configuration
+
+3. **Grid Guardian Benefits**:
+   - Specialized hardware for utility infrastructure monitoring
+   - Field-deployable with robust environmental protection
+   - Integrates with Core Platform for comprehensive analysis
+   - Specialized fire-precursor detection capabilities
 
 ## Development State Management
 
@@ -196,22 +248,29 @@ save_state()
 
 ## Development Process
 
-The development of EnviroSense™ follows a phased approach:
+The development of EnviroSense™ follows a phased approach aligned with our three-tier architecture:
 
-1. **Phase 1: Simulation Environment** (Weeks 1-8)
-   - Sensor Simulator: Generate realistic environmental and physiological data
-   - Mobile Application: User interface for monitoring and alerts
-   - Minimal Cloud Backend: Essential cloud services for data storage and APIs
+1. **Phase 1: Simulation Engine** (COMPLETED)
+   - Time Series Generator: Create realistic environmental and physiological data patterns
+   - Environmental Physics Engine: Model physical environmental processes
+   - Physiological Response Engine: Simulate health responses to environmental conditions
+   - Correlation Framework: Connect environmental factors to physiological responses
 
-2. **Phase 2: Core Infrastructure** (Weeks 9-16)
-   - Edge Hub Core: Central processing for sensor fusion and local analysis
-   - Data Analytics Pipeline: Process and analyze sensor data
-   - ML Training System: Train and deploy models for detection and prediction
+2. **Phase 2: Core Platform** (IN PROGRESS)
+   - Simulation Engine Integration: Connect platform to simulation capabilities
+   - Temporal Correlation System: Analyze time-based relationships in data
+   - Analysis and Insight Generation: Extract meaningful conclusions from data
+   - Multi-signal Correlation: Connect diverse data types for comprehensive analysis
+   - Scenario Management: Create and execute simulation scenarios
+   - Parameter Control System: Manage simulation parameters
+   - API Server: Provide programmatic access to platform capabilities
+   - Real-time Data Streamer: Enable live data streaming
 
-3. **Phase 3: Hardware Implementation** (Weeks 17-24)
-   - Sensor Array Firmware: Control environmental sensor operation
-   - Wearable Component Firmware: Monitor physiological responses
-   - Edge Hub Hardware Integration: Integrate software with hardware components
+3. **Phase 3: Grid Guardian Implementation** (PLANNED)
+   - Hardware Architecture: Design specialized utility monitoring hardware
+   - Firmware Development: Create embedded software for device operation
+   - Backend Integration: Connect hardware to Core Platform
+   - Field Deployment: Prepare for and execute real-world deployment
 
 ## License
 
