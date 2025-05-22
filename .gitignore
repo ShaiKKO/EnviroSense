@@ -10,6 +10,70 @@ build/
 
 # Virtual environments
 venv/
+ENV/
+env/
+venv.bak/
+venv.bk/
+venv.bak/
+venv.bk/
+.venv/
+.venv.bk/
+.venv.bak/
+env.bk/
+env.bak/
+env.bk/
+env.bak/
+.venv.bk/
+.venv.bak/
+
+# Conda environments
+conda-meta/
+*.conda
+*.h5
+
+# Python virtual environments
+.virtualenvs/
+
+# Environments
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+
+# Local virtual environments
+venv/
+venv.bk/
+venv.bak/
+.venv/
+.venv.bk/
+.venv.bak/
+env/
+env.bk/
+env.bak/
+
+# Local environment files
+local_env/
+local_venv/
+.local_env/
+.local_venv/
+
+# Node modules
+node_modules/
+
+# Python egg cache
+*.egg-info/
+
+# Python virtual environment
+.virtualenv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment folders
+.env/
 env/
 ENV/
 

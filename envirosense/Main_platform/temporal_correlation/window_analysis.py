@@ -9,6 +9,75 @@ import numpy as np
 from typing import List, Tuple, Dict, Any, Optional, Union, Callable
 from dataclasses import dataclass
 from scipy import stats
+from datetime import datetime
+
+# Simple function for use by the database adapter
+def analyze_sliding_window(data_points: List[Tuple[datetime, float]], 
+                          window_size_minutes: int = 60) -> Dict[str, Any]:
+    """
+    Analyze time series data using a sliding window approach.
+    
+    Args:
+        data_points: List of (timestamp, value) tuples
+        window_size_minutes: Size of the sliding window in minutes
+        
+    Returns:
+        Dict with analysis results
+    """
+    if not data_points:
+        return {"error": "No data points provided"}
+    
+    # Extract values and timestamps
+    timestamps = [point[0] for point in data_points]
+    values = [point[1] for point in data_points]
+    
+    # Calculate basic statistics
+    mean_value = np.mean(values)
+    min_value = np.min(values)
+    max_value = np.max(values)
+    std_dev = np.std(values)
+    
+    # Identify trends (simple linear regression)
+    n = len(values)
+    if n > 1:
+        x = np.arange(n)
+        slope, intercept = np.polyfit(x, values, 1)
+        trend_direction = "increasing" if slope > 0 else "decreasing"
+        trend_strength = abs(slope * n / (max_value - min_value)) if max_value != min_value else 0
+    else:
+        slope = 0
+        trend_direction = "stable"
+        trend_strength = 0
+    
+    # Detect outliers (simple Z-score method)
+    z_scores = [(v - mean_value) / std_dev if std_dev > 0 else 0 for v in values]
+    outliers = [(timestamps[i].isoformat(), values[i]) 
+               for i, z in enumerate(z_scores) if abs(z) > 2.5]
+    
+    # Calculate time-based metrics
+    total_duration_seconds = (timestamps[-1] - timestamps[0]).total_seconds()
+    sampling_rate = n / (total_duration_seconds / 60) if total_duration_seconds > 0 else 0
+    
+    return {
+        "statistics": {
+            "mean": mean_value,
+            "min": min_value,
+            "max": max_value,
+            "std_dev": std_dev,
+            "count": n,
+            "duration_minutes": total_duration_seconds / 60
+        },
+        "trend": {
+            "direction": trend_direction,
+            "slope": slope,
+            "strength": trend_strength
+        },
+        "outliers": outliers[:5],  # Limit to first 5 outliers
+        "sampling": {
+            "rate_per_minute": sampling_rate,
+            "window_size_minutes": window_size_minutes
+        }
+    }
 
 
 class MovingWindowAnalyzer:

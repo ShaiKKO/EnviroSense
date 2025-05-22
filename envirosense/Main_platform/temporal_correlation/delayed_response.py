@@ -24,10 +24,10 @@ import datetime
 from typing import Dict, List, Optional, Union, Any, Tuple
 from dataclasses import dataclass
 
-from envirosense.core_platform.temporal_correlation.alignment import (
+from envirosense.Main_platform.temporal_correlation.alignment import (
     TimeSeriesAligner, DynamicTimeWarping
 )
-from envirosense.core_platform.temporal_correlation.window_analysis import (
+from envirosense.Main_platform.temporal_correlation.window_analysis import (
     MovingWindowAnalyzer, AdaptiveWindowSizer
 )
 
@@ -55,9 +55,9 @@ class DelayParameters:
     of responses to environmental exposures or other stimuli.
     """
     # Core timing parameters
-    onset_delay: datetime.timedelta
-    time_to_peak: datetime.timedelta
-    recovery_duration: datetime.timedelta
+    onset_delay: datetime.timedelta # Delay before response begins
+    time_to_peak: datetime.timedelta  # Time to reach peak response
+    recovery_duration: datetime.timedelta # Duration of response after peak
     
     # Optional parameters for complex patterns
     effect_duration: Optional[datetime.timedelta] = None
@@ -669,4 +669,4 @@ class DelayedResponseModel:
             pattern_type=pattern_type,
             secondary_onset=secondary_onset if pattern_type == TemporalPattern.BIPHASIC else None,
             secondary_recovery=secondary_recovery if pattern_type == TemporalPattern.BIPHASIC else None
-        ) 
+        )

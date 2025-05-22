@@ -25,9 +25,12 @@ setup(
         # Visualization dependencies
         "streamlit>=1.10.0",
         "plotly>=5.8.0",
+        "seaborn>=0.11.2",
         
         # Utility dependencies
         "pydantic>=1.9.1",
+        "scikit-learn>=1.0.0",
+        "joblib>=1.1.0",
     ],
     entry_points={
         "console_scripts": [
