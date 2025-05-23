@@ -1,0 +1,21 @@
+{
+  "base_data": {
+    "sensor_id": "acoustic_sensor_unit_005",
+    "sensor_type_general": "ACOUSTIC_SENSOR",
+    "timestamp_sensor_local": 1678886420000,
+    "status_flags": [],
+    "reading_quality_score": 0.88,
+    "reading_confidence": 0.92
+  },
+  "acoustic_sensor_type_specific": "KNOWLES_SPU0410HR5H",
+  "sound_pressure_level_db": 65.5,
+  "dominant_frequency_hz": 1250.0,
+  "raw_waveform_data": [102, 150, 180, 155, 100, 50, 20, 45, 90, 130],
+  "waveform_sampling_rate_hz": 44100,
+  "frequency_spectrum_data": [
+    { "frequency_hz": 1000.0, "magnitude_db": 50.2 },
+    { "frequency_hz": 1250.0, "magnitude_db": 65.1 },
+    { "frequency_hz": 1500.0, "magnitude_db": 45.8 }
+  ],
+  "acoustic_status_flags_specific": ["BACKGROUND_NOISE_LOW"]
+}

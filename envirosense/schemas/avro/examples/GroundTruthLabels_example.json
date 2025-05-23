@@ -1,0 +1,24 @@
+{
+  "label_timestamp_utc": 1678886430000,
+  "scenario_id": "scenario_fire_smoldering_001",
+  "event_type": "FIRE_PRECURSOR",
+  "event_subtype": "CELLULOSE_PYROLYSIS_DETECTED",
+  "is_anomaly": true,
+  "anomaly_severity_score": 0.65,
+  "anomaly_tags": ["PYROLYSIS_GASES", "INCREASED_VOC"],
+  "scenario_specific_details": {
+    "pyrolysis_source_material": "dry_pine_wood",
+    "distance_from_source_meters": 5.2,
+    "true_smoldering_temperature_celsius": 350.5
+  },
+  "sensor_specific_ground_truth": {
+    "thermal_cam_unit_007": {
+      "value_type": "THERMAL_HOTSPOT_MASK_RLE",
+      "value_json": "{\"mask_shape\": [120, 160], \"rle_data\": \"1000e3_50e1_18847e0\"}"
+    },
+    "voc_sensor_unit_001": {
+      "value_type": "VOC_CONCENTRATION_PPM",
+      "value_json": "{\"formaldehyde_ppm\": 0.120, \"acetaldehyde_ppm\": 0.085}"
+    }
+  }
+}

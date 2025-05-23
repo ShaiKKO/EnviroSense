@@ -1,0 +1,8 @@
+{
+  "sensor_id": "voc_sensor_unit_001",
+  "sensor_type_general": "VOC_ARRAY",
+  "timestamp_sensor_local": 1678886400000,
+  "status_flags": ["CALIBRATION_DUE"],
+  "reading_quality_score": 0.85,
+  "reading_confidence": 0.90
+}

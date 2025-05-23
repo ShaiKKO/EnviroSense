@@ -1,0 +1,75 @@
+{
+  "type": "record",
+  "name": "AcousticReading",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Schema for Acoustic sensor readings. Provides overall sound pressure level, dominant frequency, and optionally raw waveform or spectral data. References SensorReadingBase for common fields.",
+  "fields": [
+    {
+      "name": "base_data",
+      "type": "com.envirosense.schema.sensor.SensorReadingBase",
+      "doc": "Common sensor reading metadata."
+    },
+    {
+      "name": "acoustic_sensor_type_specific",
+      "type": {
+        "type": "enum",
+        "name": "AcousticSensorModel",
+        "symbols": ["KNOWLES_SPU0410HR5H", "OTHER_ACOUSTIC_SENSOR"]
+      },
+      "doc": "Specific model or type of the acoustic sensor. The 'sensor_type_general' in base_data would be 'ACOUSTIC_SENSOR'."
+    },
+    {
+      "name": "sound_pressure_level_db",
+      "type": ["null", "float"],
+      "doc": "Overall sound pressure level in decibels (dB). Corresponds to INFRA_ACOUSTIC_AMP from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "dominant_frequency_hz",
+      "type": ["null", "float"],
+      "doc": "Dominant frequency in the acoustic signal in Hertz (Hz). Corresponds to INFRA_ACOUSTIC_FREQ from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "raw_waveform_data",
+      "type": ["null", {
+        "type": "array",
+        "items": "int"
+      }],
+      "doc": "Optional array representing a snippet of the raw audio waveform data (e.g., 16-bit PCM samples). This allows for more detailed analysis if needed.",
+      "default": null
+    },
+    {
+      "name": "waveform_sampling_rate_hz",
+      "type": ["null", "int"],
+      "doc": "Sampling rate of the raw_waveform_data in Hertz (Hz), if provided.",
+      "default": null
+    },
+    {
+      "name": "frequency_spectrum_data",
+      "type": ["null", {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "AcousticFrequencyBin",
+          "doc": "Represents a single frequency bin in an acoustic spectrum analysis.",
+          "fields": [
+            { "name": "frequency_hz", "type": "float", "doc": "Center frequency of the bin in Hz." },
+            { "name": "magnitude_db", "type": "float", "doc": "Magnitude of the sound pressure in this bin, in decibels (dB)." }
+          ]
+        }
+      }],
+      "doc": "Optional array representing the frequency spectrum of the acoustic signal. Each item contains a frequency and its corresponding magnitude.",
+      "default": null
+    },
+    {
+      "name": "acoustic_status_flags_specific",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags specific to the acoustic sensor. Examples: 'CLIPPING_DETECTED', 'BACKGROUND_NOISE_HIGH'. Empty if nominal.",
+      "default": []
+    }
+  ]
+}

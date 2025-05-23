@@ -1,0 +1,91 @@
+{
+  "type": "record",
+  "name": "VOCReading",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Schema for VOC (Volatile Organic Compound) sensor array readings. Provides readings for multiple VOC channels. References SensorReadingBase for common fields.",
+  "fields": [
+    {
+      "name": "base_data",
+      "type": "com.envirosense.schema.sensor.SensorReadingBase",
+      "doc": "Common sensor reading metadata."
+    },
+    {
+      "name": "voc_sensor_type_specific",
+      "type": {
+        "type": "enum",
+        "name": "VOCSensorArrayModel",
+        "symbols": ["TFSGS_MULTI2_ENV", "OTHER_VOC_ARRAY"]
+      },
+      "doc": "Specific model or type of the VOC sensor array. The 'sensor_type_general' in base_data would be 'VOC_ARRAY'."
+    },
+    {
+      "name": "voc_channel_1_formaldehyde_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 1 (typically Formaldehyde) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_2_acetaldehyde_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 2 (typically Acetaldehyde) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_3_acrolein_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 3 (typically Acrolein) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_4_phenol_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 4 (typically Phenol) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_5_cresol_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 5 (typically Cresol) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_6_guaiacol_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 6 (typically Guaiacol) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_7_general_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 7 (General VOC) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "voc_channel_8_general_ppb",
+      "type": ["null", "float"],
+      "doc": "Reading for VOC Channel 8 (General VOC) in parts per billion (ppb).",
+      "default": null
+    },
+    {
+      "name": "temperature_on_voc_sensor_celsius",
+      "type": ["null", "float"],
+      "doc": "Temperature measured by a sensor co-located with or integrated into the VOC sensor package, in degrees Celsius. Used for compensation.",
+      "default": null
+    },
+    {
+      "name": "humidity_on_voc_sensor_percent",
+      "type": ["null", "float"],
+      "doc": "Relative humidity measured by a sensor co-located with or integrated into the VOC sensor package, in percent. Used for compensation.",
+      "default": null
+    },
+    {
+      "name": "voc_status_flags_specific",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags specific to the VOC sensor array. Examples: 'HEATER_ACTIVE', 'BASELINE_CALIBRATION_IN_PROGRESS', 'HIGH_HUMIDITY_WARNING'. Empty if nominal.",
+      "default": []
+    }
+  ]
+}

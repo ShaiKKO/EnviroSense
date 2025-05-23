@@ -1,0 +1,62 @@
+{
+  "sample_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "scenario_id": "scenario_fire_smoldering_001",
+  "scenario_timestep_seconds": 125.5,
+  "generation_timestamp_utc": 1678886435000,
+  "sensor_readings_map": {
+    "map_timestamp_utc": 1678886430000,
+    "readings": {
+      "thermal_cam_unit_007": {
+        "com.envirosense.schema.sensor.ThermalReading": {
+          "base_data": {
+            "sensor_id": "thermal_cam_unit_007",
+            "sensor_type_general": "THERMAL_CAMERA",
+            "timestamp_sensor_local": 1678886429800,
+            "status_flags": [],
+            "reading_quality_score": 0.96,
+            "reading_confidence": 0.99
+          },
+          "thermal_sensor_type_specific": "FLIR_LEPTON_3_5",
+          "thermal_image_celsius": [[26.1],[26.2]],
+          "image_height_pixels": 120,
+          "image_width_pixels": 160,
+          "field_of_view_horizontal_degrees": 57.0,
+          "field_of_view_vertical_degrees": 42.0,
+          "emissivity_setting_used": 0.95,
+          "focus_distance_meters": null,
+          "lens_type": "standard",
+          "calibration_date_utc": 1678800000000,
+          "detector_temperature_celsius": 28.6,
+          "ambient_temperature_at_sensor_celsius": 22.3,
+          "ambient_humidity_at_sensor_percent": 45.1,
+          "distance_to_target_meters": null,
+          "num_bad_pixels_corrected": 0,
+          "derived_max_temp_celsius": 26.2,
+          "derived_avg_temp_celsius_roi": 26.15,
+          "derived_delta_temp_celsius_baseline": 0.15,
+          "thermal_status_flags_specific": []
+        }
+      }
+    }
+  },
+  "ground_truth_labels": {
+    "label_timestamp_utc": 1678886430000,
+    "scenario_id": "scenario_fire_smoldering_001",
+    "event_type": "FIRE_PRECURSOR",
+    "event_subtype": "CELLULOSE_PYROLYSIS_DETECTED",
+    "is_anomaly": true,
+    "anomaly_severity_score": 0.65,
+    "anomaly_tags": ["PYROLYSIS_GASES", "INCREASED_VOC"],
+    "scenario_specific_details": {
+      "pyrolysis_source_material": "dry_pine_wood",
+      "distance_from_source_meters": 5.2,
+      "true_smoldering_temperature_celsius": 350.5
+    },
+    "sensor_specific_ground_truth": null
+  },
+  "extracted_class_label": "FIRE_PRECURSOR_MEDIUM_SEVERITY",
+  "sample_metadata": {
+    "generation_batch_id": "batch_20230315_01",
+    "simulation_variant": "variant_A"
+  }
+}

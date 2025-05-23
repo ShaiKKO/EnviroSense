@@ -1,0 +1,33 @@
+{
+  "base_data": {
+    "sensor_id": "thermal_cam_unit_007",
+    "sensor_type_general": "THERMAL_CAMERA",
+    "timestamp_sensor_local": 1678886405000,
+    "status_flags": ["FFC_IN_PROGRESS"],
+    "reading_quality_score": 0.95,
+    "reading_confidence": 0.98
+  },
+  "thermal_sensor_type_specific": "FLIR_LEPTON_3_5",
+  "thermal_image_celsius": [
+    [25.1, 25.3, 25.0, 25.1],
+    [25.2, 35.5, 25.1, 25.2],
+    [24.9, 25.0, 25.2, 24.9]
+  ],
+  "image_height_pixels": 120,
+  "image_width_pixels": 160,
+  "field_of_view_horizontal_degrees": 57.0,
+  "field_of_view_vertical_degrees": 42.0,
+  "emissivity_setting_used": 0.95,
+  "focus_distance_meters": 10.5,
+  "lens_type": "standard",
+  "calibration_date_utc": 1678800000000,
+  "detector_temperature_celsius": 28.5,
+  "ambient_temperature_at_sensor_celsius": 22.1,
+  "ambient_humidity_at_sensor_percent": 45.3,
+  "distance_to_target_meters": 10.0,
+  "num_bad_pixels_corrected": 2,
+  "derived_max_temp_celsius": 35.5,
+  "derived_avg_temp_celsius_roi": 28.7,
+  "derived_delta_temp_celsius_baseline": 5.2,
+  "thermal_status_flags_specific": ["SHUTTER_ACTIVE", "BAD_PIXEL_MAP_APPLIED"]
+}

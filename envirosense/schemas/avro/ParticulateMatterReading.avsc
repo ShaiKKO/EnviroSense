@@ -1,0 +1,91 @@
+{
+  "type": "record",
+  "name": "ParticulateMatterReading",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Schema for Particulate Matter (PM) sensor readings (e.g., Sensirion SPS30). Provides mass and number concentrations for various particle sizes. References SensorReadingBase for common fields.",
+  "fields": [
+    {
+      "name": "base_data",
+      "type": "com.envirosense.schema.sensor.SensorReadingBase",
+      "doc": "Common sensor reading metadata."
+    },
+    {
+      "name": "pm_sensor_type_specific",
+      "type": {
+        "type": "enum",
+        "name": "PMSensorModel",
+        "symbols": ["SENSIRION_SPS30", "OTHER_PM_SENSOR"]
+      },
+      "doc": "Specific model or type of the PM sensor. The 'sensor_type_general' in base_data would be 'PM_SENSOR'."
+    },
+    {
+      "name": "mass_concentration_pm1_0_micrograms_per_m3",
+      "type": ["null", "float"],
+      "doc": "Mass concentration of PM1.0 particles in micrograms per cubic meter (µg/m³).",
+      "default": null
+    },
+    {
+      "name": "mass_concentration_pm2_5_micrograms_per_m3",
+      "type": ["null", "float"],
+      "doc": "Mass concentration of PM2.5 particles in micrograms per cubic meter (µg/m³). Corresponds to ENV_PM25 from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "mass_concentration_pm4_0_micrograms_per_m3",
+      "type": ["null", "float"],
+      "doc": "Mass concentration of PM4.0 particles in micrograms per cubic meter (µg/m³).",
+      "default": null
+    },
+    {
+      "name": "mass_concentration_pm10_0_micrograms_per_m3",
+      "type": ["null", "float"],
+      "doc": "Mass concentration of PM10 particles in micrograms per cubic meter (µg/m³). Corresponds to ENV_PM10 from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "number_concentration_pm0_5_particles_per_cm3",
+      "type": ["null", "float"],
+      "doc": "Number concentration of PM0.5 particles in particles per cubic centimeter (#/cm³).",
+      "default": null
+    },
+    {
+      "name": "number_concentration_pm1_0_particles_per_cm3",
+      "type": ["null", "float"],
+      "doc": "Number concentration of PM1.0 particles in particles per cubic centimeter (#/cm³).",
+      "default": null
+    },
+    {
+      "name": "number_concentration_pm2_5_particles_per_cm3",
+      "type": ["null", "float"],
+      "doc": "Number concentration of PM2.5 particles in particles per cubic centimeter (#/cm³).",
+      "default": null
+    },
+    {
+      "name": "number_concentration_pm4_0_particles_per_cm3",
+      "type": ["null", "float"],
+      "doc": "Number concentration of PM4.0 particles in particles per cubic centimeter (#/cm³).",
+      "default": null
+    },
+    {
+      "name": "number_concentration_pm10_0_particles_per_cm3",
+      "type": ["null", "float"],
+      "doc": "Number concentration of PM10 particles in particles per cubic centimeter (#/cm³).",
+      "default": null
+    },
+    {
+      "name": "typical_particle_size_micrometers",
+      "type": ["null", "float"],
+      "doc": "Typical particle size in micrometers (µm) if provided by the sensor.",
+      "default": null
+    },
+    {
+      "name": "pm_status_flags_specific",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags specific to the PM sensor. Examples: 'FAN_ERROR', 'LASER_ERROR', 'CLEANING_INTERVAL_DUE'. Empty if nominal.",
+      "default": []
+    }
+  ]
+}

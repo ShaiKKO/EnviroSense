@@ -1,0 +1,22 @@
+{
+  "base_data": {
+    "sensor_id": "pm_sensor_unit_002",
+    "sensor_type_general": "PM_SENSOR",
+    "timestamp_sensor_local": 1678886425000,
+    "status_flags": ["CLEANING_INTERVAL_DUE"],
+    "reading_quality_score": 0.90,
+    "reading_confidence": 0.93
+  },
+  "pm_sensor_type_specific": "SENSIRION_SPS30",
+  "mass_concentration_pm1_0_micrograms_per_m3": 10.2,
+  "mass_concentration_pm2_5_micrograms_per_m3": 15.5,
+  "mass_concentration_pm4_0_micrograms_per_m3": 18.1,
+  "mass_concentration_pm10_0_micrograms_per_m3": 22.7,
+  "number_concentration_pm0_5_particles_per_cm3": 300.5,
+  "number_concentration_pm1_0_particles_per_cm3": 150.2,
+  "number_concentration_pm2_5_particles_per_cm3": 50.8,
+  "number_concentration_pm4_0_particles_per_cm3": 20.3,
+  "number_concentration_pm10_0_particles_per_cm3": 10.1,
+  "typical_particle_size_micrometers": 0.8,
+  "pm_status_flags_specific": ["FAN_RUNNING_NOMINAL"]
+}

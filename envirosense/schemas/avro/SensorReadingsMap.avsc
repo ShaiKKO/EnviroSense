@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "SensorReadingsMap",
+  "namespace": "com.envirosense.schema.collection",
+  "doc": "A collection of readings from multiple sensors, typically at a single point in time or for a single sampling event. The map keys are sensor instance IDs, and values are the specific sensor reading records.",
+  "fields": [
+    {
+      "name": "map_timestamp_utc",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "The common UTC timestamp for this collection of sensor readings, in milliseconds from epoch. Individual sensor readings within the map will also have their own local timestamps."
+    },
+    {
+      "name": "readings",
+      "type": {
+        "type": "map",
+        "values": [
+          "null",
+          "com.envirosense.schema.sensor.ThermalReading",
+          "com.envirosense.schema.sensor.VOCReading",
+          "com.envirosense.schema.sensor.EMFReading",
+          "com.envirosense.schema.sensor.AcousticReading",
+          "com.envirosense.schema.sensor.ParticulateMatterReading"
+        ]
+      },
+      "doc": "Map of sensor readings. Keys are unique sensor instance IDs (string). Values are a union of all possible specific sensor reading types. A sensor ID might not be present if it didn't provide a reading for this timestamp."
+    }
+  ]
+}

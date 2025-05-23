@@ -1,0 +1,22 @@
+{
+  "base_data": {
+    "sensor_id": "emf_sensor_unit_003",
+    "sensor_type_general": "EMF_SENSOR",
+    "timestamp_sensor_local": 1678886415000,
+    "status_flags": ["HIGH_INTERFERENCE"],
+    "reading_quality_score": 0.75,
+    "reading_confidence": 0.80
+  },
+  "emf_sensor_type_specific": "TF_EMF_PWR1",
+  "ac_field_strength_microteslas": 15.7,
+  "dominant_frequency_hz": 60.1,
+  "frequency_spectrum_data": [
+    { "frequency_hz": 60.0, "magnitude_microteslas": 15.5 },
+    { "frequency_hz": 120.0, "magnitude_microteslas": 2.1 },
+    { "frequency_hz": 180.0, "magnitude_microteslas": 0.5 }
+  ],
+  "directional_sensitivity_x_axis": 10.2,
+  "directional_sensitivity_y_axis": 8.5,
+  "directional_sensitivity_z_axis": 7.1,
+  "emf_status_flags_specific": ["SATURATION_DETECTED_ON_X_AXIS"]
+}

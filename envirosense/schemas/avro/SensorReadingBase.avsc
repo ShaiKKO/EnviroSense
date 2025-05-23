@@ -1,0 +1,44 @@
+{
+  "type": "record",
+  "name": "SensorReadingBase",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Base schema for common metadata across all sensor readings. Specific sensor readings will embed or reference this and add their unique fields.",
+  "fields": [
+    {
+      "name": "sensor_id",
+      "type": "string",
+      "doc": "Unique identifier for the sensor instance that generated this reading."
+    },
+    {
+      "name": "sensor_type_general",
+      "type": "string",
+      "doc": "General category or type of the sensor (e.g., 'THERMAL_CAMERA', 'VOC_ARRAY', 'EMF_SENSOR'). Specific schemas might provide a more detailed enum for their particular type."
+    },
+    {
+      "name": "timestamp_sensor_local",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "Timestamp of when the reading was captured by the sensor, from the sensor's internal clock, in milliseconds from UTC epoch."
+    },
+    {
+      "name": "status_flags",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags for the sensor at the time of reading. Examples: 'CALIBRATION_DUE', 'HIGH_NOISE', 'SENSOR_FAULT', 'COMMUNICATION_ERROR', 'LOW_BATTERY_WARNING'. Empty if nominal.",
+      "default": []
+    },
+    {
+      "name": "reading_quality_score",
+      "type": ["null", "float"],
+      "doc": "Optional overall quality score for this reading (e.g., 0.0 to 1.0), if calculable by the simulation or sensor. Higher is better.",
+      "default": null
+    },
+    {
+      "name": "reading_confidence",
+      "type": ["null", "float"],
+      "doc": "Optional confidence level in the accuracy/validity of this reading (e.g., 0.0 to 1.0). Higher is better. Could also be an enum {LOW, MEDIUM, HIGH} if preferred in specific implementations.",
+      "default": null
+    }
+  ]
+}

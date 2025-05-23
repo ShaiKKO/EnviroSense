@@ -1,0 +1,72 @@
+{
+  "type": "record",
+  "name": "ScenarioRunPackage",
+  "namespace": "com.envirosense.schema.scenario",
+  "doc": "Defines the top-level schema for a complete scenario run package. This package bundles a scenario definition with the generated ML data samples (either embedded or referenced) and metadata about the simulation run.",
+  "fields": [
+    {
+      "name": "package_id",
+      "type": { "type": "string", "logicalType": "uuid" },
+      "doc": "Unique identifier for this scenario run package (UUID)."
+    },
+    {
+      "name": "package_version",
+      "type": "int",
+      "doc": "Version of this package. Incremented if the package contents (e.g., data samples, metadata) are modified post-generation.",
+      "default": 1
+    },
+    {
+      "name": "generation_timestamp_utc",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "UTC timestamp indicating when this scenario run package and its data were generated."
+    },
+    {
+      "name": "scenario_definition",
+      "type": "com.envirosense.schema.scenario.ScenarioDefinition",
+      "doc": "The definition of the scenario that was run to produce the data in this package."
+    },
+    {
+      "name": "simulation_engine_version",
+      "type": "string",
+      "doc": "Version of the EnviroSense simulation engine used to generate this data."
+    },
+    {
+      "name": "data_generator_version",
+      "type": "string",
+      "doc": "Version of the MLDataGenerator or specific data generation script used."
+    },
+    {
+      "name": "ml_data_samples_file_reference",
+      "type": ["null", "string"],
+      "doc": "Optional path or URI to a separate Avro data file (or other file format) containing an array of MLDataSample records. Used for large datasets to keep this package metadata small.",
+      "default": null
+    },
+    {
+      "name": "ml_data_samples_embedded",
+      "type": ["null", {
+        "type": "array",
+        "items": "com.envirosense.schema.ml.MLDataSample"
+      }],
+      "doc": "Optional array of MLDataSample records, embedded directly within this package. Suitable for smaller datasets or summaries.",
+      "default": null
+    },
+    {
+      "name": "run_metadata",
+      "type": ["null", {
+        "type": "map",
+        "values": ["null", "string", "boolean", "int", "long", "float", "double"]
+      }],
+      "doc": "Map of additional metadata related to this specific scenario run (e.g., random seeds used, specific simulation configuration overrides, execution notes, host environment details).",
+      "default": null
+    },
+    {
+      "name": "data_schema_versions",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "doc": "Map indicating the versions of key data schemas used in this package (e.g., 'MLDataSample.avsc': '1.0.0', 'SensorReadingBase.avsc': '1.1.0'). Key is schema name, value is version string.",
+      "default": {}
+    }
+  ]
+}

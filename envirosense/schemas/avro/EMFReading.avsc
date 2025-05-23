@@ -1,0 +1,78 @@
+{
+  "type": "record",
+  "name": "EMFReading",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Schema for EMF (Electromagnetic Field) sensor readings. Provides overall field strength and optional spectral/directional data. References SensorReadingBase for common fields.",
+  "fields": [
+    {
+      "name": "base_data",
+      "type": "com.envirosense.schema.sensor.SensorReadingBase",
+      "doc": "Common sensor reading metadata."
+    },
+    {
+      "name": "emf_sensor_type_specific",
+      "type": {
+        "type": "enum",
+        "name": "EMFSensorModel",
+        "symbols": ["TF_EMF_PWR1", "OTHER_EMF_SENSOR"]
+      },
+      "doc": "Specific model or type of the EMF sensor. The 'sensor_type_general' in base_data would be 'EMF_SENSOR'."
+    },
+    {
+      "name": "ac_field_strength_microteslas",
+      "type": ["null", "float"],
+      "doc": "Overall AC magnetic field strength in microteslas (µT). Corresponds to INFRA_EMF from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "dominant_frequency_hz",
+      "type": ["null", "float"],
+      "doc": "Dominant frequency of the AC field in Hertz (Hz), if determinable.",
+      "default": null
+    },
+    {
+      "name": "frequency_spectrum_data",
+      "type": ["null", {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "FrequencyBin",
+          "doc": "Represents a single frequency bin in a spectrum analysis.",
+          "fields": [
+            { "name": "frequency_hz", "type": "float", "doc": "Center frequency of the bin in Hz." },
+            { "name": "magnitude_microteslas", "type": "float", "doc": "Magnitude of the field strength in this bin, in microteslas (µT)." }
+          ]
+        }
+      }],
+      "doc": "Optional array representing the frequency spectrum of the EMF signal. Each item contains a frequency and its corresponding magnitude.",
+      "default": null
+    },
+    {
+      "name": "directional_sensitivity_x_axis",
+      "type": ["null", "float"],
+      "doc": "Optional field strength component along the sensor's X-axis in microteslas (µT), if the sensor is multi-axis.",
+      "default": null
+    },
+    {
+      "name": "directional_sensitivity_y_axis",
+      "type": ["null", "float"],
+      "doc": "Optional field strength component along the sensor's Y-axis in microteslas (µT), if the sensor is multi-axis.",
+      "default": null
+    },
+    {
+      "name": "directional_sensitivity_z_axis",
+      "type": ["null", "float"],
+      "doc": "Optional field strength component along the sensor's Z-axis in microteslas (µT), if the sensor is multi-axis.",
+      "default": null
+    },
+    {
+      "name": "emf_status_flags_specific",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags specific to the EMF sensor. Examples: 'SATURATION_DETECTED', 'HIGH_INTERFERENCE'. Empty if nominal.",
+      "default": []
+    }
+  ]
+}

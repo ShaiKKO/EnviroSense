@@ -1,0 +1,60 @@
+{
+  "map_timestamp_utc": 1678886430000,
+  "readings": {
+    "thermal_cam_unit_007": {
+      "com.envirosense.schema.sensor.ThermalReading": {
+        "base_data": {
+          "sensor_id": "thermal_cam_unit_007",
+          "sensor_type_general": "THERMAL_CAMERA",
+          "timestamp_sensor_local": 1678886429800,
+          "status_flags": [],
+          "reading_quality_score": 0.96,
+          "reading_confidence": 0.99
+        },
+        "thermal_sensor_type_specific": "FLIR_LEPTON_3_5",
+        "thermal_image_celsius": [[26.1],[26.2]],
+        "image_height_pixels": 120,
+        "image_width_pixels": 160,
+        "field_of_view_horizontal_degrees": 57.0,
+        "field_of_view_vertical_degrees": 42.0,
+        "emissivity_setting_used": 0.95,
+        "focus_distance_meters": null,
+        "lens_type": "standard",
+        "calibration_date_utc": 1678800000000,
+        "detector_temperature_celsius": 28.6,
+        "ambient_temperature_at_sensor_celsius": 22.3,
+        "ambient_humidity_at_sensor_percent": 45.1,
+        "distance_to_target_meters": null,
+        "num_bad_pixels_corrected": 0,
+        "derived_max_temp_celsius": 26.2,
+        "derived_avg_temp_celsius_roi": 26.15,
+        "derived_delta_temp_celsius_baseline": 0.15,
+        "thermal_status_flags_specific": []
+      }
+    },
+    "voc_sensor_unit_001": {
+      "com.envirosense.schema.sensor.VOCReading": {
+         "base_data": {
+            "sensor_id": "voc_sensor_unit_001",
+            "sensor_type_general": "VOC_ARRAY",
+            "timestamp_sensor_local": 1678886430000,
+            "status_flags": [],
+            "reading_quality_score": 0.93,
+            "reading_confidence": 0.96
+          },
+          "voc_sensor_type_specific": "TFSGS_MULTI2_ENV",
+          "voc_channel_1_formaldehyde_ppb": 12.1,
+          "voc_channel_2_acetaldehyde_ppb": 6.0,
+          "voc_channel_3_acrolein_ppb": 1.5,
+          "voc_channel_4_phenol_ppb": 0.7,
+          "voc_channel_5_cresol_ppb": 0.9,
+          "voc_channel_6_guaiacol_ppb": 2.5,
+          "voc_channel_7_general_ppb": 55.2,
+          "voc_channel_8_general_ppb": 48.1,
+          "temperature_on_voc_sensor_celsius": 25.6,
+          "humidity_on_voc_sensor_percent": 55.0,
+          "voc_status_flags_specific": []
+      }
+    }
+  }
+}

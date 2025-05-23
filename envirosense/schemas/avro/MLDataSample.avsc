@@ -1,0 +1,53 @@
+{
+  "type": "record",
+  "name": "MLDataSample",
+  "namespace": "com.envirosense.schema.ml",
+  "doc": "Represents a single, comprehensive data sample for ML training or evaluation. It combines a collection of sensor readings with their associated ground truth labels for a specific point in a scenario.",
+  "fields": [
+    {
+      "name": "sample_id",
+      "type": "string",
+      "doc": "Unique identifier for this ML data sample (e.g., a UUID)."
+    },
+    {
+      "name": "scenario_id",
+      "type": "string",
+      "doc": "Identifier of the scenario from which this sample was generated."
+    },
+    {
+      "name": "scenario_timestep_seconds",
+      "type": "double",
+      "doc": "The simulation time within the scenario, in seconds from the start of the scenario, at which this sample was taken."
+    },
+    {
+      "name": "generation_timestamp_utc",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "UTC timestamp indicating when this MLDataSample record was generated, in milliseconds from epoch."
+    },
+    {
+      "name": "sensor_readings_map",
+      "type": "com.envirosense.schema.collection.SensorReadingsMap",
+      "doc": "A collection of all sensor readings pertinent to this sample, mapped by sensor ID."
+    },
+    {
+      "name": "ground_truth_labels",
+      "type": "com.envirosense.schema.ml.GroundTruthLabels",
+      "doc": "The ground truth labels associated with this sample."
+    },
+    {
+      "name": "extracted_class_label",
+      "type": ["null", "string"],
+      "doc": "Optional, simplified class label extracted or derived from ground_truth_labels, potentially used for stratified sampling or balancing datasets (e.g., 'NORMAL', 'FIRE_LOW_CONFIDENCE', 'ARCING_HIGH_SEVERITY').",
+      "default": null
+    },
+    {
+      "name": "sample_metadata",
+      "type": ["null", {
+        "type": "map",
+        "values": ["null", "string", "boolean", "int", "long", "float", "double"]
+      }],
+      "doc": "Optional map for any additional metadata specific to this sample's generation or purpose (e.g., 'data_augmentation_type', 'active_learning_query_id').",
+      "default": null
+    }
+  ]
+}

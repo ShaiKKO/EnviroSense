@@ -327,6 +327,34 @@ def create_simulation_schema_tables(cursor):
         created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
     )
     """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS simulation.scenario_definitions (
+        scenario_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        scenario_class_module TEXT,
+        scenario_class_name TEXT,
+        name TEXT NOT NULL,
+        description TEXT,
+        category TEXT,
+        difficulty_level TEXT,
+        expected_duration_seconds DOUBLE PRECISION,
+        specific_params JSONB,
+        tags TEXT[],
+        version INTEGER DEFAULT 1,
+        created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+    )
+    """)
+
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_scenario_definitions_category
+    ON simulation.scenario_definitions (category)
+    """)
+
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_scenario_definitions_tags
+    ON simulation.scenario_definitions USING GIN (tags)
+    """)
     
     print("Simulation schema tables created successfully")
 

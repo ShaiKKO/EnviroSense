@@ -1,0 +1,22 @@
+{
+  "base_data": {
+    "sensor_id": "voc_sensor_unit_001",
+    "sensor_type_general": "VOC_ARRAY",
+    "timestamp_sensor_local": 1678886410000,
+    "status_flags": [],
+    "reading_quality_score": 0.92,
+    "reading_confidence": 0.95
+  },
+  "voc_sensor_type_specific": "TFSGS_MULTI2_ENV",
+  "voc_channel_1_formaldehyde_ppb": 10.5,
+  "voc_channel_2_acetaldehyde_ppb": 5.2,
+  "voc_channel_3_acrolein_ppb": 1.1,
+  "voc_channel_4_phenol_ppb": 0.5,
+  "voc_channel_5_cresol_ppb": 0.8,
+  "voc_channel_6_guaiacol_ppb": 2.3,
+  "voc_channel_7_general_ppb": 50.7,
+  "voc_channel_8_general_ppb": 45.9,
+  "temperature_on_voc_sensor_celsius": 25.5,
+  "humidity_on_voc_sensor_percent": 55.2,
+  "voc_status_flags_specific": ["HEATER_ACTIVE"]
+}

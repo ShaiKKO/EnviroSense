@@ -1,0 +1,82 @@
+{
+  "type": "record",
+  "name": "GroundTruthLabels",
+  "namespace": "com.envirosense.schema.ml",
+  "doc": "Schema for ground truth labels associated with a set of sensor readings or a specific time point in a scenario. Used for ML model training and evaluation.",
+  "fields": [
+    {
+      "name": "label_timestamp_utc",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "UTC timestamp for which these ground truth labels apply, in milliseconds from epoch. Should align with the corresponding SensorReadingsMap timestamp."
+    },
+    {
+      "name": "scenario_id",
+      "type": "string",
+      "doc": "Identifier of the scenario that generated these labels."
+    },
+    {
+      "name": "event_type",
+      "type": ["null", "string"],
+      "doc": "Primary type of event occurring, if any (e.g., 'FIRE_PRECURSOR', 'ELECTRICAL_ARCING', 'NORMAL_OPERATION', 'EQUIPMENT_FAILURE'). Null if no specific event.",
+      "default": null
+    },
+    {
+      "name": "event_subtype",
+      "type": ["null", "string"],
+      "doc": "Optional subtype for the event (e.g., if event_type is 'FIRE_PRECURSOR', subtype could be 'CELLULOSE_PYROLYSIS').",
+      "default": null
+    },
+    {
+      "name": "is_anomaly",
+      "type": "boolean",
+      "doc": "Boolean flag indicating if the current state represents an anomaly or deviation from normal.",
+      "default": false
+    },
+    {
+      "name": "anomaly_severity_score",
+      "type": ["null", "float"],
+      "doc": "Optional numerical score (e.g., 0.0 to 1.0) indicating the severity of the anomaly. Higher values indicate greater severity.",
+      "default": null
+    },
+    {
+      "name": "anomaly_tags",
+      "type": { "type": "array", "items": "string" },
+      "doc": "Optional list of tags describing the anomaly (e.g., 'OVERHEATING', 'SHORT_CIRCUIT', 'GAS_LEAK').",
+      "default": []
+    },
+    {
+      "name": "scenario_specific_details",
+      "type": ["null", {
+        "type": "map",
+        "values": ["null", "string", "boolean", "int", "long", "float", "double"]
+      }],
+      "doc": "Flexible map for any additional ground truth information specific to the scenario that isn't covered by other fields. Values can be of various primitive types.",
+      "default": null
+    },
+    {
+      "name": "sensor_specific_ground_truth",
+      "type": ["null", {
+        "type": "map",
+        "values": {
+          "type": "record",
+          "name": "SensorGroundTruthValue",
+          "doc": "Container for ground truth specific to a single sensor. The actual value type can vary.",
+          "fields": [
+            {
+              "name": "value_type",
+              "type": "string",
+              "doc": "Describes the type of the ground truth value (e.g., 'TEMPERATURE_CELSIUS', 'CONCENTRATION_PPM', 'STATE_ENUM', 'THERMAL_MASK_RLE')."
+            },
+            {
+              "name": "value_json",
+              "type": "string",
+              "doc": "The ground truth value, serialized as a JSON string. This allows for complex types like arrays, objects, or simple primitives."
+            }
+          ]
+        }
+      }],
+      "doc": "Optional map where keys are sensor instance IDs (string) and values are records containing sensor-specific ground truth (e.g., true temperature for a thermal pixel, true gas concentration for a VOC sensor, location of an arcing event for an EMF/Acoustic sensor).",
+      "default": null
+    }
+  ]
+}

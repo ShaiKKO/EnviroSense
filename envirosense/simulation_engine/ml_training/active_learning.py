@@ -1,239 +1,372 @@
 """
-This module will contain the ActiveLearningManager class, responsible for
+This module contains the ActiveLearningManager class, responsible for
 guiding the data generation process based on model performance and uncertainty,
-to continuously improve ML models.
+to continuously improve ML models in an adaptive, sensor-specific manner.
 """
+import time
+import uuid
+from typing import Dict, Any, List, Optional, TYPE_CHECKING
 
-from typing import Dict, Any, List, Optional
+if TYPE_CHECKING:
+    from .data_generator import MLDataGenerator
+    from .interfaces import ModelInterface, ScenarioRepositoryInterface, ModelPerformanceData
+    from .prioritization_strategies import PrioritizationStrategy, RealTimeSensorPrioritizationStrategy, SENSOR_ID_TO_TYPE_MAPPING
+    # from ..scenarios.base import BaseScenario # Using Any for now for BaseScenario type hints
 
-# from .data_generator import MLDataGenerator # If needed for direct interaction
-# from envirosense.simulation_engine.scenarios import BaseScenario # For scenario manipulation
 
 class ActiveLearningManager:
     """
     Manages active learning loops by analyzing model weaknesses and
-    guiding the generation of targeted training data.
+    guiding the generation of targeted training data. It uses adaptive
+    strategies based on sensor types and performance feedback.
     """
 
     def __init__(self,
-                 # data_generator: MLDataGenerator, # To request new data
-                 # scenario_repository: Any, # To find/modify scenarios
-                 model_interface: Optional[Any] = None): # Interface to get model predictions/uncertainty
+                 data_generator: 'MLDataGenerator',
+                 scenario_repository: 'ScenarioRepositoryInterface',
+                 model_interface: 'ModelInterface',
+                 prioritization_strategy: 'PrioritizationStrategy',
+                 sensor_id_to_type_map: Optional[Dict[str, str]] = None):
         """
         Initializes the ActiveLearningManager.
 
         Args:
             data_generator: An instance of MLDataGenerator to request new samples.
-            scenario_repository: An object to access and potentially create/modify scenarios.
-            model_interface: An object to interact with the ML model(s) being trained,
-                             e.g., to get predictions, uncertainty scores, or performance metrics.
+            scenario_repository: An implementation of ScenarioRepositoryInterface.
+            model_interface: An implementation of ModelInterface.
+            prioritization_strategy: An instance of a PrioritizationStrategy.
+            sensor_id_to_type_map: Optional. Overrides the default sensor ID to type mapping.
         """
-        # self.data_generator = data_generator
-        # self.scenario_repository = scenario_repository
+        self.data_generator = data_generator
+        self.scenario_repository = scenario_repository
         self.model_interface = model_interface
-        print("ActiveLearningManager initialized (dependencies to be fully wired).")
+        self.prioritization_strategy = prioritization_strategy
+        self.sensor_id_to_type_map = sensor_id_to_type_map or SENSOR_ID_TO_TYPE_MAPPING # Use default if None
+        
+        # Ensure the strategy also has access to the map if it needs its own copy or different one
+        if hasattr(self.prioritization_strategy, 'sensor_id_to_type_map') and \
+           self.prioritization_strategy.sensor_id_to_type_map is None: # type: ignore
+            self.prioritization_strategy.sensor_id_to_type_map = self.sensor_id_to_type_map
 
-    def analyze_model_weaknesses(self,
-                                 model_performance_data: Dict[str, Any]
-                                 ) -> List[Dict[str, Any]]:
+
+        print(f"ActiveLearningManager initialized with strategy: {type(prioritization_strategy).__name__}")
+
+    def _get_sensor_type_from_id(self, sensor_id: Optional[str]) -> Optional[str]:
+        if not sensor_id:
+            return None
+        return self.sensor_id_to_type_map.get(sensor_id)
+
+    def _generate_suggestion_id(self) -> str:
+        return f"sugg_{uuid.uuid4().hex[:12]}"
+
+    def identify_weak_spots(self,
+                            model_performance_data: 'ModelPerformanceData',
+                            target_sensor_id: Optional[str] = None
+                           ) -> List[Dict[str, Any]]:
         """
-        Analyzes model performance data (e.g., confusion matrices, per-class accuracy,
-        regions of high uncertainty) to identify areas where the model is weak.
+        Analyzes model performance data using the configured prioritization strategy
+        to identify areas for new data.
 
         Args:
-            model_performance_data: A dictionary containing metrics or raw data
-                                    indicating model performance or uncertainty.
-                                    Structure TBD based on actual model outputs.
+            model_performance_data: Structured feedback from the ModelInterface.
+            target_sensor_id: Optional. Focus analysis on a specific sensor.
 
         Returns:
-            A list of identified weak spots, each described by a dictionary
-            (e.g., {"type": "low_recall_on_scenario", "scenario_category": "arcing", 
-                    "details": "..."} or {"type": "high_uncertainty_region", 
-                    "environmental_conditions": {...}}).
+            A list of identified weak spot dictionaries, structured as per the plan.
         """
-        print(f"Analyzing model performance data: {model_performance_data.keys() if isinstance(model_performance_data, dict) else 'data received'}")
-        identified_weaknesses: List[Dict[str, Any]] = []
+        print(f"Identifying weak spots using {type(self.prioritization_strategy).__name__}...")
+        if not self.model_interface:
+            print("Error: ModelInterface not available.")
+            return []
         
-        # Placeholder logic:
-        # Example: if low accuracy on "corona_discharge" scenarios is reported
-        # if model_performance_data.get("accuracy_by_scenario_type", {}).get("corona_discharge", 1.0) < 0.7:
-        #     identified_weaknesses.append({
-        #         "type": "low_performance_scenario_type",
-        #         "scenario_category": "electrical_fault", # or more specific
-        #         "target_scenario_type_hint": "CoronaDischargeScenario",
-        #         "current_performance": model_performance_data["accuracy_by_scenario_type"]["corona_discharge"]
-        #     })
-
-        # Example: if model outputs high uncertainty for certain input features
-        # if "high_uncertainty_samples" in model_performance_data:
-        #     for sample_info in model_performance_data["high_uncertainty_samples"]:
-        #         identified_weaknesses.append({
-        #             "type": "high_uncertainty_input_region",
-        #             "input_features_approx": sample_info.get("features"),
-        #             "uncertainty_score": sample_info.get("uncertainty")
-        #         })
-        
-        if not identified_weaknesses:
-            print("No specific weaknesses identified from current performance data (placeholder).")
-            # Could return a default strategy, e.g., generate more diverse normal data
-            # identified_weaknesses.append({"type": "general_diversification_needed"})
-
-
-        return identified_weaknesses
+        weaknesses = self.prioritization_strategy.identify_weaknesses(
+            model_performance_data,
+            target_sensor_id=target_sensor_id
+        )
+        print(f"Identified {len(weaknesses)} weak spots.")
+        return weaknesses
 
     def generate_targeted_samples(self,
                                   weak_spots: List[Dict[str, Any]],
-                                  num_samples_per_weak_spot: int = 100,
-                                  # data_generator_instance: Optional[MLDataGenerator] = None # Allow passing explicitly
-                                 ) -> Optional[Any]: # Path to dataset or List[Dict]
+                                  num_samples_per_spot_type: int = 50, # Samples per identified weakness type/scenario
+                                  output_format: str = "list_of_dicts",
+                                  dataset_name_prefix: str = "alm_targeted"
+                                 ) -> Optional[Any]:
         """
         Generates new training samples specifically targeting the identified weak spots.
-        This would involve selecting or creating/modifying scenarios and then
+        This involves creating or modifying scenarios based on weak spots and then
         using the MLDataGenerator.
 
         Args:
-            weak_spots: A list of dictionaries describing model weaknesses,
-                        as returned by `analyze_model_weaknesses`.
-            num_samples_per_weak_spot: How many new samples to generate for each identified weakness.
-            data_generator_instance: An MLDataGenerator instance. If None, uses self.data_generator.
+            weak_spots: A list of refined weakness dictionaries from identify_weak_spots.
+            num_samples_per_spot_type: Target number of samples per generated/selected scenario.
+            output_format: Desired output format for the generated data (passed to MLDataGenerator).
+            dataset_name_prefix: Prefix for the output dataset name.
 
         Returns:
-            The generated dataset(s), or paths to them. Structure TBD.
-            Returns None if no data generator is available or no weak spots.
+            Combined dataset from all targeted generation runs, or None if errors occur.
         """
-        # current_data_generator = data_generator_instance if data_generator_instance else self.data_generator
-        # if not current_data_generator:
-        #     print("Error: MLDataGenerator not available for generating targeted samples.")
-        #     return None
+        if not self.data_generator:
+            print("Error: MLDataGenerator not available.")
+            return None
+        if not self.scenario_repository:
+            print("Error: ScenarioRepository not available.")
+            return None
         if not weak_spots:
             print("No weak spots provided, no targeted samples will be generated.")
             return None
 
         print(f"Generating targeted samples for {len(weak_spots)} identified weak spots...")
-        all_targeted_samples = []
+        all_new_samples: List[Dict[str, Any]] = []
+        
+        for i, spot in enumerate(weak_spots):
+            spot_type = spot.get("type")
+            spot_details = spot.get("details", {})
+            spot_sensor_id = spot.get("sensor_id")
+            spot_sensor_type = self._get_sensor_type_from_id(spot_sensor_id)
 
-        for spot in weak_spots:
-            print(f"  Targeting weakness: {spot.get('type')} - {spot.get('scenario_category', spot.get('details', 'N/A'))}")
-            # Placeholder logic:
-            # 1. Select/Create/Modify scenarios based on the 'spot' description.
-            #    - If spot["type"] == "low_performance_scenario_type":
-            #        target_scenarios = self.scenario_repository.find_scenarios_by_category_or_type(spot["target_scenario_type_hint"])
-            #        # Potentially create variations of these scenarios (e.g., different parameters)
-            #    - If spot["type"] == "high_uncertainty_input_region":
-            #        target_scenarios = self.scenario_repository.create_scenarios_matching_features(spot["input_features_approx"])
+            print(f"  Targeting weakness ({i+1}/{len(weak_spots)}): ID '{spot.get('weakness_id')}', Type '{spot_type}', Sensor '{spot_sensor_id}'")
             
-            # For now, let's assume we have a way to get relevant scenarios (mocked)
-            # mock_relevant_scenarios = [self.scenario_repository.get_placeholder_scenario(spot.get("type"))]
+            targeted_scenarios_for_spot: List[Any] = [] # Should be List[BaseScenario]
+
+            if spot_type == "high_uncertainty_sample" or spot_type == "misclassified_region":
+                original_scenario_id = spot_details.get("original_scenario_id")
+                features_summary = spot_details.get("sample_features_summary")
+
+                if original_scenario_id:
+                    base_scenario = self.scenario_repository.get_scenario_by_id(original_scenario_id)
+                    if base_scenario:
+                        # Heuristic for param_mods based on features_summary
+                        # This is a simplified placeholder for the complex "inverse design"
+                        param_mods = {"alm_triggering_weak_spot_id": spot.get("weakness_id")}
+                        if features_summary and features_summary.get("top_n_features"):
+                            param_mods["alm_focus_feature"] = features_summary["top_n_features"][0].get("feature_path")
+                            param_mods["alm_focus_feature_value"] = features_summary["top_n_features"][0].get("raw_value")
+                        
+                        sensor_context_for_repo = {"sensor_id": spot_sensor_id, "sensor_type": spot_sensor_type} if spot_sensor_id else None
+                        
+                        try:
+                            variation_scenario = self.scenario_repository.create_scenario_variation(
+                                base_scenario=base_scenario,
+                                new_id_suffix=f"_alm_var_{spot.get('weakness_id', i)}",
+                                param_modifications=param_mods,
+                                sensor_context=sensor_context_for_repo
+                            )
+                            if variation_scenario:
+                                targeted_scenarios_for_spot.append(variation_scenario)
+                                print(f"    Created variation for scenario ID '{original_scenario_id}'.")
+                        except Exception as e_var:
+                            print(f"    Could not create variation for {original_scenario_id}: {e_var}")
+                
+                if not targeted_scenarios_for_spot and features_summary: # If no base or variation failed
+                    try:
+                        crafted_scenario = self.scenario_repository.craft_scenario_from_features(
+                            features_summary=features_summary,
+                            base_id=f"alm_crafted_{spot.get('weakness_id', i)}",
+                            target_class=spot_details.get("true_label") or spot_details.get("predicted_label"), # if misclassified
+                            sensor_type=spot_sensor_type
+                        )
+                        if crafted_scenario:
+                            targeted_scenarios_for_spot.append(crafted_scenario)
+                            print(f"    Crafted new scenario based on features for sensor type '{spot_sensor_type}'.")
+                    except Exception as e_craft:
+                         print(f"    Could not craft scenario from features: {e_craft}")
+
+            elif spot_type == "low_recall_class":
+                class_name = spot_details.get("class_name")
+                if class_name:
+                    try:
+                        scenarios_for_class = self.scenario_repository.get_scenarios_by_class_label(
+                            class_label=class_name,
+                            sensor_type=spot_sensor_type,
+                            num_to_get=2 # Get a couple of base scenarios for this class
+                        )
+                        targeted_scenarios_for_spot.extend(scenarios_for_class)
+                        print(f"    Selected {len(scenarios_for_class)} existing scenarios for class '{class_name}', sensor type '{spot_sensor_type}'.")
+                    except Exception as e_class_scen:
+                        print(f"    Error getting scenarios by class label: {e_class_scen}")
             
-            # 2. Call data_generator.generate_training_dataset with these scenarios
-            # generated_data_for_spot = current_data_generator.generate_training_dataset(
-            #     scenarios=mock_relevant_scenarios,
-            #     samples_per_scenario=num_samples_per_weak_spot,
-            #     # ... other params like imperfection variations
-            # )
-            # all_targeted_samples.extend(generated_data_for_spot if isinstance(generated_data_for_spot, list) else [])
-            print(f"    (Placeholder) Would generate {num_samples_per_weak_spot} samples for this spot.")
+            if not targeted_scenarios_for_spot:
+                print(f"    No specific scenario generated/selected, attempting default exploration for sensor type '{spot_sensor_type}'.")
+                try:
+                    default_scenario = self.scenario_repository.get_default_exploration_scenario(
+                        scenario_id=f"alm_explore_{spot.get('weakness_id', i)}",
+                        sensor_type=spot_sensor_type
+                    )
+                    if default_scenario:
+                        targeted_scenarios_for_spot.append(default_scenario)
+                except Exception as e_def_scen:
+                    print(f"    Error getting default exploration scenario: {e_def_scen}")
 
-        # This would return the combined dataset or paths
-        return all_targeted_samples # Currently empty due to placeholders
+            if targeted_scenarios_for_spot:
+                print(f"    Attempting to generate data for {len(targeted_scenarios_for_spot)} scenario(s) for this spot.")
+                # samples_per_scenario_run = max(10, num_samples_per_spot_type // len(targeted_scenarios_for_spot))
+                samples_per_scenario_run = num_samples_per_spot_type # Generate N for each scenario found/created for the spot
+                
+                dataset_chunk = self.data_generator.generate_training_dataset(
+                    scenarios=targeted_scenarios_for_spot,
+                    samples_per_scenario=samples_per_scenario_run,
+                    output_format="list_of_dicts", # Internal format for aggregation
+                )
+                if isinstance(dataset_chunk, list):
+                    all_new_samples.extend(dataset_chunk)
+                    print(f"    Generated {len(dataset_chunk)} samples for this spot.")
+                elif dataset_chunk is None: # If generator returns None on error
+                     print(f"    MLDataGenerator returned None for this spot's scenarios.")
+            else:
+                print(f"    Could not generate/select any scenarios for spot: {spot.get('weakness_id')}")
+        
+        if not all_new_samples:
+            print("No new targeted samples were generated in this cycle.")
+            return None
+            
+        print(f"Total new targeted samples generated across all spots: {len(all_new_samples)}")
+        
+        final_dataset_name = f"{dataset_name_prefix}_{time.strftime('%Y%m%d_%H%M%S')}"
+        # _export_data is an internal method of MLDataGenerator, ensure it's accessible or use public API
+        if hasattr(self.data_generator, '_export_data'):
+             return self.data_generator._export_data(all_new_samples, output_format, final_dataset_name) # type: ignore
+        else:
+            print("Warning: MLDataGenerator does not have _export_data. Returning raw list.")
+            if output_format == "list_of_dicts":
+                return all_new_samples
+            else:
+                print(f"Error: Cannot provide {output_format} as _export_data is missing.")
+                return None
 
-    def create_targeted_scenarios(self, weakness_analysis: List[Dict[str, Any]]) -> List[Any]: # List[BaseScenario]
+
+    def suggest_scenario_modifications(self, weakness_analysis: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Based on weakness analysis, creates or parameterizes scenarios
-        that are likely to produce data in the identified weak regions.
+        Suggests modifications to existing scenario parameters or new scenario
+        configurations based on identified weaknesses.
 
         Args:
-            weakness_analysis: Output from `analyze_model_weaknesses`.
+            weakness_analysis: Output from `identify_weak_spots`.
 
         Returns:
-            A list of new or modified scenario objects.
+            A list of dictionaries, each suggesting a scenario modification or creation,
+            structured as per the active-learning-enhancement-plan.md.
         """
-        print(f"Creating targeted scenarios based on {len(weakness_analysis)} weak spots...")
-        targeted_scenarios: List[Any] = [] # List[BaseScenario]
-        # Placeholder logic:
-        # for spot in weakness_analysis:
-        #     if spot["type"] == "low_performance_scenario_type":
-        #         # Find existing scenarios of this type and create variations
-        #         # base_scenario = self.scenario_repository.get_scenario_template(spot["target_scenario_type_hint"])
-        #         # for _ in range(3): # Create 3 variations
-        #         #     new_params = self._vary_scenario_params(base_scenario.default_params)
-        #         #     targeted_scenarios.append(base_scenario.clone_with_new_params(new_params))
-        #         pass
-        #     elif spot["type"] == "high_uncertainty_input_region":
-        #         # Try to craft a scenario that hits these input features
-        #         # new_scenario = self.scenario_repository.craft_scenario_for_features(spot["input_features_approx"])
-        #         # targeted_scenarios.append(new_scenario)
-        #         pass
-        return targeted_scenarios
+        print(f"Suggesting scenario modifications based on {len(weakness_analysis)} weak spots...")
+        suggestions: List[Dict[str, Any]] = []
+
+        for spot in weakness_analysis:
+            suggestion_id = self._generate_suggestion_id()
+            spot_priority = spot.get("priority", 0.0)
+            spot_details = spot.get("details", {})
+            spot_sensor_id = spot.get("sensor_id")
+            spot_sensor_type = self._get_sensor_type_from_id(spot_sensor_id)
+
+            # Heuristic for suggestion_confidence
+            suggestion_confidence = spot_priority # Start with weak spot priority
+            if spot.get("type") == "high_uncertainty_sample":
+                suggestion_confidence += spot_details.get("epistemic_uncertainty_score", 0.0) * 0.2
+            if spot_details.get("sample_features_summary"):
+                suggestion_confidence += 0.1 # Bonus if features are available
+            suggestion_confidence = min(max(suggestion_confidence, 0.0), 1.0)
+
+            suggestion_base = {
+                "suggestion_id": suggestion_id,
+                "reason": f"Addressing weakness ID: {spot.get('weakness_id')}, Type: {spot.get('type')}, Sensor: {spot_sensor_id}",
+                "priority": spot_priority,
+                "suggestion_confidence": suggestion_confidence,
+                "originating_weak_spot_ids": [spot.get("weakness_id")],
+                "original_weak_spot_info": spot
+            }
+
+            current_suggestion: Dict[str, Any] = {}
+
+            if spot.get("type") == "high_uncertainty_sample" or spot.get("type") == "misclassified_region":
+                original_scenario_id = spot_details.get("original_scenario_id")
+                features_summary = spot_details.get("sample_features_summary")
+
+                if original_scenario_id:
+                    current_suggestion = {
+                        **suggestion_base,
+                        "suggestion_type": "modify_existing_scenario",
+                        "target_scenario_definition_id": original_scenario_id,
+                        "suggested_modifications_for_specific_params": [],
+                        "suggested_metadata_updates": {
+                            "tags": {"operation": "add_if_not_exists", "value": f"alm_focus_{spot.get('weakness_id')}"}
+                        }
+                    }
+                    if features_summary and features_summary.get("top_n_features"):
+                        for feat in features_summary["top_n_features"][:2]: # Suggest for top 2 features
+                            current_suggestion["suggested_modifications_for_specific_params"].append({
+                                "param_path": f"heuristic_map({feat.get('feature_path')})", # Needs actual mapping logic
+                                "operation": "vary_around_value",
+                                "value": feat.get("raw_value"),
+                                "comment": f"Feature '{feat.get('feature_path')}' (value: {feat.get('raw_value')}) had importance {feat.get('importance_score', 'N/A')}"
+                            })
+                else: # No original scenario, or suggest creating new even if original exists
+                    current_suggestion = {
+                        **suggestion_base,
+                        "suggestion_type": "create_new_scenario",
+                        "basis_for_new_scenario": {
+                            "scenario_definition_id_suggestion": f"alm_new_{spot.get('weakness_id')}",
+                            "name": f"ALM New Scenario for Weakness {spot.get('weakness_id')}",
+                            "description": f"Auto-generated by ALM to address {spot.get('type')} on sensor {spot_sensor_id} related to features: {str(features_summary)[:100]}...",
+                            "category": "ACTIVE_LEARNING_TARGETED",
+                            "tags": [f"alm_generated", f"sensor_{spot_sensor_id or 'any'}", f"type_{spot_sensor_type or 'any'}"],
+                            "specific_params_json_template": {"alm_focus_features": features_summary}, # Heuristic
+                            "author": "ActiveLearningManager"
+                        }
+                    }
+            elif spot.get("type") == "low_recall_class":
+                class_name = spot_details.get("class_name")
+                current_suggestion = {
+                    **suggestion_base,
+                    "suggestion_type": "create_new_scenario", # Or could be "modify_existing_scenario_to_increase_class_yield"
+                    "basis_for_new_scenario": {
+                        "scenario_definition_id_suggestion": f"alm_boost_{class_name}_{spot_sensor_id or 'any'}",
+                        "name": f"ALM Scenario to Boost Class: {class_name} for Sensor: {spot_sensor_id or 'any'}",
+                        "description": f"Auto-generated by ALM to increase data for class '{class_name}' on sensor {spot_sensor_id}, due to low recall.",
+                        "category": "ACTIVE_LEARNING_CLASS_BOOST",
+                        "tags": [f"alm_generated", f"class_{class_name}", f"sensor_{spot_sensor_id or 'any'}"],
+                        "specific_params_json_template": {"target_class_to_boost": class_name, "target_sensor_type": spot_sensor_type}, # Heuristic
+                        "author": "ActiveLearningManager"
+                    }
+                }
+            
+            if current_suggestion:
+                suggestions.append(current_suggestion)
+            else:
+                 print(f"  Could not formulate a suggestion for weakness: {spot.get('weakness_id')}")
 
 
-    def adaptive_scenario_selection(self, model_feedback: Dict[str, Any]) -> List[Any]: # List[BaseScenario]
-        """
-        Selects or prioritizes scenarios for the next round of data generation
-        based on continuous feedback from the model's performance.
+        return suggestions
 
-        Args:
-            model_feedback: Performance metrics or other feedback from the model.
-
-        Returns:
-            A list of scenarios selected/prioritized for the next generation iteration.
-        """
-        print("Performing adaptive scenario selection based on model feedback...")
-        # Placeholder:
-        # 1. Analyze feedback (similar to analyze_model_weaknesses)
-        # 2. Query scenario_repository for scenarios that address these areas
-        # 3. Rank or select scenarios.
-        # selected_scenarios = self.scenario_repository.get_all_scenarios()[:2] # Mock: just take first two
-        selected_scenarios = []
-        return selected_scenarios
-
-    # Interface for real-world model performance feedback (Task 2.4.3)
-    # This would likely be called externally when new performance data is available.
     def process_real_world_feedback(self, feedback_data: Dict[str, Any]):
         """
         Processes feedback from real-world model deployment to inform
-        future data generation and scenario creation.
+        future data generation and scenario creation. (Placeholder)
         """
-        print(f"Processing real-world feedback: {feedback_data.keys()}")
-        # Placeholder:
+        print(f"Processing real-world feedback: {list(feedback_data.keys())}")
+        # Future implementation:
         # - Identify discrepancies between simulation and real-world.
         # - Update scenario parameters or create new scenarios to better match reality.
         # - Log areas where simulation needs improvement.
         pass
 
+# Main execution block for conceptual testing (to be replaced by proper unit/integration tests)
 if __name__ == '__main__':
-    # Example conceptual usage
-    alm = ActiveLearningManager(model_interface=None) # Provide mock model interface
-    
-    # Mock performance data
-    mock_perf_data = {
-        "accuracy_by_scenario_type": {
-            "corona_discharge": 0.65,
-            "arcing_event": 0.90,
-            "normal_diurnal_cycle": 0.98
-        },
-        "high_uncertainty_samples": [
-            {"features": {"emf_reading": 1500, "temp_c": 60}, "uncertainty": 0.45},
-            {"features": {"voc_pattern_x": True, "acoustic_anomaly_y": True}, "uncertainty": 0.50}
-        ]
-    }
-    
-    weaknesses = alm.analyze_model_weaknesses(mock_perf_data)
-    print(f"\nIdentified Weaknesses: {weaknesses}")
-    
-    if weaknesses:
-        # Assume we have a mock data_generator and scenario_repository for this example
-        # class MockDataGen: generate_training_dataset = lambda self, scenarios, samples_per_scenario: [{"mock_data":i} for i in range(samples_per_scenario * len(scenarios))]
-        # class MockScenarioRepo: get_placeholder_scenario = lambda self, type_hint: BaseScenario(f"mock_{type_hint}", "Mock", "Desc")
-        
-        # alm.data_generator = MockDataGen()
-        # alm.scenario_repository = MockScenarioRepo()
+    print("ActiveLearningManager module loaded. Conceptual __main__ block.")
+    # This block would require mock implementations of MLDataGenerator,
+    # ModelInterface, ScenarioRepositoryInterface, and a PrioritizationStrategy
+    # to demonstrate a full conceptual run.
+    # For now, it serves as a basic check that the file is syntactically valid.
 
-        targeted_data_result = alm.generate_targeted_samples(weaknesses, num_samples_per_weak_spot=5)
-        print(f"\nTargeted Data Generation Result (placeholder): {targeted_data_result}")
-
-        created_scenarios = alm.create_targeted_scenarios(weaknesses)
-        print(f"\nCreated Targeted Scenarios (placeholder): {created_scenarios}")
-
-    selected_for_next_round = alm.adaptive_scenario_selection(mock_perf_data)
-    print(f"\nScenarios selected for next round (placeholder): {selected_for_next_round}")
+    # Example:
+    # mock_dg = ...
+    # mock_sr = ...
+    # mock_mi = ...
+    # rt_strategy = RealTimeSensorPrioritizationStrategy()
+    # alm = ActiveLearningManager(mock_dg, mock_sr, mock_mi, rt_strategy)
+    #
+    # mock_perf_data = mock_mi.get_model_performance_feedback("dummy_dataset")
+    # weak_spots = alm.identify_weak_spots(mock_perf_data)
+    # if weak_spots:
+    #    suggestions = alm.suggest_scenario_modifications(weak_spots)
+    #    print(f"Suggestions: {suggestions}")
+    #    new_data = alm.generate_targeted_samples(weak_spots)
+    #    print(f"New data generated (path/list): {new_data}")

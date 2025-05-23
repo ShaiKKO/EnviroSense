@@ -1,0 +1,136 @@
+{
+  "type": "record",
+  "name": "ThermalReading",
+  "namespace": "com.envirosense.schema.sensor",
+  "doc": "Schema for thermal camera (FLIR Lepton 3.5 or similar) sensor readings. Provides the full thermal image and related metadata. References SensorReadingBase for common fields.",
+  "fields": [
+    {
+      "name": "base_data",
+      "type": "com.envirosense.schema.sensor.SensorReadingBase",
+      "doc": "Common sensor reading metadata."
+    },
+    {
+      "name": "thermal_sensor_type_specific",
+      "type": {
+        "type": "enum",
+        "name": "ThermalCameraModel",
+        "symbols": ["FLIR_LEPTON_3_5", "OTHER_THERMAL_CAMERA"]
+      },
+      "doc": "Specific model or type of the thermal camera. The 'sensor_type_general' in base_data would be 'THERMAL_CAMERA'."
+    },
+    {
+      "name": "thermal_image_celsius",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": "float"
+        }
+      },
+      "doc": "2D array representing the thermal image. Values are in degrees Celsius. Outer array represents rows, inner array represents columns (pixels in a row). Expected dimensions: 120 rows, 160 columns for Lepton 3.5."
+    },
+    {
+      "name": "image_height_pixels",
+      "type": "int",
+      "doc": "Height of the thermal image in pixels (e.g., 120 for Lepton 3.5)."
+    },
+    {
+      "name": "image_width_pixels",
+      "type": "int",
+      "doc": "Width of the thermal image in pixels (e.g., 160 for Lepton 3.5)."
+    },
+    {
+      "name": "field_of_view_horizontal_degrees",
+      "type": ["null", "float"],
+      "doc": "Horizontal field of view of the camera in degrees (e.g., Lepton 3.5 is typically ~57 degrees).",
+      "default": null
+    },
+    {
+      "name": "field_of_view_vertical_degrees",
+      "type": ["null", "float"],
+      "doc": "Vertical field of view of the camera in degrees.",
+      "default": null
+    },
+    {
+      "name": "emissivity_setting_used",
+      "type": ["null", "float"],
+      "doc": "Emissivity setting used by the sensor/simulation for this temperature calculation (0.0 to 1.0).",
+      "default": null
+    },
+    {
+      "name": "focus_distance_meters",
+      "type": ["null", "float"],
+      "doc": "Distance to the focal plane in meters, if adjustable or known. Crucial for understanding image sharpness.",
+      "default": null
+    },
+    {
+      "name": "lens_type",
+      "type": ["null", "string"],
+      "doc": "Type of lens used (e.g., 'standard', 'telephoto', 'wide-angle'). Affects FOV and image characteristics.",
+      "default": null
+    },
+    {
+      "name": "calibration_date_utc",
+      "type": ["null", { "type": "long", "logicalType": "timestamp-millis" }],
+      "doc": "Last known calibration timestamp of the sensor, milliseconds from UTC epoch. Important for data quality assessment.",
+      "default": null
+    },
+    {
+      "name": "detector_temperature_celsius",
+      "type": ["null", "float"],
+      "doc": "Internal temperature of the thermal detector (e.g., bolometer chip), in degrees Celsius. Crucial for dark frame correction and sensor stability analysis.",
+      "default": null
+    },
+    {
+      "name": "ambient_temperature_at_sensor_celsius",
+      "type": ["null", "float"],
+      "doc": "Ambient air temperature measured at/near the sensor's location at the time of reading, in degrees Celsius.",
+      "default": null
+    },
+    {
+      "name": "ambient_humidity_at_sensor_percent",
+      "type": ["null", "float"],
+      "doc": "Ambient relative humidity measured at/near the sensor's location at the time of reading, in percentage (0.0 to 100.0).",
+      "default": null
+    },
+    {
+      "name": "distance_to_target_meters",
+      "type": ["null", "float"],
+      "doc": "Estimated or set distance from the camera to the primary object of interest in the scene, in meters. Important for object sizing and temperature accuracy.",
+      "default": null
+    },
+    {
+      "name": "num_bad_pixels_corrected",
+      "type": ["null", "int"],
+      "doc": "Number of bad pixels identified and corrected in this frame by the simulation's imperfection model.",
+      "default": null
+    },
+    {
+      "name": "derived_max_temp_celsius",
+      "type": ["null", "float"],
+      "doc": "Maximum temperature found in the thermal_image_celsius. Corresponds to INFRA_THERMAL_MAX from firmware spec.",
+      "default": null
+    },
+    {
+      "name": "derived_avg_temp_celsius_roi",
+      "type": ["null", "float"],
+      "doc": "Average temperature in a predefined or dynamically determined Region of Interest (ROI) within the thermal_image_celsius. Corresponds to INFRA_THERMAL_AVG. ROI definition details would be part of simulation config.",
+      "default": null
+    },
+    {
+      "name": "derived_delta_temp_celsius_baseline",
+      "type": ["null", "float"],
+      "doc": "Temperature difference from a calculated baseline for a Region of Interest (ROI). Corresponds to INFRA_THERMAL_DELTA. Baseline and ROI definition would be part of simulation config.",
+      "default": null
+    },
+    {
+      "name": "thermal_status_flags_specific",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "doc": "Array of operational status flags specific to the thermal camera. Examples from your input: 'SHUTTER_ACTIVE', 'FFC_IN_PROGRESS', 'OVER_RANGE', 'UNDER_RANGE', 'BAD_PIXEL_MAP_APPLIED', 'NON_UNIFORMITY_CORRECTION_ACTIVE'. Empty if nominal or covered by base_data.status_flags.",
+      "default": []
+    }
+  ]
+}

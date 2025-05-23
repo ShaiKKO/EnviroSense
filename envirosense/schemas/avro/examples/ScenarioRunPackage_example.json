@@ -1,0 +1,36 @@
+{
+  "package_id": { "string": "b1c2d3e4-f5a6-b7c8-d9e0-f1a2b3c4d5e6" },
+  "package_version": 1,
+  "generation_timestamp_utc": 1678886440000,
+  "scenario_definition": {
+    "scenario_definition_id": "scen_def_a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "scenario_class_module": "envirosense.simulation_engine.scenarios.fire_scenarios",
+    "scenario_class_name": "EarlyCombustionScenario",
+    "scenario_instance_id": "run_instance_20230315_T103000Z_001",
+    "name": "Early Stage Smoldering Pine Needles",
+    "description": "Simulates the early stages of combustion in a pile of dry pine needles, focusing on VOC off-gassing and slight temperature increases before visible flame.",
+    "category": "FIRE_PRECURSOR",
+    "tags": ["forest_undergrowth", "smoldering", "low_wind"],
+    "difficulty_level": "MEDIUM",
+    "expected_duration_seconds": 1800.0,
+    "version": 2,
+    "creation_timestamp_utc": 1678880000000,
+    "specific_params_json": "{\"material_type\": \"pine_needles\", \"initial_moisture_content_percent\": 15.0, \"ambient_temp_celsius\": 22.0, \"wind_speed_mps\": 0.5, \"ignition_source_temp_celsius\": 450.0, \"smoldering_area_sq_meters\": 0.25}",
+    "author": "SimulationTeam",
+    "related_scenario_ids": ["scen_def_pine_high_wind_variation_002"]
+  },
+  "simulation_engine_version": "1.2.3",
+  "data_generator_version": "0.9.1",
+  "ml_data_samples_file_reference": "/datasets/scenario_fire_smoldering_001/run_20230315_T103000Z_001/samples.avro",
+  "ml_data_samples_embedded": null,
+  "run_metadata": {
+    "simulation_host": "sim_worker_05",
+    "random_seed": "42",
+    "execution_time_seconds": "123.45"
+  },
+  "data_schema_versions": {
+    "MLDataSample.avsc": "1.0.0",
+    "SensorReadingBase.avsc": "1.0.0",
+    "ThermalReading.avsc": "1.0.0"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "type": "record",
+  "name": "ScenarioDefinition",
+  "namespace": "com.envirosense.schema.scenario",
+  "doc": "Schema to represent the full definition and parameters of a scenario instance. This allows scenarios to be serialized, versioned, and managed as data.",
+  "fields": [
+    {
+      "name": "scenario_definition_id",
+      "type": "string",
+      "doc": "Unique identifier for this specific scenario definition instance (e.g., a UUID)."
+    },
+    {
+      "name": "scenario_class_module",
+      "type": "string",
+      "doc": "The Python module path where the scenario class is defined (e.g., 'envirosense.simulation_engine.scenarios.fire_scenarios')."
+    },
+    {
+      "name": "scenario_class_name",
+      "type": "string",
+      "doc": "The name of the Python class that implements this scenario (e.g., 'EarlyCombustionScenario')."
+    },
+    {
+      "name": "scenario_instance_id",
+      "type": "string",
+      "doc": "A unique identifier for a particular instance or run of this scenario, if multiple instances with the same definition are generated."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Human-readable name for the scenario (e.g., 'Smoldering Wood Fire - Low Wind')."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "Detailed description of the scenario, its objectives, and key characteristics."
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "doc": "Category of the scenario (e.g., 'FIRE_PRECURSOR', 'ELECTRICAL_FAULT', 'NORMAL_OPERATION', 'ENVIRONMENTAL_EXTREME')."
+    },
+    {
+      "name": "tags",
+      "type": { "type": "array", "items": "string" },
+      "doc": "List of tags for easier searching and categorization (e.g., 'urban', 'high_humidity', 'transformer_fault').",
+      "default": []
+    },
+    {
+      "name": "difficulty_level",
+      "type": {
+        "type": "enum",
+        "name": "ScenarioComplexityLevel",
+        "symbols": ["VERY_LOW", "LOW", "MEDIUM", "HIGH", "VERY_HIGH", "CUSTOM"]
+      },
+      "doc": "Subjective difficulty or complexity level of the scenario for detection algorithms."
+    },
+    {
+      "name": "expected_duration_seconds",
+      "type": ["null", "double"],
+      "doc": "Expected or typical duration of the scenario in seconds.",
+      "default": null
+    },
+    {
+      "name": "version",
+      "type": "int",
+      "doc": "Version number of this scenario definition. Incremented when the definition or its specific_params structure changes.",
+      "default": 1
+    },
+    {
+      "name": "creation_timestamp_utc",
+      "type": { "type": "long", "logicalType": "timestamp-millis" },
+      "doc": "UTC timestamp indicating when this scenario definition was created or last significantly modified."
+    },
+    {
+      "name": "specific_params_json",
+      "type": "string",
+      "doc": "A JSON string containing all scenario-specific parameters required to instantiate and run this scenario (e.g., chemical release rates, fault magnitudes, environmental conditions). The structure of this JSON will vary per scenario_class_name."
+    },
+    {
+      "name": "author",
+      "type": ["null", "string"],
+      "doc": "Author or source of this scenario definition.",
+      "default": null
+    },
+    {
+      "name": "related_scenario_ids",
+      "type": { "type": "array", "items": "string" },
+      "doc": "Optional list of IDs of other related scenario definitions (e.g., variations, prerequisite scenarios).",
+      "default": []
+    }
+  ]
+}
