@@ -1,0 +1,2320 @@
+Artificial intelligence in environmental monitoring: Advancements,
+challenges, and future directions
+David B. Olawade a,b,c,*
+, Ojima Z. Wada d
+, Abimbola O. Ige e
+, Bamise I. Egbewole f
+,
+Adedayo Olojo g
+, Bankole I. Oladapo h
+a Department of Allied and Public Health, School of Health, Sport and Bioscience, University of East London, London, United Kingdom b Department of Research and Innovation, Medway NHS Foundation Trust, Gillingham ME7 5NY, United Kingdom c Department of Public Health, York St John University, London, United Kingdom d Division of Sustainable Development, College of Science and Engineering, Hamad Bin Khalifa University, Qatar Foundation, Doha, Qatar e Department of Chemistry, Faculty of Science, University of Ibadan, Ibadan, Nigeria f Department of Chemistry, Virginia Tech University, Blacksburg, VA, USA g Department of Environmental Health Sciences, Faculty of Public Health, University of Ibadan, Ibadan, Nigeria h School of Science and Engineering, University of Dundee, Dundee, United Kingdom
+ARTICLE INFO
+Keywords:
+Artificial intelligence
+Environmental monitoring
+Pollution detection
+Disaster prediction
+Air and water quality
+ABSTRACT
+The application of Artificial Intelligence (AI) in environmental monitoring offers accurate disaster forecasts,
+pollution source detection, and comprehensive air and water quality monitoring. This article provides an
+overview of the value of environmental monitoring, the challenges of conventional methods, and potential AIbased solutions. Several significant AI applications in environmental monitoring are highlighted, showcasing
+their contributions to effective environmental management. AI technologies enhance environmental monitoring
+by enabling better understanding, prediction, and mitigation of environmental risks. However, realizing the full
+potential of AI faces hurdles such as a shortage of specialized AI experts in the environmental sector and challenges related to data access, control, and privacy. These issues are more pronounced in regions with developing
+technological infrastructure. The paper advocates for proactive data governance measures by governments to
+protect sensitive information. Despite these challenges, the future of AI in environmental monitoring remains
+promising, with advancements in AI algorithms, data collection techniques, and computing power expected to
+further improve accuracy and efficiency in pollution monitoring and management.
+Introduction
+The essential process of environmental monitoring entails the systematic observation, measurement, and evaluation of the natural environment and all of its components. Monitoring the environment’s
+current condition and identifying any changes that can be harmful to the
+ecosystem or public health is its main goal (Artiola et al., 2004).
+Traditional environmental monitoring techniques include statistical
+analysis, laboratory analysis, and manual sampling (Zhang, 2024). Unfortunately, these approaches have limitations, such as high costs, prolonged procedures, and poor accuracy.
+The efficiency of conventional environmental monitoring techniques
+is constrained by several issues. The expense of using these procedures is
+one of the biggest obstacles. The costs associated with manual sampling
+and laboratory analysis are high and include skilled employees, equipment, and chemicals (Dressing et al., 2016; Ditria et al., 2022). As a
+result, environmental monitoring programs often have a narrow focus,
+use small sample sizes, and do not provide a comprehensive picture of
+the state of the environment. The time-intensiveness of traditional
+methods is another significant problem (Thomson et al., 2011; Ceccato
+et al., 2014; Dressing et al., 2016). Decision-making and emergency
+response in the case of natural catastrophes or pollution crises can be
+delayed by manual sampling and laboratory analysis, which might take
+weeks or even months to generate results. Additionally, the subjectivity
+of human observation and the potential for human error limit the accuracy of traditional environmental monitoring techniques (Hameed
+et al., 2017). Human interpretation required for manual sampling and
+laboratory analysis can lead to inconsistent data collection and
+* Corresponding author at: Department of Allied and Public Health, School of Health, Sport and Bioscience, University of East London, London, United Kingdom.
+E-mail address: d.olawade@uel.ac.uk (D.B. Olawade).
+Contents lists available at ScienceDirect
+Hygiene and Environmental Health Advances
+journal homepage: www.elsevier.com/locate/heha
+https://doi.org/10.1016/j.heha.2024.100114
+Received 25 November 2023; Received in revised form 2 August 2024; Accepted 17 October 2024
+Hygiene and Environmental Health Advances 12 (2024) 100114
+Available online 18 October 2024
+2773-0492/© 2024 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).
+processing.
+Furthermore, the utilization of advanced technologies and the
+presence of adequately trained technical personnel necessary for precise
+environmental monitoring are frequently impeded by cost limitations
+and a scarcity of qualified individuals (Cordier et al., 2021). Consequently, achieving regular monitoring becomes an arduous task,
+particularly in regions with limited resources (Li et al., 2020). This is
+especially pronounced in areas lacking technological infrastructure and
+expertise (Li et al., 2020).
+Artificial intelligence (AI) has emerged as a crucial integration in
+environmental monitoring endeavors,seeking to enhance the objectivity
+of results and improve accessibility to regions suffering from limited
+resources. AI, a subfield of computer science, focuses on creating algorithms and computer programs that can perform activities like sensing,
+reasoning, learning, and decision-making that would ordinarily require
+human intellect (Rodgers, 2020; Sarker, 2021a, b). Large data sets can
+be analyzed using AI, which has proven useful for identifying patterns
+and making precise predictions (Duan et al., 2019; UNEP.org, 2022). In
+environmental monitoring, AI has been applied in various areas,
+including the prediction of natural disasters, monitoring air and water
+quality, and identifying pollutants (Subramaniam et al., 2022). Table 1
+offers a comparative analysis of AI methods versus traditional approaches in terms of accuracy, speed, cost, scalability, data integration,
+maintenance, and environmental impact. It underscores the significant
+advantages of AI in enhancing the efficiency and effectiveness of environmental monitoring while highlighting the potential initial costs and
+the importance of considering long-term benefits.
+For instance, AI models such as Convolutional Neural Networks
+(CNNs) are used for image-based environmental monitoring tasks like
+detecting deforestation and identifying wildlife (Bidari and Chickerur,
+2024). Support Vector Machines (SVMs) have been applied to predict
+harmful algal blooms in lakes, demonstrating the model’s capability to
+handle high-dimensional data (Li et al., 2020a). Recurrent Neural Networks (RNNs) are utilized for time series forecasting, such as predicting
+flood events based on historical rainfall data (Chen et al., 2020).
+In addition, the utilization of advanced technologies and the presence of adequately trained technical personnel necessary for precise
+environmental monitoring are frequently impeded by cost limitations
+and a scarcity of qualified individuals. Consequently, the attainment of
+regular monitoring becomes an arduous task, particularly in regions of
+the world facing resource constraints, particularly in the global south.
+Therefore, in recent years, AI has emerged as a crucial integration in
+environmental monitoring endeavors,seeking to enhance the objectivity
+of results and improve accessibility to regions suffering from limited
+resources. This narrative review aims to comprehensively explore and
+evaluate the current state of AI technologies implemented in key areas of
+environmental monitoring, shedding light on their efficacy and potential
+implications for future research and practical applications.
+AI models for environmental monitoring
+When choosing an AI model for environmental monitoring, it is
+essential to consider factors such as data availability, computational
+resources, and expertise. Some AI models require large amounts of data
+and computational power to train, while others can be trained on
+smaller datasets with less computational expense (Zhou et al., 2020).
+SVMs are well-suited for handling high-dimensional data and learning
+complex relationships between variables (Manikandan and Abirami,
+2021). SVMs can be used with various data types, including images and
+text. For instance, SVMs have been used effectively for image classification tasks, such as detecting deforestation and identifying wildlife
+(Zagajewski et al., 2021). They are also applied in natural language
+processing to extract information from environmental reports (Meza
+et al., 2019). Support Vector Regression (SVR), a variant of SVM, is used
+for regression problems in environmental monitoring, offering an
+effective solution for predicting environmental control parameters (Ye
+Table 1
+AI methods versus traditional approaches in environmental monitoring.
+Criteria AI Methods (Specific
+Model/Tool)
+Traditional
+Methods
+Ref.
+Accuracy - Deep Learning
+Models (e.g.,
+Convolutional
+Neural Networks -
+CNNs): High
+precision in image
+and pattern
+recognition.
+- Random Forests:
+Effective for
+handling large
+datasets and
+identifying complex
+patterns.
+- Support Vector
+Machines (SVM):
+Excellent for
+classification tasks.
+- Variable accuracy
+dependent on
+human expertise.
+- Susceptible to
+human error and
+biases.
+- Often limited by
+the resolution and
+frequency of
+manual sampling.
+(Masood
+and
+Ahmad,
+2021; Ullo
+and Sinha,
+2020)
+Speed - Real-time Data
+Processing (e.g.,
+TensorFlow,
+Keras): Immediate
+analysis and
+anomaly detection.
+- Automated
+Monitoring
+Systems (e.g., IBM
+Watson): Faster
+data aggregation
+and synthesis from
+multiple sources.
+- Time-intensive
+data collection and
+analysis.
+- Delayed results
+due to lengthy
+laboratory
+processes.
+- Slower response
+time in emergency
+situations.
+(Bibri et al.,
+2024;
+Ranyal
+et al., 2022)
+Cost - Initial setup can be
+expensive
+(equipment,
+software, training).
+- Long-term
+operational costs are
+lower due to
+automation and
+reduced need for
+human labor.
+- Scalable with
+decreasing marginal
+costs.
+- High ongoing costs
+for labor,
+equipment, and
+consumables.
+- Expensive manual
+sampling and
+laboratory
+analyses.
+- Costs increase
+proportionally
+with the scale of
+monitoring efforts.
+(Asha et al.,
+2022;
+Xiang et al.,
+2021)
+Scalability - Cloud-based
+Platforms (e.g.,
+Microsoft Azure,
+Google Cloud AI):
+Easily scalable to
+cover large
+geographic areas.
+- Capable of
+integrating data
+from various sources
+(e.g., satellites, IoT
+devices).
+- Limited scalability
+due to reliance on
+human labor and
+physical sampling.
+- Expensive and
+logistically
+challenging to
+expand coverage.
+(Bibri et al.,
+2024;
+Fascista,
+2022)
+Data
+Integration
+- Big Data Analytics
+Tools (e.g.,
+Hadoop, Apache
+Spark): Handle and
+integrate large
+volumes of diverse
+data.
+- Capable of
+continuous
+monitoring and realtime updates.
+- Limited capacity to
+integrate diverse
+data sources.
+- Manual data entry
+and slower data
+updates.
+(Boehm
+et al., 2022;
+Shi et al.,
+2020)
+Maintenance - Requires periodic
+software updates
+and occasional
+hardware
+maintenance.
+- Regular
+maintenance of
+equipment and
+calibration.
+(Ahmad
+et al., 2021;
+Çınar et al.,
+2020)
+(continued on next page)
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+2
+et al., 2020).
+Decision trees are relatively simple to train and interpret, making
+them accessible for various data types. They are commonly used for
+tasks like detecting and monitoring deforestation, monitoring air quality, and water quality (De Bem et al., 2020; Tarazona and Miyasiro-Lopez, ´ 2020). However, decision trees can be prone to overfitting,
+especially when handling complex, noisy data, and may not perform as
+well on image recognition or natural language processing tasks
+(Buntine, 2020).
+Random forests are an ensemble learning method that combines the
+predictions of multiple decision trees. They are more robust to overfitting than individual decision trees and can handle various data types,
+including images and text (El-Magd et al., 2022). Random forests are
+commonly used for image classification, natural language processing,
+and time series forecasting tasks in environmental monitoring. Despite
+their robustness, random forests can be computationally intensive and
+require substantial memory and processing power.
+CNNs are well-suited for image classification and tasks involving
+spatial data. CNNs can learn complex patterns from images without
+explicit programming, making them ideal for detecting deforestation
+and identifying wildlife (Zhang et al., 2022). However, CNNs can be
+computationally expensive to train and require large amounts of labeled
+data. Training CNN models can be challenging due to the lack of annotated datasets for visual recognition. Pre-training models using data
+from similar domains can mitigate this issue (Ghorbani and Behzadan,
+2021).
+RNNs are suitable for tasks involving sequential data, such as time
+series forecasting and natural language processing. RNNs can learn longterm dependencies in data, making them effective for predicting
+extreme weather events and extracting information from environmental
+reports (Haq et al., 2022). However, RNNs can be computationally
+expensive to train and require large datasets. Advanced models like
+CDLSTM (Convolutional Deep Long Short-Term Memory) have been
+developed for more accurate climate change forecasting and groundwater storage change modeling.
+Table 1 (continued )
+Criteria AI Methods (Specific
+Model/Tool)
+Traditional
+Methods
+Ref.
+- Lower maintenance
+cost over time.
+- High ongoing costs
+for consumables
+and replacements.
+Environmental
+Impact
+- Lower
+environmental
+impact due to
+reduced need for
+physical sampling
+and travel.
+- Energy-efficient
+Solutions (e.g., AIpowered sensors):
+Minimized carbon
+footprint.
+- Higher
+environmental
+impact from
+frequent physical
+sampling.
+- Travel and
+transportation
+increase carbon
+footprint.
+(Ye et al.,
+2020)
+Table 2
+AI models used for environmental monitoring.
+AI Model Specific Examples/Case
+Studies
+Strengths Limitations Ref.
+Support Vector
+Machines (SVMs)
+Case Study 1: Using SVMs for
+predicting harmful algal blooms
+in lakes.
+Case Study 2: Using SVM to
+monitor air quality.
+- Can handle high-dimensional data.
+- Can learn complex relationships
+between variables.
+- Can be used with a variety of data types,
+including images and text.
+- Image classification (e.g.
+detecting deforestation,
+identifying wildlife).
+- Natural language processing (e.g.
+extracting information from
+environmental reports).
+- Time series forecasting (e.g.
+predicting extreme weather
+events).
+(Ananias and Negri, 2021;
+Castelli et al., 2020; Leong
+et al., 2020)
+Decision Trees Case Study 1: Using decision
+trees to predict water quality in
+rivers.
+Case Study 2: Using decision
+trees for water quality
+assessments.
+- Relatively simple to train and interpret
+- Can be used with a variety of data types.
+- Detecting and monitoring
+deforestation.
+- Monitoring air quality.
+- Monitoring water quality.
+(Bui et al., 2020; Nasir et al.,
+2022; Nouraki et al., 2021)
+Random Forests Case Study 1: Employing
+random forests to model air
+quality index in urban areas.
+Case Study 2: Utilizing random
+forests to predict forest fire
+adequately.
+- Ensemble learning method that
+combines the predictions of multiple
+decision trees
+- More robust to overfitting than
+individual decision trees.
+- Image classification (e.g.
+detecting deforestation,
+identifying wildlife).
+- Natural language processing (e.g.
+extracting information from
+environmental reports).
+- Time series forecasting (e.g.
+predicting extreme weather
+events).
+(Alsaber et al., 2021; DeCastro
+et al., 2022; Montorio et al.,
+2020; B. T. Pham et al., 2020)
+Convolutional
+Neural Networks
+(CNNs)
+Case Study 1: Using CNNs for
+monitoring coral reef health via
+underwater images.
+Case Study 2: Employing CNN to
+monitor coaster erosion.
+- Well-suited for image classification and
+other tasks that involve spatial data
+- Can learn complex patterns from images
+without the need for explicit
+programming.
+- Image classification (e.g.
+detecting deforestation,
+identifying wildlife).
+(Burns et al., 2022; Ghimire
+et al., 2021; Scardino et al.,
+2022)
+Recurrent Neural
+Networks (RNNs)
+Case Study 1: Applying RNNs to
+predict flood events based on
+historical rainfall data.
+Case Study 2: Employing RNN to
+predict river flow levels.
+- Well-suited for tasks that involve
+sequential data, such as time series
+forecasting and natural language
+processing
+- Can learn long-term dependencies in
+data.
+- Natural language processing (e.g.
+extracting information from
+environmental reports).
+- Time series forecasting (e.g.
+predicting extreme weather
+events).
+(Liu et al., 2020; Ren et al.,
+2020)
+Hybrid Models Case Study 1: Combining CNNs
+and RNNs for accurate
+prediction of air pollution levels.
+Case Study 2: Urban Heat Island
+Effect Analysis Using Combined
+CNNs and RNNs
+- Combine the strengths of machine
+learning and deep learning models
+- Can be more accurate and robust than
+individual models.
+- Any environmental monitoring
+task where high accuracy and
+robustness are required.
+(Li and Zheng, 2023; Tsokov
+et al., 2022; Zhang et al., 2022)
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+3
+Hybrid models combine the strengths of machine learning and deep
+learning models, offering high accuracy and robustness. They are used
+for environmental monitoring tasks that require capturing complex
+nonlinear interactions between input and output variables (Zaresefat
+and Derakhshani, 2023). While hybrid models can be more complex to
+train and interpret, they provide superior performance for high-stakes
+environmental monitoring tasks. Highly relevant work, such as the
+development of Synthetic Minority Over-sampling Technique with Deep
+Neural Networks (SMOTEDNN) for air pollution forecasting and AQI
+classification, further exemplifies the potential of AI in this field (Zhao
+et al., 2024).
+Table 2 below presents a variety of AI models used for environmental
+monitoring. Each AI model has its strengths and limitations, making it
+important to choose the right model for the specific task at hand. SVMs
+and SVR are effective for high-dimensional data and regression tasks but
+can be computationally expensive. Decision trees are simple and interpretable but prone to overfitting (Costa and Pedreira, 2023; Wan et al.,
+2020). Random forests offer robustness and versatility but require significant computational resources (Boateng et al., 2020). CNNs excel in
+image-based tasks but need large labeled datasets and substantial
+computational power. RNNs are effective for sequential data but also
+demand high computational resources and advanced models like
+CDLSTM for complex forecasting tasks (Li et al., 2024; Wu et al., 2023).
+Hybrid models provide the highest accuracy and robustness but are
+complex to train and interpret.
+Principles of AI models
+AI modeling is underpinned by a set of guiding principles that form
+the bedrock of developing intelligent systems (Bommasani et al., 2021;
+Palakurti and Kolasani, 2024). These principles provide a roadmap for
+the creation of AI models that can tackle intricate problems, automate
+tasks, and make informed decisions. At its core, AI modeling relies on the
+principle of data-driven learning (Wang et al., 2022). The pivotal role of
+data in AI modeling cannot be overstated. AI models learn from extensive datasets, sifting through data to discern patterns, trends, and relationships. For example, in air quality monitoring, AI models analyze
+data from various sensors to predict pollution levels and identify
+pollution sources, as demonstrated by the SMOTEDNN model for air
+pollution forecasting and AQI classification (Goel et al., 2024; Haq,
+2022). In another case, AI models are used to monitor water quality by
+analyzing parameters such as pH, turbidity, and nitrate levels to predict
+contamination events and ensure safe drinking water (Ahmed et al.,
+2020; Jayaraman et al., 2024; Liu et al., 2019). Machine learning and
+deep learning algorithms are prominent in this regard, as they harness
+the power of data to make predictions and decisions (Rasool et al., 2023;
+Tabesh, 2022).
+Generalization is another cardinal principle of AI modeling. It implies that AI models must be able to extend their learning from specific
+datasets to make predictions or decisions in a broader context. This
+flexibility ensures that AI models can handle new, unseen data effectively (Q.-V. Pham et al., 2020; Sarker, 2022). A practical application of
+this principle can be seen in the CDLSTM model, which generalizes from
+historical climate data to forecast future climate changes (Stjelja et al.,
+2022), thereby aiding in environmental monitoring and
+decision-making. Similarly, in wildlife conservation, AI models trained
+on data from camera traps can generalize to detect and track species
+across different habitats, aiding in the protection of endangered species
+(Curry et al., 2021; Norouzzadeh et al., 2018; Schneider et al., 2019).
+Feature engineering is a crucial practice that underscores the need to
+select relevant features or variables from the data. AI models demand
+meaningful input features to make accurate predictions. Feature engineering encompasses data preprocessing, feature selection, and transformation to enhance model performance (Dong and Liu, 2018). For
+instance, in water quality monitoring, selecting appropriate features
+such as pH, turbidity, and dissolved oxygen levels is essential for
+accurate predictions (Chen et al., 2020; Ouma et al., 2020). In agricultural monitoring, features like soil moisture, temperature, and crop
+health indices are engineered to predict yield and detect pest infestations (Hassan et al., 2022).
+A delicate balance between model complexity and simplicity is
+essential. AI models must neither be overly complex nor too simplistic.
+Overly complex models can lead to overfitting, where they perform
+exceptionally well on training data but fail to generalize to new data
+(Kernbach and Staartjes, 2022; Teney et al., 2022). Conversely, overly
+simplistic models may not capture intricate patterns in the data. In
+practice, achieving this balance can be observed in environmental
+monitoring models that use random forests, where ensemble methods
+help avoid overfitting while maintaining robustness in predictions.
+Similarly, in urban planning, AI models that predict traffic flow and
+congestion must balance complexity and simplicity to provide reliable
+forecasts without overfitting to historical traffic patterns (Kernbach and
+Staartjes, 2022; Sayed et al., 2023). Moreover, AI models should adhere
+to the principle of continuous learning. They should be designed to
+adapt and evolve over time, learning from new data to improve their
+performance and relevance. For example, AI systems used in deforestation monitoring continually learn from satellite images to update their
+models and provide more accurate assessments (Masolele et al., 2021;
+Yang et al., 2022). In healthcare, AI models that monitor disease outbreaks evolve with new epidemiological data, enhancing their predictive accuracy and response strategies (Malik et al., 2021; Zeng et al.,
+2021).
+Finally, model interpretability is of paramount importance. Understanding how and why an AI model reaches a specific decision is vital for
+user trust and addressing ethical concerns (Bedu´e and Fritzsche, 2022;
+Omrani et al., 2022). Interpretable models are particularly critical in
+fields such as healthcare and law. In the context of environmental
+monitoring, interpretable models help stakeholders understand the
+factors contributing to pollution, thereby facilitating informed
+decision-making and policy development. For instance, decision trees
+used in environmental monitoring can provide clear, interpretable rules
+that explain how specific environmental conditions lead to certain
+outcomes (Ryo et al., 2021; Wang et al., 2022). Similarly, in energy
+management, interpretable AI models can help utilities understand energy consumption patterns and optimize grid operations.
+Shortcomings of AI models
+In the realm of AI for environmental monitoring, alongside its
+numerous advantages, there exist several noteworthy shortcomings and
+challenges that must be recognized (Shalu and Singh, 2023). An
+awareness of these limitations is essential for the responsible and
+informed development of AI models. Data dependency is a prominent
+limitation. AI models rely heavily on the quality and quantity of data.
+Insufficient or biased data can result in poor model performance or
+algorithmic bias, which may perpetuate discrimination. For example, if
+an AI model for air quality monitoring is trained primarily on data from
+urban areas, it may not perform well in rural settings, leading to inaccurate predictions and potentially harmful policy decisions (Almalawi
+et al., 2022; Krupnova et al., 2022; Rowley and Karakus¸, 2023).
+Overfitting poses a significant challenge in AI modeling. It occurs
+when a model learns the training data too well, leading to poor generalization to new, unseen data. Striking a balance in model complexity is
+key to mitigating this issue. In practical terms, an overfitted model might
+accurately predict water quality in the specific rivers it was trained on
+but fail to generalize to other rivers with different characteristics
+(Fern´
+andez del Castillo et al., 2022; Malek et al., 2022). Interpretability
+is another vexing challenge, particularly in the context of deep learning
+models. These models are often described as "black boxes" due to their
+lack of transparency (Abdallah et al., 2020). The ability to comprehend
+how and why an AI model reaches a particular decision is crucial for
+building user trust, but it remains an ongoing challenge. For instance,
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+4
+stakeholders might be reluctant to act on AI-driven deforestation alerts if
+they cannot understand the underlying reasons for the model’s predictions (Hodel, 2023; Osman, 2024).
+Furthermore, resource intensiveness is another constraint. Training
+and running complex AI models demand substantial computational resources, which can be a barrier for smaller organizations and developing
+countries (Dwivedi et al., 2021; Kar et al., 2021). This disparity can
+exacerbate existing inequalities, where only well-resourced entities can
+leverage advanced AI technologies effectively. Conversely, ethical concerns are a growing issue in AI development. AI models can inadvertently reinforce existing biases present in the training data. Ensuring
+fairness and addressing ethical concerns is a significant challenge,
+particularly in applications where fairness and non-discrimination are
+paramount (Olaoye, 2024; Singh, 2021). For example, if an AI model for
+disaster response prioritizes areas based on biased historical data, it
+might unfairly neglect vulnerable communities.
+On the other hand, security risks are a real concern. AI models are
+susceptible to adversarial attacks, where small, carefully crafted changes
+to input data can deceive the model (Baniecki and Biecek, 2024;
+Chakraborty et al., 2021). Ensuring security and robustness against such
+attacks is a pressing concern in AI development (Zhang et al., 2020). A
+notable example is the manipulation of AI systems in smart grids, where
+adversarial attacks could disrupt power distribution and cause significant economic damage (Nguyen et al., 2020). Lastly, the environmental
+impact of AI models is becoming more evident. Large-scale AI training
+consumes significant energy resources, contributing to environmental
+concerns (Ahmad et al., 2021). The carbon footprint of AI models and
+the need for more energy-efficient solutions are increasingly pressing
+issues. For instance, training a single large AI model can generate as
+much carbon emissions as five cars over their lifetimes, highlighting the
+need for sustainable AI practices (Nishant et al., 2020; Wu et al., 2022).
+Practical Scenarios of AI in Environmental Monitoring
+This section of the review will highlight practical instances AI has
+been employed to monitor and protect environmental health and safety.
+Natural disaster prediction
+Natural disasters including hurricanes, earthquakes, and wildfires
+pose a serious threat to property around the world. Natural disasters can
+have a devastating effect, destroying large portions of infrastructure,
+upsetting the economy, and putting human lives in peril (Rongxing,
+2021). AI has garnered increasing attention in recent years for its potential to foresee natural disasters and lessen their effects. AI-based solutions can deliver precise, real-time data on natural disasters, assisting
+authorities in creating efficient response plans and lowering the dangers
+to public safety (Pyayt et al., 2011; Zhang et al., 2021). Natural disasters
+including earthquakes, tsunamis, and storms have been predicted using
+AI. AI is used to anticipate natural disasters by evaluating data from
+many sources, such as satellite imagery, seismic sensors, and meteorological forecasts, to find patterns and estimate the risk that a disaster will
+occur (Marcin, 2023). AI-based natural disaster prediction can give
+communities and emergency responders early warning, enabling them
+to plan and act appropriately.
+AI is used to anticipate natural disasters by analyzing data from a
+variety of sources, such as satellite images, weather data, and historical
+records, to find patterns and trends that may point to an imminent
+natural disaster (Marcin, 2023). The presence of smoke, ash, or other
+signs of a wildfire are examples of minor changes in the environment
+that may signal the beginning of a natural disaster (Sebastian and
+Natalija, 2017). AI algorithms can also learn to recognize changes in
+temperature, humidity, or wind patterns.
+Using AI to predict natural disasters provides a number of advantages
+over more conventional approaches. In the beginning, AI-based systems
+have the capacity to analyze enormous volumes of data from numerous
+sources, giving an accurate picture of the environment in real-time. This
+enables authorities to plan ahead for potential natural disasters and act
+quickly to address them (Guo et al., 2022). Additionally, compared to
+conventional approaches, AI-based systems can collect and analyze data
+with higher accuracy and precision. This can lower the possibility of
+mistakes and inconsistent results, increasing the accuracy of forecasts
+for natural disasters. Inevitably, AI-based systems can offer unique solutions for various natural disaster locales and types. AI algorithms can
+create tailored interventions, such as evacuations, warning systems, or
+disaster relief activities, to lower the risks and impact of these disasters
+by evaluating data from certain areas and types of natural disasters
+(Chowdhury and Sadek, 2012).
+There are numerous uses for AI-based natural disaster prediction
+across various sectors. Emergency management is one of the key uses. AI
+systems are able to assess data on natural catastrophes and create
+specialized plans for emergency responses such as evacuations, search
+and rescue operations, and disaster relief (Jeff, 2020). Planning and
+managing urban areas is another application. In order to lower the risks
+and effects of natural disasters, AI algorithms can analyze data on disasters and create specialized solutions for urban planning and design.
+For instance, AI algorithms can suggest modifications to zoning regulations, infrastructure development, and construction regulations to
+lower the likelihood of flooding, earthquakes, or wildfires. The prediction of natural disasters using AI is also useful for risk management and
+insurance (Jeff, 2020). AI algorithms can create specialized insurance
+policies and risk management plans to lower the costs and effects of
+natural disasters by analyzing data on risk factors and disasters (Dailey
+and Mamane, 2021; Eling et al., 2022).
+Notwithstanding the advantages of AI-based natural disaster prediction, a number of issues need to be resolved in order to assure its
+successful application. The quality of the data used for analysis represents one of the major obstacles. For AI systems to make precise predictions and choices, they need accurate and trustworthy data.
+Inadequate data quality can result in inaccurate predictions and choices,
+which could have a negative impact on property and public safety
+(Cort`es et al., 2000; Wei, 2021; Krupnova et al., 2022; Marcin, 2023).
+The availability of data presents another difficulty. It is challenging to
+create precise and trustworthy AI-based prediction systems because
+there are many regions of the world with insufficient data on natural
+disasters. In addition to technological constraints, political and economic issues can also have an impact on the availability of data. Finally,
+it is important to think about the ethical implications of AI-based natural
+disaster prediction. The use of AI to anticipate natural disasters raises
+concerns regarding privacy, data ownership, and the possibility of data
+exploitation. To ensure the ethical use of AI for predicting natural disasters, ethical regulations and guidelines must be developed
+(Coeckelbergh, 2021; Saheb, 2022; Marcin, 2023). Table 3 shows a
+number of instances where AI was employed in the prediction of natural
+disasters.
+Air quality monitoring
+A significant environmental issue that impacts quality of life, economic growth, and public health is air pollution. Both locally and
+globally, air pollution negatively affects health, contributing to serious
+conditions like cancer, cardiovascular disease, and respiratory ailments
+(Ghorani-Azam, 2016; Manisalidis et al., 2020). To address this issue,
+there has been increased interest in using AI for air quality monitoring.
+Systems powered by AI can deliver precise, real-time data on air quality,
+assisting authorities in creating efficient policies and interventions to
+minimize air pollution. AI-based recommendations can guide responses
+when air quality is hampered, ensuring timely actions to protect public
+health. Machine learning algorithms analyze data from various sources,
+including air quality sensors, satellite imaging, and weather data, to
+provide real-time information on air quality (Duke University, 2021;
+Zheng et al., 2021). These algorithms can identify pollution sources,
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+5
+estimate pollution levels, and recommend actions to minimize air
+pollution by learning to recognize patterns and trends in the data.
+In recent times, commonly employed AI algorithms for air quality
+analysis and prediction include Artificial Neural Networks (ANN), Deep
+Neural Networks (DNN), Support Vector Machines (SVM), and Fuzzy
+Logic. However, the choice of AI model largely depends on the required
+information and the nature of air pollutants in the area. For example, a
+systematic review by Masood and Ahmad (2021) classified AI-based air
+pollution forecasting tools considering factors such as performance,
+input parameters, and the relative frequency of application of AI techniques. They concluded that the best-performing tool for AI-based
+environmental monitoring is the DNN. On the other hand, Dobrea
+et al. (2020) compared other AI-oriented techniques/models for air
+pollutants and suggested Support Vector Regression (SVR) and Autoregressive Integrated Moving Average (ARIMA) as the best-performing
+techniques for time series analysis of Particulate Matter (PM) with a
+diameter <10 m and diameter <2.5 m. It is important to note that PM is
+considered in the study as it significantly affects health.
+Another study by Subramaniam et al. (2022) suggested that hybrid
+models have better performance for environmental monitoring policy
+and decision-making. Hybrid models combine the
+properties/advantages of two AI algorithms or methodologies to make
+informed decisions about future implications of air pollutants. This has
+also been confirmed by Fu et al. (2023), who found that hybrid AI
+models are more dependable for air quality forecasting.
+AI for air quality monitoring offers several advantages over conventional techniques. AI-based systems can analyze enormous volumes
+of data from numerous sources and present a comprehensive picture of
+air quality in real-time, enabling officials to make informed decisions
+and act quickly to reduce air pollution (Chowdhury and Sadek, 2012). AI
+systems can also collect and analyze data with higher accuracy and
+precision compared to conventional approaches, reducing the possibility
+of errors and inconsistencies in air quality data. Furthermore, AI algorithms can provide tailored solutions for various pollution sources and
+regions. By analyzing data from specific places and sources, AI can offer
+customized air pollution solutions, such as regulating traffic flow,
+streamlining industrial processes, or altering urban planning
+(Ortega-Fernandez, ´ 2020; Subramaniam et al., 2022).
+AI-based recommendations can play a critical role in air quality
+monitoring by providing actionable insights to mitigate pollution
+(Alloghani, 2023; Neo et al., 2023). For example, AI algorithms can
+recommend changes in traffic patterns during peak pollution hours to
+Table 3
+Summary of previous studies employing AI for the prediction of different types of natural disaster.
+Disaster
+Type
+References Location Model Data Source / Study
+Area
+Result Obtained Recommendation
+Wildfire Jaafari et al.,
+2019
+Iran Adaptive Neuro-Fizzy
+Inference System
+(ANFIS)
+Genetic Algorithm
+(GA)
+Particles Swarm
+Optimization
+(PSO)
+Shuffled Frog Leaping
+Algorithm (SFLA)
+Imperialist
+Competitive
+Algorithms (ICA)
+Minudasht
+(Hyrcanian
+ecoregion)
+Compared to previous studies, all
+hybrid models used improved wildfire
+prediction accuracy by 18 %.
+Hybrid/Complex model are more
+effective to predict the disaster than
+simple single models.
+Forest Fire Piao et al.,
+2022
+Korea Classification and
+Regression Tree
+(CART)
+Random Forest (RF)
+Boosted Regression
+Tree (BRT)
+Gangwon-do region Slope has a substantial impact on
+forest fire occurrence. RF and BRT
+gave excellent prediction accuracy
+Further study will relate forest fire
+with other disaster and proper
+evaluation of the influencing factors.
+Earthquake Marhain
+et al., 2021
+Malaysia Random Forest
+Boosted Decision Tree
+Regression (BDTR)
+Support Vector
+Machine Regression
+Terengganu (East
+Coast of Peninsular)
+BDTR gave the best performance in
+acceleration and depth compared to
+the other algorithms models utilized
+Selection of algorithms can be
+conducted on diverse sample area to
+obtain a better accuracy for the
+prediction.
+Earthquake Oktarina
+et al., 2020
+Indonesia Artificial Neural
+Network (ANN)
+DIBI (Data &
+Information Disaster
+in Indonesia)
+ANN provide output of prediction
+close to the actual data value with 0.47
+% error.
+There is a need to advance ANN model
+in other to give a detailed inter-link
+between the input and output
+variables.
+Forest Fire Li et al.,
+2020
+China Support Vector
+Machine (SVM)
+Backpropagation
+Neural Network
+(BPNN)
+Guangxi Zhuang
+Autonomous region
+Meteorological factors such as
+sunshine, temperature, humidity etc.
+are cause of fires in the region. The
+BPNN provide more prediction
+accuracy than SVM.
+The obtained result can serve as a
+reference point for future modelling.
+Earthquake Essam et al.,
+2021
+Malaysia Artificial Neural
+Network (ANN)
+Random Forest
+Terengganu,
+Malaysian
+Meteorological
+Department
+The ANN model showed a good
+prediction result of the earthquake
+acceleration, velocity and depth.
+There is a need to restructure the ANN
+model with advanced algorithm in
+further research to prove it
+competency for earthquake prediction.
+Earthquake Majhi et al.,
+2019
+USA Functional Link
+Artificial Neural
+Network (FLANN)
+Least Square
+Optimization
+Levenberg-Marquardt
+Backpropagation
+Heuristics and MetaHeuristics
+Optimization
+U.S. Geological
+Survey, Kaggle
+The FLANN model gave the best root
+mean square error value which denote
+better exploration and exploitation
+capability
+More research which focus on the
+seismological and geophysical factors
+that lead to earthquakes should be
+conducted.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+6
+reduce emissions, suggest optimal times for industrial operations to
+minimize environmental impact, and identify green zones where
+pollution levels are within safe limits (Boukerche et al., 2020; Degas
+et al., 2022). These recommendations help authorities implement timely
+interventions, ensuring that air quality remains within acceptable limits
+and public health is protected.
+There are several applications for AI-based air quality monitoring
+across various industries. Urban management and planning are key
+applications where AI algorithms analyze data on air quality, traffic
+patterns, and urban development to create specialized solutions for
+reducing air pollution in urban areas (Nandini and Fathima, 2019;
+Delavar et al., 2019; Jasim et al., 2020). For example, AI can recommend
+changes to traffic flow patterns to reduce congestion and air pollution or
+modifications to urban planning to improve air circulation and lower
+exposure to pollutants. In industrial operations, AI algorithms can
+analyze emissions data and suggest modifications to lower pollution
+levels, such as adopting more eco-friendly materials and energy sources
+or optimizing production processes to minimize waste and emissions
+(Alpan and Sekeroglu, 2020). Public health can also benefit from
+AI-based air quality monitoring. By evaluating data on air quality and
+health outcomes, AI algorithms can identify at-risk groups and create
+tailored interventions to promote public health (Masood and Ahmad,
+2021; Subramaniam et al., 2022). For instance, AI systems can recommend changes to public transit routes to lessen vulnerable groups’
+exposure to contaminants. Table 4 provides a summary of past studies
+where AI was employed for air quality monitoring.
+Water quality monitoring
+Human survival depends on water, and the quality of that water is
+crucial for maintaining public health and safety. However, several factors, including pollution, climate change, and population increase,
+threaten water quality (Ahmed et al., 2020). Conventional methods of
+water quality monitoring rely on labor-intensive, expensive, and
+scope-restrictive manual sampling and laboratory analysis. Furthermore, achieving a reliable prediction through conventional methods
+requires lengthy processing times and large computational efforts, often
+associated with human error (Hameed et al., 2017). A promising
+approach to overcoming these limitations and supplying precise,
+real-time water quality monitoring is AI (Pappu et al., 2017). Machine
+learning algorithms examine data from various sources, including
+weather data, historical records, and water quality sensors, to find
+patterns and trends that may suggest changes in water quality (Marcin,
+2023). AI algorithms can be trained to recognize minute changes in
+water quality, such as variations in temperature, pH, dissolved oxygen
+levels, and the presence of pollutants, which may indicate pollution or
+other abnormalities in water quality.
+Various studies on water quality using specific AI techniques have
+proposed artificial neural networks (ANNs) as highly effective with
+high-performance accuracy in determining different water quality variables in an aquatic environment over a particular period, often referred
+to as the Water Quality Index (WQI) (Hameed et al., 2017; Gaya et al.,
+2020). A similar study by Wang et al. (2019) described how future
+changes in water quality can be accurately predicted, emphasizing understanding the characteristics and point sources of water pollutants.
+The Long Short-Term Memory (LSTM) AI model was employed and
+indicated that water quality is affected in different ways and characterized by various point sources of pollutants in the water body. Aldhyani et al. (2020) suggested an artificial neural network model,
+specifically the nonlinear autoregressive neural network (NARNET) and
+LSTM, which are advanced AI algorithms for predicting water quality
+index and classification, and promising AI tools for water management.
+The use of AI to assess water quality has several advantages over
+conventional techniques (Chen et al., 2020). AI-based systems can
+Table 4
+Summary of previous studies for the prediction of air quality monitoring using AI.
+Research Aim References Location Model Data Source /
+Study Area
+Result Obtained Recommendation
+To evaluate waste-toenergy (WTE) capacity
+and flue gas pollutants
+using AI-learning-based
+algorithms
+Ma et al.,
+2022
+China ANN Continuous
+Emission
+Monitoring System
+(CEMS)
+Supervisory
+Emission
+Monitoring System
+(SEMS)
+With mean square errors ranging
+from 0.003 to 0.19 within the
+model validation constraints,
+artificial neural network models
+were developed to forecast WTE
+capacity and FGP EIs at the city
+level.
+This offers information and
+model support for developing
+suitable WTE strategies and a
+pollutant emission control
+strategy in various economic
+regions.
+To predict O3, PM2.5, NOx,
+and CO concentrations at
+NCT Delhi
+Krishan et al.,
+2019
+India Long Short-term
+Memory (LSTM)
+National Capital
+Territory (NCT),
+Delhi
+The Nash- Sutcliffe Efficiency
+(NSE) value range (0.86–0.94)
+found obtained in the
+investigation demonstrates that
+the LSTM models utilized in the
+study are suitable for forecasting
+air pollution concentrations.
+Due to data availability, the
+study consider one station; as a
+result, the LSTM’s capacity to
+capture spatial correlation was
+not examined.
+Pollutant and particle levels
+prediction, as well as the
+air quality index (AQI).
+Castelli et al.,
+2020
+California Support Vector
+Regression (SVR)
+US, Environmental
+and Protection
+Agency
+A 94.1 % accuracy rate was
+attained in modelling pollutant
+concentrations such O3, CO, and
+SO2.
+There is a need to improve SVR
+forecasting capabilities, look at
+its use, and compare it to other
+algorithms.
+To determine the pollutants
+present concentration
+level, which will be
+helpful for Real Time
+Correction (RTC)
+Amuthadevi
+et al., 2021
+India ANN, Neuro-Fuzzy
+Regression, Deep
+Learning Long
+Short-term
+Memory (DLLSTM)
+Metrological
+website
+In the study, lower error rates
+and greater correlation with test
+data make DL-LSTM effective for
+analysing and forecasting air
+pollutants with 24 h window.
+Data can be divided into hourlybased and weakly-based bases
+for future research to provide a
+variety of fresh findings.
+To scale up the deployment
+of AirBeam, a
+smartphone-based
+particle counter, to
+measure and simulate
+street-level urban air
+quality
+Lim et al.,
+2019
+South
+Korea
+Linear Regression
+(LR)
+Random Forest
+(RF)
+Stacked Ensemble
+(SE)
+Seoul routes R2 values of 0.63, 0.73 and 0.80
+were obtained respectively. The
+SE R2 values suggest designs
+using mobile sampling in
+conjunction with numerous
+inexpensive air quality monitors
+that could be used to characterize
+urban street-level air quality with
+high spatial resolution.
+The approach taken by the
+research and methodology may
+be places without established air
+monitoring networks, such as
+developing nations.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+7
+continuously and instantly monitor water quality, enabling authorities
+to immediately identify and address problems with water quality. This
+can mitigate the dangers that water contamination poses to public
+health and the environment (Aldhyani, 2020; Chen et al., 2020).
+Moreover, AI-based systems can analyze enormous amounts of data
+from numerous sources, providing a comprehensive picture of changes
+in water quality (Chowdhury and Sadek, 2012). This capability aids in
+identifying trends and patterns in water quality, forecasting future issues, and developing targeted interventions to address these problems
+(Wu, 2019; Liu et al., 2019). AI-based recommendations can also guide
+timely actions to mitigate water quality issues. For instance, AI can
+suggest optimal times for water treatment interventions or recommend
+specific pollutant control measures based on real-time data (Nova, 2023;
+Rajitha et al., 2024). AI algorithms can create targeted interventions,
+such as treatment plans or pollution prevention methods, to lower the
+risks and impacts of these issues by analyzing data from specific regions
+and types of water quality problems (Khan, 2016; Wagle et al., 2020;
+Zhu et al., 2022).
+Monitoring water quality with AI has several applications across
+various industries. Water management and treatment is one of the key
+applications. AI algorithms can assess data on water quality and provide
+specialized solutions for water treatment and management, such as
+filtration systems or chemical treatment strategies, to reduce the risks
+and effects of water quality problems. Agriculture and food production
+also benefit from AI-based water quality monitoring. AI algorithms can
+assess water quality data and create specialized irrigation and crop
+management strategies to mitigate water quality issues. For example,
+irrigation schedules can be optimized, and crops that are less susceptible
+to water pollution can be chosen. Environmental preservation and
+conservation can also benefit from AI-based water quality monitoring.
+AI algorithms can create specialized solutions for pollution control and
+habitat protection to save aquatic ecosystems and biodiversity by
+analyzing data on water quality and environmental conditions (Wagle
+et al., 2020; Zhu et al., 2022).
+Several studies have investigated the application of AI in surface
+water quality monitoring and other water quality monitoring tasks. AI
+models have been employed for various tasks, including parameter
+prediction, anomaly detection, and classifying water samples. One
+study, for instance, used deep learning models to forecast water quality
+variables such as pH, temperature, and dissolved oxygen. Another study
+categorized water samples according to their quality using a decision
+tree algorithm. Many AI models, including deep learning, decision trees,
+support vector machines, and artificial neural networks, have been
+utilized in these studies (Ahmed et al., 2019; Aldhyani, 2020).
+Depending on the purpose and the type of model used, different input
+parameters are applied. For example, some studies have utilized
+chemical factors like dissolved oxygen, biochemical oxygen demand,
+and total nitrogen, while others have employed physical measures like
+temperature, pH, and turbidity (El-Chaghaby et al., 2020; Lokman et al.,
+2021). Common metrics used in these studies include accuracy, sensitivity, specificity, and area under the curve, though they vary depending
+on the task. Data collected through various techniques, including
+manual sampling and remote sensing, have been used in studies conducted at different sites, including rivers, lakes, and reservoirs (Deng
+et al., 2020). These reviewed studies indicate that AI models can provide
+precise and effective solutions for monitoring water quality, with some
+models achieving higher accuracy than conventional techniques
+(Ortega-Fern´
+andez, 2020; Subramaniam et al., 2022).
+The key contributions of prior studies include the development of
+new AI models for water quality monitoring, the comparison of AI
+models with conventional approaches, and the identification of challenges and opportunities for future research. Issues such as the lack of
+standards in data collection and processing and the limited availability
+of high-quality data need to be resolved. Future studies should focus on
+creating more robust AI models capable of handling multiple data
+sources and delivering precise forecasts for a variety of water quality
+indicators. Table 5 provides a summary of instances where AI was
+employed for water quality monitoring.
+Soil monitoring
+The application of AI in soil monitoring represents a significant
+advancement in agricultural management, environmental conservation,
+and land-use planning (Abdulraheem et al., 2023). Traditional soil
+monitoring methods, which involve manual sampling and laboratory
+analysis, are often time-consuming, labor-intensive, and limited in
+scope. AI, however, offers innovative solutions that enhance accuracy,
+efficiency, and scalability, revolutionizing how soil health is monitored
+and managed (Fuentes-Penailillo ˜ et al., 2024; Jeffrey and Bommu, 2024;
+Sharma et al., 2023).
+Machine learning algorithms such as Random Forests and Decision
+Trees have proven to be particularly effective in handling complex
+datasets with numerous variables. These algorithms predict soil properties like moisture content, nutrient levels, and pH by analyzing large
+volumes of data from various sources (Folorunso et al., 2023; John et al.,
+2020). For instance, the use of Random Forests in the study of soil
+organic carbon stocks has shown improved accuracy compared to
+traditional statistical methods (Wang et al., 2020). Support Vector Machines (SVM) are employed for soil classification tasks, helping categorize soil types based on physical and chemical properties. These
+machine learning techniques enable more precise soil health assessments and informed decision-making in soil management (Padarian
+et al., 2020).
+Deep learning models also play a crucial role in soil monitoring.
+Convolutional Neural Networks (CNNs) are used for image-based soil
+analysis. By processing images from satellites or drones, CNNs can
+identify patterns related to soil health, erosion, and contamination
+(Feizizadeh et al., 2021; Hosseini et al., 2023). For example, drones
+equipped with multispectral and hyperspectral cameras capture
+high-resolution images of the soil, and AI algorithms process these images to assess soil health and detect issues such as nutrient deficiencies
+or pest infestations. Recurrent Neural Networks (RNNs) are utilized for
+time-series analysis of soil data, predicting changes in soil properties
+over time based on historical data (Bai et al., 2022; Park et al., 2023).
+These deep learning models offer advanced predictive capabilities that
+enhance the proactive management of soil health.
+The integration of IoT and smart sensors further amplifies the capabilities of AI in soil monitoring (Rajak et al., 2023). IoT-enabled smart
+sensors deployed in the field continuously monitor soil conditions,
+including moisture levels, temperature, and nutrient content. These
+sensors collect real-time data, which AI algorithms analyze to provide
+actionable insights. Specific examples include platforms like the Arable
+Mark 2, an IoT device that integrates weather, soil, and crop data to give
+comprehensive insights into field conditions (Alahmad et al., 2023).
+Additionally, platforms such as the John Deere Operations Center
+leverage AI to integrate sensor data and provide real-time recommendations for soil management practices (Ahmad et al., 2023; Nichols
+et al., 2022).
+The benefits of AI in soil monitoring are substantial. AI-powered
+sensors and IoT devices enable continuous, real-time monitoring of
+soil conditions, allowing farmers and land managers to make timely
+decisions based on current soil health data (Fuentes-Penailillo ˜ et al.,
+2024; Reddy et al., 2024). The precision of AI algorithms significantly
+reduces human error, leading to more accurate predictions of soil
+properties. The scalability of AI solutions allows for comprehensive soil
+health assessments across large agricultural areas or regions, which is
+particularly beneficial for large-scale farming operations (Chaterji et al.,
+2020). AI models’ predictive insights enable proactive soil management,
+such as adjusting irrigation schedules, optimizing fertilizer application
+(Elshaikh et al., 2024; Hassan et al., 2022; Veeramanju, 2024), and
+implementing erosion control measures, enhancing the sustainability
+and productivity of agricultural practices (Ruiz et al., 2023; Sachithra
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+8
+and Subhashini, 2023).
+Despite these advantages, the application of AI in soil monitoring
+faces challenges. The effectiveness of AI models heavily relies on the
+quality and availability of soil data (Grunwald, 2022). Inaccurate or
+incomplete data can lead to unreliable predictions, highlighting the
+need for robust data collection methods. Additionally, the integration of
+AI technologies requires significant initial investments in infrastructure
+and training (Aldoseri et al., 2023; Whang et al., 2023). However, the
+long-term operational costs are generally lower than traditional
+methods due to automation and reduced need for manual labor.
+Addressing these challenges will be crucial for fully realizing AI’s potential in soil monitoring and ensuring its widespread adoption.
+Overall, AI’s application in soil monitoring exemplifies how
+advanced technologies can transform traditional agricultural and environmental practices. By leveraging machine learning, deep learning, and
+IoT technologies, AI provides precise, real-time, and scalable solutions
+for monitoring soil health (Fuentes-Penailillo ˜ et al., 2024; Shaikh et al.,
+2022). As the technology continues to evolve, it promises to offer even
+greater insights and efficiencies, contributing to more sustainable and
+productive land management practices (Lakshmi and Corbett, 2020;
+Nishant et al., 2020).
+Human monitoring and epidemiological investigation of
+environmental pollutants
+The application of AI in human monitoring and epidemiological investigations related to environmental pollutants has shown remarkable
+promise, offering precise, timely, and actionable insights into the effects
+of pollutants on human health (Akinosho, 2024; Rane et al., 2024).
+These advanced technologies facilitate more effective interventions and
+inform policy decisions, significantly enhancing public health outcomes
+(Wallace et al., 2020).
+AI-powered models are instrumental in predicting disease outbreaks
+related to environmental pollution by analyzing extensive datasets that
+include air and water quality measurements, meteorological data, and
+health records (Adefemi et al., 2023). Machine learning algorithms, such
+as Random Forests and Gradient Boosting Machines, have been
+employed to predict respiratory and cardiovascular diseases caused by
+air pollution (Kothandaraman et al., 2022; Ravindra et al., 2023). For
+instance, IBM Watson Health has been utilized in various healthcare
+settings to analyze environmental data and predict health risks,
+providing early warnings to healthcare providers and the public (Azzi
+et al., 2020; Computing). These early warning systems enable timely
+interventions that can prevent disease outbreaks and reduce the burden
+on healthcare systems.
+Table 5
+Summary of previous studies for the prediction of water quality monitoring using AI.
+Research Aim References Location Model Data Source /
+Study Area
+Result Obtained Recommendation
+Identification of the
+characteristics and
+origin of trace pollutant
+Wang et al.,
+2019
+China Cross Section
+Apiori
+Long Short
+Term Memory
+Network
+(LSTM)
+Shandong
+Province
+LSTM algorithm gave a high
+prediction accuracy and traced
+the major industrial point sources
+of pollutant that will affect water
+in the future.
+This study will improve the ability to
+control pollutant discharge and
+improve the water quality.
+To create forecasting
+models that foresee
+changes in water level
+Zakaria
+et al., 2021
+Malaysia Adaptive
+Neuro-Fuzzy
+Inference
+System (ANFIS)
+Multi-layer
+Perceptron
+Neural Network
+(MLP-NN)
+Historical data
+from Muda river,
+Kedah state.
+The two models are useful for the
+prediction of changes in water
+level. Though, MLP-NN
+performed better in the running
+time.
+To avoid and mitigate the effect of
+flooding, the MLP-NN model is
+promising
+Evaluate the groundwater
+potential using the
+hybrid model
+Nguyen
+et al., 2020
+Vietnam Artificial
+Neural Network
+(ANN)
+RealAda Boost
+(RAB)
+DakNong Province The RAB model improved the
+ANN performance and the hybrid
+model RABANN can be modified
+for groundwater potential
+mapping.
+This help in addressing the
+population’s water borne diseaserelated health issues by enhancing the
+region’s groundwater quality.
+This research focuses on
+the application of the
+ANN technique for the
+weekly forecasting of
+groundwater levels
+Mohanty
+et al., 2015
+India ANN Mahanadi, Delta of
+Odisha
+The study of the modeling results
+showed reasonably accurate
+predictions or forecasts of
+groundwater levels, however the
+accuracy of the predictions was
+found to decline with increasing
+lead times.
+The ANN model should be modified
+by conducting sensitivity analysis and
+a longer time frame for prediction
+analysis.
+Prediction of monthly
+rainfall at
+meteorological stations
+using ANN and ANFIS
+models
+Abebe and
+Endalie,
+2023
+Ethiopia ANN
+ANFIS
+Ethiopia
+Meteorological
+Stations
+In every evaluation criteria across
+all testing stations, the ANFIS
+model performs better than the
+ANN model.
+ANFIS can be used for predicting
+monthly rainfall.
+To forecast the need for
+potassium
+permanganate in a
+drinking water
+treatment facility that
+uses water
+Godo et al.,
+2019
+Spain ANN Liobregat River,
+Abrera
+In terms of replicative, predictive,
+and structural performance, the
+model delivered good results
+which proved the effectiveness of
+ANN model.
+To enhance and speed up the decisionmaking process for plant managers
+and operators, this can be integrated
+into an environmental decision
+support system that can be fed by
+online data.
+To evaluate the water
+quality for drinking
+using AI-learning-based
+algorithms.
+Panigrahi
+et al., 2023
+India and
+Vietnam
+Logistics
+Regression
+Support Vector
+Machine
+Decision Tree
+AdaBoost
+XGBoost
+Odisha, India and
+Northern Delta,
+Vietnam
+According to prediction findings,
+Adaboost, XGBoost, and the
+Polynomial SVM model correctly
+identified the Water Quality
+Classes with 92 % and 98 %
+accuracy, respectively.
+By using them on comparable datasets
+gathered from different nations,
+machine learning models’
+performance can also be evaluated by
+expanding the scope of the task
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+9
+Moreover, AI tools play a crucial role in assessing human exposure to
+environmental pollutants and analyzing their health impacts. Deep
+learning models, such as Convolutional Neural Networks (CNNs) and
+Recurrent Neural Networks (RNNs), can process vast amounts of data
+from wearable sensors, satellite imagery, and medical records to estimate individual exposure levels and correlate them with health outcomes (Eskandari et al., 2021; Ghosh and Kumar, 2022). The Air Quality
+Egg project, for example, integrates IoT sensors and AI algorithms to
+monitor air quality in real-time, offering personalized exposure assessments and health recommendations (Omidvarborna et al., 2021; Tanveer et al., 2024). This level of granular analysis helps identify vulnerable
+populations and inform targeted public health interventions.
+Epidemiological surveillance has also been significantly enhanced by
+AI through the automation of data collection and analysis processes
+(Agbehadji et al., 2020; Zeng et al., 2021). This automation makes it
+possible to detect patterns and trends that might be overlooked by
+traditional methods. Natural Language Processing (NLP) algorithms can
+analyze unstructured data from social media, health forums, and news
+articles to identify potential outbreaks linked to environmental pollution
+(Al-Garadi et al., 2022; Baclic et al., 2020). Tools like HealthMap utilize
+NLP and machine learning to track disease outbreaks globally, providing
+real-time surveillance and early detection of environmental health
+threats (Choubey and Naman, 2020; Gupta and Katarya, 2020; Jia et al.,
+2020; Kamel Boulos and Geraghty, 2020). This capability enables rapid
+response and containment measures, mitigating the impact of pollutants
+on public health.
+In addition to real-time monitoring and surveillance, AI-powered
+predictive analytics can inform policy and decision-making by forecasting the long-term health impacts of environmental pollutants
+(Chauhan et al., 2024; Fan et al., 2023). By integrating historical data on
+pollution levels, health outcomes, and demographic information, AI
+models can simulate various scenarios and predict future health trends
+(Masood and Ahmad, 2021). This predictive capability is invaluable for
+policymakers designing regulations and interventions to reduce pollution and protect public health. The European Air Quality Portal, for
+example, uses AI to assess the impact of policy measures on air quality
+and public health (Kaginalkar et al., 2021; Rovira et al., 2020),
+providing evidence-based recommendations for regulatory actions.
+AI-driven health monitoring systems can also provide real-time alerts
+to individuals about their exposure to harmful environmental pollutants
+(Popescu et al., 2024). Wearable devices equipped with AI algorithms
+can continuously monitor physiological parameters such as heart rate,
+respiratory rate, and skin temperature, correlating these with environmental data to detect early signs of health deterioration due to pollution
+exposure (Natarajan et al., 2020; van Goor et al., 2022). Devices like
+Fitbit and Apple Watch have integrated AI capabilities to offer health
+insights and alerts based on environmental conditions, enabling users to
+take preventive actions to safeguard their health (Mirmomeni et al.,
+2021; Yoon et al., 2020).
+Despite the numerous benefits, the application of AI in human
+monitoring and epidemiological investigations faces several challenges
+and ethical considerations. Data privacy and security are paramount, as
+the collection and analysis of personal health and environmental data
+involve sensitive information (Gabriel, 2023). Ensuring robust data
+protection measures and transparent data usage policies is essential to
+maintaining public trust. Additionally, the risk of algorithmic bias must
+be mitigated by using diverse and representative datasets in model
+training. Establishing ethical frameworks and guidelines to govern the
+use of AI in public health is crucial, balancing the benefits of technology
+with the protection of individual rights.
+Benefits of AI-based environmental monitoring
+When compared to conventional methods, using AI for environmental monitoring has a number of advantages. First, AI-based environmental monitoring systems have the capacity to evaluate enormous
+volumes of data from numerous sources, giving an accurate picture of
+the state of the environment in real time (Zhang et al., 2021). This enables authorities to decide wisely and act quickly to protect both the
+environment and the general population. Furthermore, by automating
+the processes of data collection and analysis, AI-based environmental
+monitoring systems can lower the cost of monitoring programs (Chang,
+2019; Himeur et al., 2022). This can save significant resources and allow
+environmental monitoring programs to grow in scope and scale. With
+less chance of errors and inconsistencies, AI-based environmental
+monitoring systems can collect and analyze data with better accuracy
+and precision than conventional approaches.
+Notwithstanding the advantages of AI-based environmental monitoring, a number of issues need to be resolved in order to assure its
+successful adoption. The quality of the data used for analysis represents
+one of the major obstacles. For AI systems to make precise predictions
+and choices, they need accurate and trustworthy data (Hameed et al.,
+2017). Inadequate data quality can result in inaccurate predictions and
+judgments, which can have a negative impact on the environment and
+public health. The availability of data presents another difficulty. It is
+challenging to construct precise and trustworthy AI-based monitoring
+systems since many regions of the world lack adequate data on environmental factors. In addition to technological constraints, political and
+economic issues can also have an impact on the availability of data. The
+ethical implications of AI-based environmental monitoring must also be
+taken into account. The application of AI for environmental monitoring
+raises concerns regarding data ownership, privacy, and the possibility of
+data misuse. To ensure the ethical use of AI for environmental monitoring, ethical standards, and regulations must be developed.
+Potential environmental impact of AI models in environmental
+monitoring
+While the benefits of AI models in environmental monitoring are
+significant, it is essential to look out for unintended environmental
+consequences. AI technologies, particularly those involving extensive
+computational processes, can have considerable environmental footprints that must be carefully managed to ensure overall sustainability.
+One of the primary concerns is the substantial energy consumption
+associated with training and operating AI models (Bloomfield et al.,
+2021). Data centres that support AI computations consume vast amounts
+of electricity, often sourced from non-renewable energy (Rostirolla
+et al., 2022). This high energy usage can lead to increased carbon
+emissions, counteracting the positive impacts that AI applications might
+have in monitoring and mitigating environmental issues. Recent reports
+from major tech companies underscore this issue. Google’s efforts to
+reduce its climate footprint are being undermined by its increasing
+reliance on energy-intensive data centres to power its new AI products
+(Milmo, 2024). According to Google’s annual environmental report, its
+greenhouse gas emissions have surged by 48 % over the past five years,
+with electricity consumption by data centres and supply chain emissions
+being primary contributors (Google, 2024). In 2023 alone, Google’s
+emissions rose by 13 % compared to the previous year, reaching 14.3
+million metric tons of CO2e, up from 9.7 million metric tons in 2019.
+Similarly, Microsoft’s 2024 environmental report highlighted a substantial increase in greenhouse gas emissions, particularly Scope 3
+emissions, which grew by over 30 % due to the expansion of data centres
+and increased consumption of hardware components necessary for their
+AI research (Microsoft, 2024). Although Microsoft managed to reduce its
+Scope 1 and 2 emissions by 6.3 % compared to 2020, the rise in Scope 3
+emissions emphasizes the environmental challenges posed by AI
+infrastructure.
+Moreover, the hardware used in AI, including servers and data
+storage systems, requires manufacturing processes that often involve the
+extraction of rare earth elements (REE) and other non-renewable resources (Gundeti et al., 2023). For example, rare minerals like Erbium,
+Holmium, Terbium, Gadolinium, Lanthanum, and Europium are vital in
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+10
+the manufacturing of optical fibre, capacitors, HD drives, and semiconductors, among other materials (Leal Filho et al., 2023). The associated extraction and processing phases can lead to environmental
+degradation, especially at end-of-life (landfilling, incineration, and open
+dumping), resulting. into ecological damage, soil and water pollution,
+and increased carbon footprints (Balaram, 2019). During extraction, the
+machinery used generates significant dust, emissions, and wastes (such
+as radioactive elements and other heavy metals), which could easily
+dissipate, leading to long-term environmental damage (Willenbacher,
+2022). For example, it was estimated that 63,000 m3 of sulfuric and
+hydrofluoric acid residues and 1.4 tons of radioactive waste were
+generated from refining one ton of REE oxide in China (Willenbacher,
+2022). This has resulted in a push for eco-friendly approaches for mineral extraction and processing, as well as discouraging single use of
+extracted metals (Nwaila et al., 2022).
+In conclusion, while AI models offer significant advancements in
+environmental monitoring, their potential environmental impacts must
+be diligently managed. Future research and policy-making should focus
+on creating frameworks that ensure the sustainable use of AI technologies, maximizing their benefits while minimizing their ecological
+footprints.
+Limitations and future scope
+While the application of AI in environmental monitoring has
+demonstrated significant potential, several limitations must be
+addressed to realize its full benefits. One prominent limitation is the
+dependency on high-quality and extensive datasets (Olawade et al.,
+2024a). AI models require large volumes of accurate and representative
+data to train effectively, and the availability of such data can be a significant constraint. Additionally, data biases can result in skewed predictions and perpetuate existing inequalities, underscoring the need for
+careful data curation and preprocessing.
+Overfitting is another critical challenge, where models perform
+exceptionally well on training data but fail to generalize to new, unseen
+data. Balancing model complexity to avoid overfitting while still
+capturing intricate patterns in the data is an ongoing challenge in AI
+development. Furthermore, the interpretability of AI models, especially
+deep learning models, remains a vexing issue (Olawade et al., 2024b).
+These models often operate as "black boxes," making it difficult to understand and trust their decisions, which is particularly crucial in
+high-stakes fields like environmental monitoring.
+Resource intensiveness is another constraint, as training and
+deploying sophisticated AI models demand substantial computational
+resources. This requirement can be a barrier for smaller organizations
+and developing countries, limiting their ability to leverage AI technologies effectively. Ethical concerns also pose significant challenges, with
+AI models potentially reinforcing biases present in training data
+(Olawade et al., 2023). Ensuring fairness and addressing ethical implications is crucial, especially in applications where equitable outcomes
+are essential.
+Security risks, including susceptibility to adversarial attacks, where
+small, carefully crafted changes to input data can deceive the model, are
+a growing concern. Ensuring the robustness and security of AI models
+against such attacks is imperative. Additionally, the environmental
+impact of large-scale AI training, which consumes significant energy
+resources and contributes to carbon emissions, is becoming increasingly
+evident. Developing more energy-efficient AI solutions is necessary to
+mitigate this impact.
+Despite these challenges, the future scope of AI in environmental
+monitoring is promising. Advancements in AI algorithms, improved data
+collection techniques, and increased computational power are expected
+to enhance the accuracy and efficiency of AI models. Future research
+should focus on developing robust AI models that can handle diverse and
+complex environmental data, improving model interpretability, and
+addressing ethical and security concerns. Collaborative efforts between
+researchers, policymakers, and industry stakeholders will be essential to
+foster responsible innovation and ensure the equitable application of AI
+in environmental monitoring.
+Strength of this review
+This study provides a comprehensive overview of the principles,
+applications, and limitations of AI models in environmental monitoring,
+distinguishing itself from other review studies through several key
+merits. First, it offers a detailed comparative analysis of various AI
+models, highlighting their specific applications, strengths, and limitations in environmental monitoring. This detailed comparison provides
+valuable insights for selecting the appropriate AI model for specific
+tasks, a feature not always covered in other reviews.
+Second, the study integrates practical examples and case studies to
+illustrate the application of AI principles, making the discussion more
+concrete and engaging. This approach enhances the relevance and
+applicability of the theoretical concepts discussed, providing readers
+with a clearer understanding of how AI technologies are implemented in
+real-world environmental monitoring scenarios.
+Third, the study addresses both technological and ethical challenges
+comprehensively, emphasizing the importance of responsible AI development. By discussing issues such as data dependency, overfitting,
+interpretability, and security risks, alongside ethical considerations, this
+review provides a holistic perspective on the challenges and opportunities in the field.
+Lastly, the study outlines a clear future scope for AI in environmental
+monitoring, identifying key areas for future research and development.
+This forward-looking perspective encourages ongoing innovation and
+collaboration among researchers, policymakers, and industry stakeholders to enhance the effectiveness and equity of AI applications in
+environmental monitoring.
+In summary, this study stands out by offering a thorough and practical examination of AI in environmental monitoring, addressing both
+current applications and future directions, and providing a balanced
+discussion of technological and ethical considerations. These merits
+make it a valuable resource for academics, practitioners, and policymakers interested in the responsible application of AI in environmental
+monitoring.
+Conclusion
+In conclusion, the integration of AI in environmental monitoring
+offers transformative benefits across various domains, including soil,
+water, and air quality monitoring, traffic management, and carbon
+footprint tracking. These advancements contribute significantly to
+environmental protection, public health, and sustainable development.
+AI’s capability to provide precise predictions and real-time monitoring
+enhances the efficiency and effectiveness of environmental management
+practices. However, it is crucial to acknowledge the potential drawbacks
+associated with the deployment of AI technologies. One significant
+concern is the substantial energy burden imposed by data centres and
+the supply chain, leading to increased greenhouse gas emissions. Additionally, the extraction of resources, such as REEs for AI hardware, results in considerable environmental degradation, including habitat
+destruction, soil and water pollution, and toxic waste generation.
+The shortage of skilled professionals in the environmental sector,
+particularly in the global south, poses another challenge to fully harnessing AI’s potential. Data access, control, and privacy issues must be
+addressed to prevent the misuse of AI systems for personal gain, such as
+market manipulation or disaster prediction exploitation. Robust data
+governance frameworks are essential to mitigate these risks and ensure
+equitable and ethical use of AI technologies. Despite these challenges,
+the future of AI in environmental monitoring is promising. For future
+research, there is a critical need to focus on the ethical implications and
+environmental impact quantification of AI technologies. Developing
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+11
+standardized methods to assess the environmental footprint of AI systems and exploring the ethical dimensions of their deployment will
+ensure responsible and sustainable use.
+Funding
+This research did not receive any specific grant from funding
+agencies in the public, commercial or not-for-profit sectors.
+CRediT authorship contribution statement
+David B. Olawade: Writing – review & editing, Writing – original
+draft, Resources, Project administration, Methodology, Formal analysis,
+Conceptualization. Ojima Z. Wada: Writing – original draft, Software,
+Methodology, Formal analysis. Abimbola O. Ige: Writing – review &
+editing, Software, Resources. Bamise I. Egbewole: Writing – review &
+editing, Writing – original draft. Adedayo Olojo: Writing – review &
+editing, Writing – original draft, Resources. Bankole I. Oladapo:
+Writing – review & editing, Supervision, Methodology.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+References
+Abdallah, M., Talib, M.A., Feroz, S., Nasir, Q., Abdalla, H., Mahfood, B., 2020. Artificial
+intelligence applications in solid waste management: a systematic research review.
+Waste Manage. 109, 231–246. https://doi.org/10.1016/j.wasman.2020.04.057.
+Abdulraheem, M.I., Zhang, W., Li, S., Moshayedi, A.J., Farooque, A.A., Hu, J., 2023.
+Advancement of remote sensing for soil measurements and applications: a
+comprehensive review. Sustainability 15 (21), 15444.
+Abebe, W.T., Endalie, D., 2023. Artificial intelligence models for prediction of monthly
+rainfall without climatic data for meteorological stations in Ethiopia. J. Big Data 10
+(1). https://doi.org/10.1186/s40537-022-00683-3.
+Acevedo, S., Novta, N., 2017. Climate change will bring more frequent natural disasters
+and weigh on economic growth. Available from: https://www.imf.org/en/Blogs
+/Articles/2017/11/16/climate-change-will-bring-more-frequent-natural-disasters
+-weigh-on-economic-growth. [Accessed 30 April 2023].
+Adefemi, A., Ukpoju, E.A., Adekoya, O., Abatan, A., Adegbite, A.O., 2023. Artificial
+intelligence in environmental health and public safety: a comprehensive review of
+USA strategies. World J. Adv. Res. Rev. 20 (3), 1420–1434.
+Agbehadji, I.E., Awuzie, B.O., Ngowi, A.B., Millham, R.C., 2020. Review of big data
+analytics, artificial intelligence and nature-inspired computing models towards
+accurate detection of COVID-19 pandemic cases and contact tracing. Int. J. Environ.
+Res. Public Health 17 (15), 5330.
+Ahmad, A., Aslam, Z., Bellitürk, K., Sozübek, ¨ A.P.D.B., 2023. Plant and soil data
+management via intelligent agricultural machinery and field robots. Clim. Change
+Soil-Plant-Environ. Interac. 9.
+Ahmad, T., Zhang, D., Huang, C., Zhang, H., Dai, N., Song, Y., Chen, H., 2021. Artificial
+intelligence in sustainable energy industry: status Quo, challenges and opportunities.
+J. Clean. Prod. 289, 125834.
+Ahmed, A.N., Othman, F.B., Afan, H.A., Ibrahim, R.K., Fai, C.M., Hossain, M.S.,
+Elshafie, A., 2019. Machine learning methods for better water quality prediction.
+J. Hydrol. 578, 124084.
+Ahmed, T., Zounemat-Kermani, M., Scholz, M., 2020a. Climate change, water quality
+and water-related challenges: a review with focus on Pakistan. Int. J. Environ. Res.
+Public Health 17 (22), 8518.
+Akinosho, T.D., 2024. Investigating a Deep Learning Approach To Real-Time Air Quality
+Prediction and Visualisation On UK Highways. University of the West of England,
+Bristol. ].
+Alahmad, T., Nem´enyi, M., Ny´eki, A., 2023. Applying IoT sensors and big data to
+improve precision crop production: a review. Agronomy 13 (10), 2603.
+Aldhyani, T.H., Al-Yaari, M., Alkahtani, H., Maashi, M., 2020. Water quality prediction
+using artificial intelligence algorithms. Appl. Bionics Biomech. 2020.
+Aldoseri, A., Al-Khalifa, K.N., Hamouda, A.M., 2023. Re-thinking data strategy and
+integration for artificial intelligence: concepts, opportunities, and challenges. Appl.
+Sci. 13 (12), 7082.
+Al-Garadi, M.A., Yang, Y.-C., Sarker, A., 2022. The Role of Natural Language Processing
+During the COVID-19 pandemic: Health applications, opportunities, and Challenges.
+Healthcare.
+Alloghani, M.A., 2023. Harnessing AI for sustainability: applied AI and machine learning
+algorithms for air quality prediction. Artificial Intelligence and Sustainability.
+Springer, pp. 1–32.
+Almalawi, A., Alsolami, F., Khan, A.I., Alkhathlan, A., Fahad, A., Irshad, K., Qaiyum, S.,
+Alfakeeh, A.S., 2022. An IoT based system for magnify air pollution monitoring and
+prognosis using hybrid artificial intelligence technique. Environ. Res. 206, 112576.
+Alpan, K., Sekeroglu, B., 2020. Prediction of pollutant concentrations by meteorological
+data using machine learning algorithms. Int. Arch. Photogramm. Remote Sens.
+Spatial Inform. Sci. 44, 21–27.
+Alsaber, A.R., Pan, J., Al-Hurban, A., 2021. Handling complex missing data using random
+forest approach for an air quality monitoring dataset: a case study of Kuwait
+environmental data (2012 to 2018). Int. J. Environ. Res. Publ. Health 18 (3), 1333.
+Amuthadevi, C., Vijayan, D., Sudharsan, R.R., 2021. Retracted article: development of air
+quality monitoring (AQM) models using different machine learning approaches.
+J. Ambient Intell. Humaniz. Comput. 13 (S1), 33. https://doi.org/10.1007/s12652-
+020-02724-2.
+Ananias, P.H.M., Negri, R.G., 2021. Anomalous behaviour detection using one-class
+support vector machine and remote sensing images: a case study of algal bloom
+occurrence in inland waters. Int. J. Digit. Earth 14 (7), 921–942.
+Artiola, J., Pepper, I.L., Brusseau, M.L. (Eds.), 2004. Environmental Monitoring and
+Characterization. Academic Press.
+Asha, P., Natrayan, L., Geetha, B., Beulah, J.R., Sumathy, R., Varalakshmi, G.,
+Neelakandan, S., 2022. IoT enabled environmental toxicology for air pollution
+monitoring using AI techniques. Environ. Res. 205, 112574.
+Azzi, S., Gagnon, S., Ramirez, A., Richards, G., 2020. Healthcare applications of artificial
+intelligence and analytics: a review and proposed framework. Appl. Sci. 10 (18),
+6553.
+Baclic, O., Tunis, M., Young, K., Doan, C., Swerdfeger, H., Schonfeld, J., 2020. Artificial
+intelligence in public health: challenges and opportunities for public health made
+possible by advances in natural language processing. Canada Commun. Dis. Rep. 46
+(6), 161.
+Bai, D., Lu, G., Zhu, Z., Tang, J., Fang, J., Wen, A., 2022. Using time series analysis and
+dual-stage attention-based recurrent neural network to predict landslide
+displacement. Environ. Earth Sci. 81 (21), 509.
+Balaram, V., 2019. Rare earth elements: A review of applications, occurrence,
+exploration, analysis, recycling, and environmental impact. Geosci. Front. 10,
+1285–1303. https://doi.org/10.1016/j.gsf.2018.12.005.
+Baniecki, H., Biecek, P., 2024. Adversarial attacks and defenses in explainable artificial
+intelligence: a survey. Inform. Fus., 102303
+Bedu´e, P., Fritzsche, A., 2022. Can we trust AI? an empirical investigation of trust
+requirements and guide to successful AI adoption. J. Enterp. Inform. Manage. 35 (2),
+530–549.
+Bibri, S.E., Krogstie, J., Kaboli, A., Alahi, A., 2024. Smarter eco-cities and their leadingedge artificial intelligence of things solutions for environmental sustainability: a
+comprehensive systematic review. Environ. Sci. Ecotechnol. 19, 100330.
+Bidari, I., Chickerur, S., 2024. Deep Recurrent Residual U-Net with Semi-Supervised
+Learning for Deforestation Change Detection. SN Comp. Sci. 5 (7), 893.
+Bloomfield, P., Clutton-Brock, P., Pencheon, E., Magnusson, J., Karpathakis, K., 2021.
+Artificial Intelligence in the NHS: Climate and Emissions✰,✰✰. J. Clim. Change
+Health 4, 100056. https://doi.org/10.1016/j.joclim.2021.100056.
+Boateng, E.Y., Otoo, J., Abaye, D.A., 2020. Basic tenets of classification algorithms Knearest-neighbor, support vector machine, random forest and neural network: a
+review. J. Data Anal. Inform. Process. 8 (4), 341–357.
+Boehm, K.M., Khosravi, P., Vanguri, R., Gao, J., Shah, S.P., 2022. Harnessing multimodal
+data integration to advance precision oncology. Nat. Rev. Cancer 22 (2), 114–126.
+Bommasani, R., Hudson, D.A., Adeli, E., Altman, R., Arora, S., von Arx, S., Bernstein, M.
+S., Bohg, J., Bosselut, A., & Brunskill, E. (2021). On the opportunities and risks of
+foundation models. arXiv preprint arXiv:2108.07258.
+Boukerche, A., Tao, Y., Sun, P., 2020. Artificial intelligence-based vehicular traffic flow
+prediction methods for supporting intelligent transportation systems. Comput. Netw.
+182, 107484.
+Bui, D.T., Khosravi, K., Tiefenbacher, J., Nguyen, H., Kazakis, N., 2020. Improving
+prediction of water quality indices using novel hybrid machine-learning algorithms.
+Sci. Total Environ. 721, 137612.
+Buntine, W., 2020. Learning classification trees. Artificial Intelligence frontiers in
+Statistics. Chapman and Hall/CRC, pp. 182–201.
+Burns, C., Bollard, B., Narayanan, A., 2022. Machine-learning for mapping and
+monitoring shallow coral reef habitats. Remote Sens. (Basel) 14 (11), 2666.
+Castelli, M., Clemente, F.M., Popoviˇc, A., Silva, S., Vanneschi, L., 2020. A machine
+learning approach to predict air quality in California. Complexity 2020, 1–23.
+https://doi.org/10.1155/2020/8049504.
+Ceccato, P., Fernandes, K., Ruiz, D., Allis, E., 2014. Climate and environmental
+monitoring for decision-making. Earth Perspec. 1 (1), 1–22.
+Chakraborty, A., Alam, M., Dey, V., Chattopadhyay, A., Mukhopadhyay, D., 2021.
+A survey on adversarial attacks and defences. CAAI Trans. Intell. Technol. 6 (1),
+25–45.
+Chang, W.Y., 2019. A data envelopment analysis on the performance of using artificial
+intelligence-based environmental management systems in the convention and
+exhibition industry. Ekoloji 28 (107), 3515–3521.
+Chaterji, S., DeLay, N., Evans, J., Mosier, N., Engel, B., Buckmaster, D., & Chandra, R.
+(2020). Artificial intelligence for digital agriculture at scale: techniques, policies,
+and challenges. arXiv preprint arXiv:2001.09786.
+Chauhan, D., Bahad, P., Jain, J.K., 2024. Sustainable AI: environmental implications,
+challenges, and opportunities. Explain. AI (XAI) Sustain. Develop. 1–15.
+Chen, Y., Song, L., Liu, Y., Yang, L., Li, D., 2020. A review of the artificial neural network
+models for water quality prediction. Appl. Sci. 10 (17), 5776.
+Choubey, S.K., Naman, H., 2020. A review on use of data science for visualization and
+prediction of the covid-19 pandemic and early diagnosis of covid-19 using machine
+learning models. Internet Med. Things Smart Healthc.: Covid-19 Pand. 241–265.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+12
+Chowdhury, M., Sadek, A.W., 2012. Advantages and limitations of artificial intelligence.
+Artificial Intelligence Applications to Critical Transportation Issues, 6,
+Transportation Research Circular E-C168.
+Çınar, Z.M., Abdussalam Nuhu, A., Zeeshan, Q., Korhan, O., Asmael, M., Safaei, B., 2020.
+Machine learning in predictive maintenance towards sustainable smart
+manufacturing in industry 4.0. Sustainability 12 (19), 8211.
+Coeckelbergh, M., 2021. AI for climate: freedom, justice, and other ethical and political
+challenges. AI Ethics 1, 67–72. https://doi.org/10.1007/s43681-020-00007-2.
+Cordier, T., Alonso-Saez, ´ L., Apoth´eloz-Perret-Gentil, L., Aylagas, E., Bohan, D.A.,
+Bouchez, A., Chariton, A., Creer, S., Frühe, L., Keck, F., 2021. Ecosystems monitoring
+powered by environmental genomics: a review of current strategies with an
+implementation roadmap. Mol. Ecol. 30 (13), 2937–2958.
+Cort`es, U., Sanchez-Marr ` `e, M., Ceccaroni, L., R-Roda, I., Poch, M., 2000. Artificial
+intelligence and environmental decision support systems. Appl. Intell. 13, 77–91.
+Costa, V.G., Pedreira, C.E., 2023. Recent advances in decision trees: an updated survey.
+Artif. Intell. Rev. 56 (5), 4765–4800.
+Curry, R., Trotter, C., McGough, A.S., 2021. Application of deep learning to camera trap
+data for ecologists in planning/engineering–Can captivity imagery train a model
+which generalises to the wild?. In: 2021 IEEE International Conference on Big Data
+(Big Data).
+Dailey M., Mamane D., 2021. Artificial intelligence and risk management in the
+insurance sector. Available from: https://www.financierworldwide.
+com/artificial-intelligence-and-risk-management-in-the-insurance-sector#.ZE
+8AS3bMLIV. [Accessed 01 May 2023].
+Dan Milmo (2024). Google’s emissions climb nearly 50% in five years due to AI energy
+demand. The Guardian. Available at: https://www.theguardian.com/technology/art
+icle/2024/jul/02/google-ai-emissions (Accessed August 2, 2024).
+De Bem, P.P., de Carvalho Junior, O.A., Fontes Guimar˜
+aes, R., Trancoso Gomes, R.A.,
+2020. Change detection of deforestation in the Brazilian Amazon using landsat data
+and convolutional neural networks. Remote Sens. (Basel) 12 (6), 901.
+DeCastro, A.L., Juliano, T.W., Kosovi´c, B., Ebrahimian, H., Balch, J.K., 2022.
+A computationally efficient method for updating fuel inputs for wildfire behavior
+models using sentinel imagery and random forest classification. Remote Sens. (Basel)
+14 (6), 1447.
+Degas, A., Islam, M.R., Hurter, C., Barua, S., Rahman, H., Poudel, M., Ruscio, D.,
+Ahmed, M.U., Begum, S., Rahman, M.A., 2022. A survey on artificial intelligence (ai)
+and explainable ai in air traffic management: current trends and development with
+future research trajectory. Appl. Sci. 12 (3), 1295.
+Delavar, M.R., Gholami, A., Shiran, G.R., Rashidi, Y., Nakhaeizadeh, G.R., Fedra, K.,
+Hatefi Afshar, S., 2019. A novel method for improving air pollution prediction based
+on machine learning approaches: a case study applied to the capital city of Tehran.
+ISPRS Int. J. Geoinf. 8 (2), 99.
+Deng, X., Song, C., Liu, K., Ke, L., Zhang, W., Ma, R., Zhu, J., Wu, Q., 2020. Remote
+sensing estimation of catchment-scale reservoir water impoundment in the upper
+Yellow River and implications for river discharge alteration. J. Hydrol. 585, 124791.
+Ditria, E.M., Buelow, C.A., Gonzalez-Rivero, M., Connolly, R.M., 2022. Artificial
+intelligence and automated monitoring for assisting conservation of marine
+ecosystems: a perspective. Front. Mar. Sci. 9, 918104.
+Dobrea, M., B˘
+adicu, A., Barbu, M., Subea, O., B˘
+alanescu, ˘ M., Suciu, G., Dobre, C., 2020.
+Machine learning algorithms for air pollutants forecasting. In: 2020 IEEE 26th
+International Symposium for Design and Technology in Electronic Packaging
+(SIITME). IEEE, pp. 109–113.
+Dong, G., Liu, H., 2018. Feature Engineering For Machine Learning and Data Analytics.
+CRC press.
+Dressing, S.A., Meals, D.W., Harcum, J.B., Spooner, J., Stribling, J.B., Richards, R.P.,
+O’Donnell, J.G., 2016. Monitoring and Evaluating Nonpoint Source Watershed
+Projects, 40. United States Environmental Protection Agency, Washington, DC, USA,
+2016-06.
+Duan, Y., Edwards, J.S., Dwivedi, Y.K., 2019. Artificial intelligence for decision making
+in the era of Big Data–evolution, challenges and research agenda. Int. J. Inf. Manage.
+48, 63–71.
+Duke University, 2021. AI Pinpoints Local Pollution Hotspots Using Satellite Images.
+ScienceDaily. Retrieved April 30, 2023 from. www.sciencedaily.com/releases/2021/
+04/210415170700.htm.
+Dwivedi, Y.K., Hughes, L., Ismagilova, E., Aarts, G., Coombs, C., Crick, T., Duan, Y.,
+Dwivedi, R., Edwards, J., Eirug, A., 2021. Artificial Intelligence (AI):
+multidisciplinary perspectives on emerging challenges, opportunities, and agenda
+for research, practice and policy. Int. J. Inf. Manage. 57, 101994.
+El-Chaghaby, G., Rashad, S., Moneem, M.A., 2020. Seasonal variation and correlation
+between the physical, chemical and microbiological parameters of Nile water in
+selected area in Egypt (Case study): physical, chemical and microbiological
+parameters of Nile water. Baghdad Sci. J. 17 (4), 1160. -1160.
+Eling, M., Nuessle, D., Staubli, J., 2022. The impact of artificial intelligence along the
+insurance value chain and on the insurability of risks. Geneva Papers Risk Insur.-
+Issues Pract. 47 (2), 205–241.
+El-Magd, S.A.A., Soliman, G., Morsy, M., Kharbish, S., 2022. Environmental hazard
+assessment and monitoring for air pollution using machine learning and remote
+sensing. Int. J. Environ. Sci. Technol. 20 (6), 6103–6116. https://doi.org/10.1007/
+s13762-022-04367-6.
+Elshaikh, A., Elsheikh, E., Mabrouki, J., 2024. Applications of Artificial Intelligence in
+Precision Irrigation. J. Environ. Earth Sci. 6 (2), 176–186.
+Eskandari, H., Imani, M., Moghaddam, M.P., 2021. Convolutional and recurrent neural
+network based model for short-term load forecasting. Electr. Pow. Syst. Res. 195,
+107173.
+Essam, Y., Kumar, P., Ahmed, A., Murti, M.A., El-Shafie, A., 2021. Exploring the
+reliability of different artificial intelligence techniques in predicting earthquake for
+Malaysia. Soil Dyn. Earthq. Eng. 147, 106826. https://doi.org/10.1016/j.
+soildyn.2021.106826.
+Fan, Z., Yan, Z., Wen, S., 2023. Deep learning and artificial intelligence in sustainability:
+a review of SDGs, renewable energy, and environmental health. Sustainability 15
+(18), 13493.
+Fascista, A., 2022. Toward integrated large-scale environmental monitoring using WSN/
+UAV/Crowdsensing: a review of applications, signal processing, and future
+perspectives. Sensors 22 (5), 1824.
+Feizizadeh, B., Garajeh, M.K., Lakes, T., Blaschke, T., 2021. A deep learning
+convolutional neural network algorithm for detecting saline flow sources and
+mapping the environmental impacts of the Urmia Lake drought in Iran. Catena
+(Amst.) 207, 105585.
+Fern´
+andez del Castillo, A., Yebra-Montes, C., Verduzco Garibay, M., de Anda, J., GarciaGonzalez, A., Gradilla-Hernandez, ´ M.S., 2022. Simple prediction of an ecosystemspecific water quality index and the water quality classification of a highly polluted
+river through supervised machine learning. Water (Basel) 14 (8), 1235.
+Folorunso, O., Ojo, O., Busari, M., Adebayo, M., Joshua, A., Folorunso, D., Ugwunna, C.
+O., Olabanjo, O., Olabanjo, O., 2023. Exploring machine learning models for soil
+nutrient properties prediction: a systematic review. Big Data Cogn. Comput. 7 (2),
+113.
+Fu, L., Li, J., Chen, Y., 2023. An innovative decision making method for air quality
+monitoring based on big data-assisted artificial intelligence technique. J. Innov.
+Knowl. 8 (2), 100294.
+Fuentes-Penailillo, ˜ F., Gutter, K., Vega, R., Silva, G.C., 2024. Transformative technologies
+in digital agriculture: leveraging internet of things, remote sensing, and artificial
+intelligence for smart crop management. J. Sens. Actuat. Netw. 13 (4), 39.
+Gabriel, O.T., 2023. Data Privacy and Ethical Issues in Collecting Health Care Data Using
+Artificial Intelligence Among Health Workers. Center for Bioethics and Research. ].
+Gaya, M.S., Abba, S.I., Abdu, A.M., Tukur, A.I., Saleh, M.A., Esmaili, P., Wahab, N.A.,
+2020. Estimation of water quality index using artificial intelligence approaches and
+multi-linear regression. Int. J. Artif. Intell. ISSN 2252, 8938.
+Ghimire, S., Yaseen, Z.M., Farooque, A.A., Deo, R.C., Zhang, J., Tao, X., 2021.
+Streamflow prediction using an integrated methodology based on convolutional
+neural network and long short-term memory networks. Sci. Rep. 11 (1), 17497.
+Ghorani-Azam, A., Riahi-Zanjani, B., Balali-Mood, M., 2016. Effects of air pollution on
+human health and practical measures for prevention in Iran. J. Res. Med. Sci.: Offic.
+J. Isfahan Univ. Med. Sci. 21.
+Ghorbani, Z., Behzadan, A.H., 2021. Monitoring offshore oil pollution using multi-class
+convolutional neural networks. Environ. Poll. 289, 117884. https://doi.org/
+10.1016/j.envpol.2021.117884.
+Ghosh, R., Kumar, A., 2022. A hybrid deep learning model by combining convolutional
+neural network and recurrent neural network to detect forest fire. Multimed. Tools
+Appl. 81 (27), 38643–38660.
+Godo, L., Emiliano, P., Valero, F., Poch, M., Sin, G., Monclús, H., 2019. Predicting the
+oxidant demand in full-scale drinking water treatment using an artificial neural
+network: uncertainty and sensitivity analysis. Chem. Eng. Res. Des. 125, 317–327.
+https://doi.org/10.1016/j.psep.2019.03.017.
+Goel, N., Kumari, R., Bansal, P., 2024. Predicting the air quality using machine learning
+algorithms: a comparative study. In: International Conference on Smart Computing
+and Communication.
+Google (2024). Google Environmental Report. California. Available at: https://www.gs
+tatic.com/gumdrop/sustainability/google-2024-environmental-report.pdf (Accessed
+August 2, 2024).
+Grunwald, S., 2022. Artificial intelligence and soil carbon modeling demystified: power,
+potentials, and perils. Carbon Footpr. 1 (1), 6.
+Gundeti, R., Vuppala, K., Kasireddy, V., 2023. In: The Future of AI and Environmental
+Sustainability, pp. 346–371. https://doi.org/10.4018/979-8-3693-0892-9.ch017.
+Guo, Q., Ren, M., Wu, S., Sun, Y., Wang, J., Wang, Q., Chen, Y., 2022. Applications of
+artificial intelligence in the field of air pollution: a bibliometric analysis. Front.
+Public Health 2972.
+Gupta, A., Katarya, R., 2020. Social media based surveillance systems for healthcare
+using machine learning: a systematic review. J. Biomed. Inform. 108, 103500.
+Hameed, M., Sharqi, S.S., Yaseen, Z.M., Afan, H.A., Hussain, A., Elshafie, A., 2017.
+Application of artificial intelligence (AI) techniques in water quality index
+prediction: a case study in tropical region, Malaysia. Neural Comput. Appl. 28,
+893–905.
+Haq, M.A., 2022. SMOTEDNN: a novel model for air pollution forecasting and AQI
+classification. Comput. Mater. Contin. 71 (1).
+Haq, M.A., Ahmed, A.U., Khan, I., Gyani, J., Mohamed, A., Attia, E., Mangan, P.,
+Pandi, D., 2022. Analysis of environmental factors using AI and ML methods. Sci.
+Rep. 12 (1). https://doi.org/10.1038/s41598-022-16665-7.
+Hassan, M., Malhotra, K., Firdaus, M., 2022. Application of artificial intelligence in IoT
+security for crop yield prediction. ResearchBerg Rev. Sci. Technol. 2 (1), 136–157.
+Himeur, Y., Rimal, B., Tiwary, A., Amira, A., 2022. Using Artificial Intelligence and Data
+Fusion For Environmental monitoring: A review and Future Perspectives.
+Information Fusion.
+Hodel, L., 2023. Cattle, Culture, and Feminist Ecologies in the Brazilian Amazon:
+Advances in Theoretical and AI-Driven Land System Science. ETH Zurich. ].
+Hosseini, F.S., Seo, M.B., Razavi-Termeh, S.V., Sadeghi-Niaraki, A., Jamshidi, M.,
+Choi, S.-M., 2023. Geospatial artificial intelligence (GeoAI) and satellite imagery
+fusion for soil physical property predicting. Sustainability 15 (19), 14125.
+Jaafari, A., Zenner, E.K., Liu, B., Pradhan, B., 2019. Hybrid artificial intelligence models
+based on a neuro-fuzzy system and metaheuristic optimization algorithms for spatial
+prediction of wildfire probability. Agric. For. Meteorol. 266–267, 198–207. https://
+doi.org/10.1016/j.agrformet.2018.12.015.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+13
+Jasim, O.Z., Hamed, N.H., Abid, M.A., 2020. Urban air quality assessment using
+integrated artificial intelligence algorithms and geographic information system
+modeling in a highly congested area, Iraq. J. Southwest Jiaotong Univ. 55 (1).
+Jayaraman, P., Nagarajan, K.K., Partheeban, P., Krishnamurthy, V., 2024. Critical review
+on water quality analysis using IoT and machine learning models. Int. J. Inf. Manage.
+Data Insights 4 (1), 100210.
+Jeff C., 2020. How AI can be used as a disaster preparedness and support system.
+Available from: https://www.forbes.com/sites/forbestechcouncil/2020/05/26/h
+ow-ai-can-be-used-as-a-disaster-preparedness-and-support-system/?sh=6404e
+1b11c72. [Accessed 30 April 2023].
+Jeffrey, L., Bommu, R., 2024. Innovative AI solutions for agriculture: enhancing crop
+management and yield. Int. J. Adv. Eng. Technol. Innov. 1 (3), 203–221.
+Jia, Q., Guo, Y., Wang, G., Barnes, S.J., 2020. Big data analytics in the fight against major
+public health incidents (Including COVID-19): a conceptual framework. Int. J.
+Environ. Res. Public Health 17 (17), 6161.
+John, K., Abraham Isong, I., Michael Kebonye, N., Okon Ayito, E., Chapman
+Agyeman, P., Marcus Afu, S., 2020. Using machine learning algorithms to estimate
+soil organic carbon variability with environmental variables and soil nutrient
+indicators in an alluvial soil. Land (Basel) 9 (12), 487.
+Kaginalkar, A., Kumar, S., Gargava, P., Niyogi, D., 2021. Review of urban computing in
+air quality management as smart city service: an integrated IoT, AI, and cloud
+technology perspective. Urban Clim. 39, 100972.
+Kamel Boulos, M.N., Geraghty, E.M., 2020. Geographical Tracking and Mapping of
+Coronavirus Disease COVID-19/severe Acute Respiratory Syndrome Coronavirus 2
+(SARS-CoV-2) Epidemic and Associated Events Around the world: How 21st Century
+GIS Technologies Are Supporting the Global Fight Against Outbreaks and Epidemics,
+19. Springer, pp. 1–12.
+Kar, S., Kar, A.K., Gupta, M.P., 2021. Modeling drivers and barriers of artificial
+intelligence adoption: insights from a strategic management perspective. Intell. Syst.
+Acc. Fin. Manage. 28 (4), 217–238.
+Kernbach, J.M., Staartjes, V.E., 2022. Foundations of machine learning-based clinical
+prediction modeling: part II—Generalization and overfitting. Machine Learning in
+Clinical Neuroscience: Foundations and Applications, pp. 15–21.
+Khan, Y., See, C.S., 2016. Predicting and analyzing water quality using machine learning:
+a comprehensive model. In: 2016 IEEE Long Island Systems, Applications and
+Technology Conference (LISAT). IEEE, pp. 1–6.
+Kothandaraman, D., Praveena, N., Varadarajkumar, K., Madhav Rao, B., Dhabliya, D.,
+Satla, S., Abera, W., 2022. Intelligent forecasting of air quality and pollution
+prediction using machine learning. Adsorp. Sci. Technol. 2022, 5086622.
+Krishan, M., Das, J., Singh, A., Goyal, M.K., Sekar, C., 2019. Air quality modelling using
+long short-term memory (LSTM) over NCT-Delhi, India. Air Qual. Atmosp. Health 12
+(8), 899–908. https://doi.org/10.1007/s11869-019-00696-7.
+Krupnova, T.G., Rakova, O.V., Bondarenko, K.A., Tretyakova, V.D., 2022. Environmental
+justice and the use of artificial intelligence in urban air pollution monitoring. Big
+Data Cogn. Comput. 6 (3), 75.
+Lakshmi, V., & Corbett, J. (2020). How artificial intelligence improves agricultural
+productivity and sustainability: a global thematic analysis.
+Leal Filho, Kotter, R., Ozuyar, ¨ P.G., Abubakar, I.R., Eustachio, J.H.P.P., Matandirotya, N.
+R., 2023. Understanding Rare Earth Elements as Critical Raw Materials.
+Sustainability 15, 1919. https://doi.org/10.3390/su15031919.
+Leong, W., Kelani, R., Ahmad, Z., 2020. Prediction of air pollution index (API) using
+support vector machine (SVM). J. Environ. Chem. Eng. 8 (3), 103208.
+Li, Q., Zheng, H., 2023. Prediction of summer daytime land surface temperature in urban
+environments based on machine learning. Sustain. Cities Soc. 97, 104732.
+Li, Y., Feng, Z., Chen, S., Zhao, Z., Wang, F., 2020a. Application of the artificial neural
+network and support vector machines in forest fire prediction in the Guangxi
+autonomous region, China. Discrete Dyn. Nat. Soc. 1–14. https://doi.org/10.1155/
+2020/5612650.
+Li, Z., Basit, A., Daraz, A., Jan, A., 2024. Deep causal speech enhancement and
+recognition using efficient long-short term memory recurrent neural network. PLoS
+One 19 (1), e0291240.
+Lim, C.H., Kim, H., Vilcassim, M.J.R., Thurston, G.D., Gordon, T., Chen, L., Lee, K.,
+Heimbinder, M., Kim, S.Y., 2019. Mapping urban air quality using mobile sampling
+with low-cost sensors and machine learning in Seoul, South Korea. Environ. Int. 131,
+105022. https://doi.org/10.1016/j.envint.2019.105022.
+Liu, D., Jiang, W., Mu, L., Wang, S., 2020. Streamflow prediction using deep learning
+neural network: case study of Yangtze River. IEEE Access 8, 90069–90086.
+Liu, P., Wang, J., Sangaiah, A.K., Xie, Y., Yin, X., 2019b. Analysis and prediction of water
+quality using LSTM deep neural networks in IoT environment. Sustainability 11 (7),
+2058.
+Liu, P., Wang, J., Sangaiah, A.K., Xie, Y., Yin, X., 2019a. Analysis and prediction of water
+quality using LSTM deep neural networks in IoT environment. Sustainability 11 (7),
+2058.
+Lokman, N.A., Ithnin, A.M., Yahya, W.J., Yuzir, M.A., 2021. A brief review on
+biochemical oxygen demand (BOD) treatment methods for palm oil mill effluents
+(POME). Environ. Technol. Innov. 21, 101258.
+Ma, W., Cui, J., Abdoulaye, B., Wang, Y., Du, H., Bourtsalas, A.C., Chen, G., 2022. Air
+pollutant emission inventory of waste-to-energy plants in China and prediction by
+the artificial neural network approach. Environ. Sci. Technol. 57 (2), 874–883.
+https://doi.org/10.1021/acs.est.2c01087.
+Majhi, S.K., Hossain, S.S., Padhi, T., 2019. MFOFLANN: moth flame optimized functional
+link artificial neural network for prediction of earthquake magnitude. Evol. Syst. 11
+(1), 45–63. https://doi.org/10.1007/s12530-019-09293-6.
+Malek, N.H.A., Wan Yaacob, W.F., Md Nasir, S.A., Shaadan, N., 2022. Prediction of water
+quality classification of the Kelantan River Basin, Malaysia, using machine learning
+techniques. Water (Basel) 14 (7), 1067.
+Malik, Y.S., Sircar, S., Bhat, S., Ansari, M.I., Pande, T., Kumar, P., Mathapati, B.,
+Balasubramanian, G., Kaushik, R., Natesan, S., 2021. How artificial intelligence may
+help the Covid-19 pandemic: pitfalls and lessons for the future. Rev. Med. Virol. 31
+(5), 1–11.
+Manikandan, G., Abirami, S., 2021. An efficient feature selection framework based on
+information theory for high dimensional data. Appl. Soft Comput. 111, 107729.
+Manisalidis, I., Stavropoulou, E., Stavropoulos, A., Bezirtzoglou, E., 2020. Environmental
+and health impacts of air pollution: a review. Front. Public Health 14.
+Marcin Frackiewicz, 2023. The use of artificial intelligence in environmental monitoring
+[online]. Available from: https://ts2.space/en/the-use-of-artificial-intelligence-in-en
+vironmental-monitoring/. [Accessed 30 April 2023].
+Marhain, S., Ahmed, A., Murti, M.A., Kumar, P., El-Shafie, A., 2021. Investigating the
+application of artificial intelligence for earthquake prediction in Terengganu. Nat.
+Hazards 108 (1), 977–999. https://doi.org/10.1007/s11069-021-04716-7.
+Masolele, R.N., De Sy, V., Herold, M., Marcos, D., Verbesselt, J., Gieseke, F., Mullissa, A.
+G., Martius, C., 2021. Spatial and temporal deep learning methods for deriving landuse following deforestation: a pan-tropical case study using Landsat time series.
+Remote Sens. Environ. 264, 112600.
+Masood, A., Ahmad, K., 2021. A review on emerging artificial intelligence (AI)
+techniques for air pollution forecasting: fundamentals, application and performance.
+J. Clean. Prod. 322, 129072.
+Meza, J.K.S., Yepes, D.O., Rodrigo-Ilarri, J., Cassiraga, E., 2019. Predictive analysis of
+urban waste generation for the city of Bogota, ´ Colombia, through the
+implementation of decision trees-based machine learning, support vector machines
+and artificial neural networks. Heliyon 5 (11), e02810. https://doi.org/10.1016/j.
+heliyon.2019.e02810.
+Microsoft (2024). 2024 Environmental Sustainability Report. Washington. Available at:
+https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1lMjE (Accessed
+August 2, 2024).
+Mirmomeni, M., Fazio, T., von Cavallar, S., Harrer, S., 2021. From wearables to
+THINKables: artificial intelligence-enabled sensors for health monitoring. Wearable
+Sensors. Elsevier, pp. 339–356.
+Mohanty, S.D., Jha, M.K., Raul, S.K., Panda, R.N., Sudheer, K.P., 2015. Using artificial
+neural network approach for simultaneous forecasting of weekly groundwater levels
+at multiple sites. Water Res. Manage. 29 (15), 5521–5532. https://doi.org/10.1007/
+s11269-015-1132-6.
+Montorio, R., P´erez-Cabello, F., Alves, D.B., García-Martín, A., 2020. Unitemporal
+approach to fire severity mapping using multispectral synthetic databases and
+random forests. Remote Sens. Environ. 249, 112025.
+Nandini, K., Fathima, G., 2019. Urban air quality analysis and prediction using machine
+learning. In: 2019 1st International Conference on Advanced Technologies in
+Intelligent Control, Environment, Computing & Communication Engineering
+(ICATIECE). IEEE, pp. 98–102.
+Nasir, N., Kansal, A., Alshaltone, O., Barneih, F., Sameer, M., Shanableh, A., AlShamma’a, A., 2022. Water quality classification using machine learning algorithms.
+J. Water Process. Eng. 48, 102920.
+Natarajan, A., Su, H.-W., Heneghan, C., 2020. Assessment of physiological signs
+associated with COVID-19 measured using wearable devices. NPJ Digit. Med. 3 (1),
+156.
+Neo, E.X., Hasikin, K., Lai, K.W., Mokhtar, M.I., Azizan, M.M., Hizaddin, H.F., Razak, S.
+A., 2023. Artificial intelligence-assisted air quality monitoring for smart city
+management. PeerJ Comput. Sci. 9, e1306.
+Nguyen, P.T., Ha, D.N., Jaafari, A., Nguyen, H.P., Van Phong, T., Al-Ansari, N.,
+Prakash, I., Van Le, H., Pham, B.T., 2020a. Groundwater potential mapping
+combining artificial neural network and real adaboost ensemble technique: the
+DakNong Province Case-study, Vietnam. Int. J. Environ. Res. Public Health 17 (7),
+2473. https://doi.org/10.3390/ijerph17072473.
+Nichols, R.K., Carter, C.M., Hood, J.P., Jackson, M.J., Joseph, S., Larson, H., Lonstein, W.
+D., Mai, R., McCreight, R., Mumm, H.C., 2022. Drones and precision agricultural
+mapping (Mumm). Space Syst.: Emerg. Technol. Oper.
+Nishant, R., Kennedy, M., Corbett, J., 2020. Artificial intelligence for sustainability:
+challenges, opportunities, and a research agenda. Int. J. Inf. Manage. 53, 102104.
+Norouzzadeh, M.S., Nguyen, A., Kosmala, M., Swanson, A., Palmer, M.S., Packer, C.,
+Clune, J., 2018. Automatically identifying, counting, and describing wild animals in
+camera-trap images with deep learning. Proc. Natl. Acad. Sci. 115 (25),
+E5716–E5725.
+Nouraki, A., Alavi, M., Golabi, M., Albaji, M., 2021. Prediction of water quality
+parameters using machine learning models: a case study of the Karun River, Iran.
+Environ. Sci. Poll. Res. 28 (40), 57060–57072.
+Nova, K., 2023. AI-enabled water management systems: an analysis of system
+components and interdependencies for water conservation. Eigenpub Rev. Sci.
+Technol. 7 (1), 105–124.
+Nwaila, G.T., Frimmel, H.E., Zhang, S.E., Bourdeau, J.E., Tolmay, L.C.K., Durrheim, R.J.,
+et al., 2022. The minerals industry in the era of digital transition: An energy-efficient
+and environmentally conscious approach. Res. Pol. 78, 102851. https://doi.org/
+10.1016/j.resourpol.2022.102851.
+Oktarina, R., Bahagia, S.N., Diawati, L., Pribadi, K.S., 2020. Artificial neural network for
+predicting earthquake casualties and damages in Indonesia. IOP Conf. Ser. 426 (1),
+012156. https://doi.org/10.1088/1755-1315/426/1/012156.
+Olaoye, G. (2024). Ethical considerations in using machine learning for healthcare
+applications (2516-2314).
+Olawade, D.B., Fapohunda, O., Wada, O.Z., Usman, S.O., Ige, A.O., Ajisafe, O.,
+Oladapo, B.I., 2024a. Smart waste management: a paradigm shift enabled by
+artificial intelligence. Waste Manage. Bull.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+14
+Olawade, D.B., Wada, O.J., David-Olawade, A.C., Kunonga, E., Abaire, O., Ling, J., 2023.
+Using artificial intelligence to improve public health: a narrative review. Front. Publ.
+Health 11, 1196397.
+Olawade, D.B., Wada, O.Z., David-Olawade, A.C., Fapohunda, O., Ige, A.O., Ling, J.,
+2024b. Artificial intelligence potential for net zero sustainability: current evidence
+and prospects. Next Sustain. 4, 100041.
+Omidvarborna, H., Kumar, P., Hayward, J., Gupta, M., Nascimento, E.G.S., 2021. Lowcost air quality sensing towards smart homes. Atmosphere (Basel) 12 (4), 453.
+Omrani, N., Rivieccio, G., Fiore, U., Schiavone, F., Agreda, S.G., 2022. To trust or not to
+trust? An assessment of trust in AI-based systems: concerns, ethics and contexts.
+Technol. Forecast. Soc. Change 181, 121763.
+Ortega-Fern´
+andez, A., Martín-Rojas, R., García-Morales, V.J., 2020. Artificial intelligence
+in the urban environment: smart cities as models for developing innovation and
+sustainability. Sustainability 12 (19), 7860.
+Osman, K. (2024). Improving transparency with technology in the transportation of
+illegal wildlife.
+Ouma, Y.O., Okuku, C.O., Njau, E.N., 2020. Use of artificial neural networks and multiple
+linear regression model for the prediction of dissolved oxygen in rivers: case study of
+hydrographic basin of River Nyando, Kenya. Complexity 2020 (1), 9570789.
+Padarian, J., Minasny, B., McBratney, A.B., 2020. Machine learning and soil sciences: a
+review aided by machine learning tools. Soil 6 (1), 35–52.
+Palakurti, N.R., Kolasani, S., 2024. AI-driven modeling: from concept to implementation.
+Practical Applications of Data Processing, Algorithms, and Modeling. IGI Global,
+pp. 57–70.
+Panigrahi, N., Patro, S.G.K., Kumar, R., Omar, M., Ngan, T.T., Giang, N.L., Thu, B.T.,
+Thang, N.T., 2023. Groundwater quality analysis and drinkability prediction using
+artificial intelligence. Earth Sci. Inform. 16 (2), 1701–1725. https://doi.org/
+10.1007/s12145-023-00977-x.
+Pappu, S., Vudatha, P., Niharika, A.V., Karthick, T., Sankaranarayanan, S., 2017.
+Intelligent IoT based water quality monitoring system. Int. J. Appl. Eng. Res. 12 (16),
+5447–5454.
+Park, S.-H., Lee, B.-Y., Kim, M.-J., Sang, W., Seo, M.C., Baek, J.-K., Yang, J.E., Mo, C.,
+2023. Development of a soil moisture prediction model based on recurrent neural
+network long short-term memory (RNN-LSTM) in soybean cultivation. Sensors 23
+(4), 1976.
+Pham, B.T., Jaafari, A., Avand, M., Al-Ansari, N., Dinh Du, T., Yen, H.P.H., Phong, T.V.,
+Nguyen, D.H., Le, H.V., Mafi-Gholami, D., 2020. Performance evaluation of machine
+learning methods for forest fire modeling and prediction. Symmetry (Basel) 12 (6),
+1022.
+Piao, Y., Lee, D.K., Park, S., Kim, H., Jin, Y., 2022. Forest fire susceptibility assessment
+using google earth engine in Gangwon-do, Republic of Korea. Geomat. Nat. Hazards
+Risk 13 (1), 432–450. https://doi.org/10.1080/19475705.2022.2030808.
+Popescu, S.M., Mansoor, S., Wani, O.A., Kumar, S.S., Sharma, V., Sharma, A., Arya, V.M.,
+Kirkham, M., Hou, D., Bolan, N., 2024. Artificial intelligence and IoT driven
+technologies for environmental pollution monitoring and management. Front.
+Environ. Sci. 12, 1336088.
+Pyayt, A.L., Mokhov, I.I., Lang, B., Krzhizhanovskaya, V.V., Meijer, R.J.M., 2011.
+Machine learning methods for environmental monitoring and flood protection. Int. J.
+Comput. Inf. Eng. 5 (6), 549–554.
+Rajak, P., Ganguly, A., Adhikary, S., Bhattacharya, S., 2023. Internet of Things and smart
+sensors in agriculture: scopes and challenges. J. Agric. Food Res. 14, 100776.
+Rajitha, A., Aravinda, K., Nagpal, A., Kalra, R., Maan, P., Kumar, A., Abdul-Zahra, D.S.,
+2024. Machine learning and AI-driven water quality monitoring and treatment. In:
+E3S Web of Conferences.
+Rane, N., Choudhary, S., & Rane, J. (2024). Enhancing water and air pollution
+monitoring and control through ChatGPT and similar generative artificial
+intelligence implementation. Available at SSRN 4681733.
+Ranyal, E., Sadhu, A., Jain, K., 2022. Road condition monitoring using smart sensing and
+artificial intelligence: a review. Sensors 22 (8), 3044.
+Rasool, S., Husnain, A., Saeed, A., Gill, A.Y., Hussain, H.K., 2023. Harnessing predictive
+power: exploring the crucial role of machine learning in early disease detection.
+JURIHUM: J. Inov. Hum. 1 (2), 302–315.
+Ravindra, K., Bahadur, S.S., Katoch, V., Bhardwaj, S., Kaur-Sidhu, M., Gupta, M., Mor, S.,
+2023. Application of machine learning approaches to predict the impact of ambient
+air pollution on outpatient visits for acute respiratory infections. Sci. Total Environ.
+858, 159509.
+Reddy, K.S., Ahmad, S.S., Tyagi, A.K., 2024. Artificial intelligence and the internet of
+things-enabled smart agriculture for the modern era. AI Applications for Business,
+Medical, and Agricultural Sustainability. IGI Global, pp. 68–99.
+Ren, T., Liu, X., Niu, J., Lei, X., Zhang, Z., 2020. Real-time water level prediction of
+cascaded channels based on multilayer perception and recurrent neural network.
+J. Hydrol. 585, 124783.
+Rodgers, W., 2020. Artificial Intelligence in a Throughput model: Some major
+Algorithms. CRC Press.
+Rongxing, G., 2021. Cross-border Natural Disasters and Crises Management. Springer
+Nature, pp. 371–400.
+Rostirolla, G., Grange, L., Minh-Thuyen, T., Stolf, P., Pierson, J.M., Da Costa, G., et al.,
+2022. A survey of challenges and solutions for the integration of renewable energy in
+datacenters. Renew. Sustain. Energy Rev. 155, 111787. https://doi.org/10.1016/j.
+rser.2021.111787.
+Rovira, J., Domingo, J.L., Schuhmacher, M., 2020. Air quality, health impacts and
+burden of disease due to air pollution (PM10, PM2. 5, NO2 and O3): application of
+AirQ+ model to the Camp de Tarragona County (Catalonia, Spain). Sci. Total
+Environ. 703, 135538.
+Rowley, A., Karakus¸, O., 2023. Predicting air quality via multimodal AI and satellite
+imagery. Remote Sens. Environ. 293, 113609.
+Ruiz, I., Pompeu, J., Ruano, A., Franco, P., Balbi, S., Sanz, M.J., 2023. Combined
+artificial intelligence, sustainable land management, and stakeholder engagement
+for integrated landscape management in Mediterranean watersheds. Environ. Sci.
+Policy 145, 217–227.
+Ryo, M., Angelov, B., Mammola, S., Kass, J.M., Benito, B.M., Hartig, F., 2021.
+Explainable artificial intelligence enhances the ecological interpretability of blackbox species distribution models. Ecography 44 (2), 199–205.
+Sachithra, V., Subhashini, L., 2023. How artificial intelligence uses to achieve the
+agriculture sustainability: systematic review. Artif. Intell. Agric. 8, 46–59.
+Saheb, T., 2022. Ethically Contentious Aspects of Artificial Intelligence surveillance: a
+Social Science Perspective. AI Ethics. https://doi.org/10.1007/s43681-022-00196-y.
+Sarker, I.H., 2021b. Machine learning: algorithms, real-world applications and research
+directions. SN Comput. Sci. 2 (3), 160.
+Sarker, I.H., 2021a. Data science and analytics: an overview from data-driven smart
+computing, decision-making and applications perspective. SN Comput. Sci. 2 (5),
+377.
+Sarker, I.H., 2022. AI-based modeling: techniques, applications and research issues
+towards automation, intelligent and smart systems. SN Comput. Sci. 3 (2), 158.
+Sayed, S.A., Abdel-Hamid, Y., Hefny, H.A., 2023. Artificial intelligence-based traffic flow
+prediction: a comprehensive review. J. Electr. Syst. Inf. Technol. 10 (1), 13.
+Scardino, G., Scicchitano, G., Chirivì, M., Costa, P.J., Luparelli, A., Mastronuzzi, G.,
+2022. Convolutional neural network and optical flow for the assessment of wave and
+tide parameters from video analysis (leucotea): an innovative tool for coastal
+monitoring. Remote Sens. (Basel) 14 (13), 2994.
+Schneider, S., Taylor, G.W., Linquist, S., Kremer, S.C., 2019. Past, present and future
+approaches using computer vision for animal re-identification from camera trap
+data. Methods Ecol. Evol. 10 (4), 461–470.
+Shaikh, T.A., Rasool, T., Lone, F.R., 2022. Towards leveraging the role of machine
+learning and artificial intelligence in precision agriculture and smart farming.
+Comput. Electron. Agric. 198, 107119.
+Shalu, Singh, G., 2023. Environmental monitoring with machine learning. EPRA Int. J.
+Multidiscipl. Res. 208–212. https://doi.org/10.36713/epra13330.
+Sharma, A., Sharma, A., Tselykh, A., Bozhenyuk, A., Choudhury, T., Alomar, M.A.,
+S´
+anchez-Chero, M., 2023. Artificial intelligence and internet of things oriented
+sustainable precision farming: towards modern agriculture. Open Life Sci. 18 (1),
+20220713.
+Shi, W., Zhang, M., Zhang, R., Chen, S., Zhan, Z., 2020. Change detection based on
+artificial intelligence: state-of-the-art and challenges. Remote Sens. (Basel) 12 (10),
+1688.
+Singh, J.P., 2021. AI ethics and societal perspectives: a comparative study of ethical
+principle prioritization among diverse demographic clusters. J. Adv. Anal. Healthc.
+Manage. 5 (1), 1–18.
+Stjelja, D., Jokisalo, J., Kosonen, R., 2022. Scalable room occupancy prediction with deep
+transfer learning using indoor climate sensor. Energies (Basel) 15 (6), 2078.
+Subramaniam, S., Raju, N., Ganesan, A., Rajavel, N., Chenniappan, M., Prakash, C.,
+Dixit, S., 2022. Artificial intelligence technologies for forecasting air pollution and
+human health: a narrative review. Sustainability 14 (16), 9951.
+Tabesh, P., 2022. Who’s making the decisions? How managers can harness artificial
+intelligence and remain in charge. J. Bus. Strat. 43 (6), 373–380.
+Tanveer, S., Ahmad, M.I., Khan, T., 2024. Technological progression associated with
+monitoring and management of indoor air pollution and associated health risks: a
+comprehensive review. Environ. Qual. Manage.
+Tarazona, Y., Miyasiro-Lopez, ´ M., 2020. Monitoring tropical forest degradation using
+remote sensing. challenges and opportunities in the Madre de Dios region, Peru.
+Remote Sens. Appl.: Soc. Environ. 19, 100337.
+Teney, D., Abbasnejad, E., Lucey, S., Van den Hengel, A., 2022. Evading the simplicity
+bias: training a diverse set of models discovers solutions with superior ood
+generalization. In: Proceedings of the IEEE/CVF conference on computer vision and
+pattern recognition.
+Thomson, M.C., Connor, S.J., Zebiak, S.E., Jancloes, M., Mihretie, A., 2011. Africa needs
+climate data to fight disease. Nature 471 (7339), 440–442.
+Tsokov, S., Lazarova, M., Aleksieva-Petrova, A., 2022. A hybrid spatiotemporal deep
+model based on CNN and LSTM for air pollution prediction. Sustainability 14 (9),
+5104.
+Ullo, S.L., Sinha, G.R., 2020. Advances in smart environment monitoring systems using
+IoT and sensors. Sensors 20 (11), 3113.
+van Goor, H.M., van Loon, K., Breteler, M.J., Kalkman, C.J., Kaasjager, K.A., 2022.
+Circadian patterns of heart rate, respiratory rate and skin temperature in
+hospitalized COVID-19 patients. PLoS One 17 (7), e0268065.
+Veeramanju, K., 2024. Predictive models for optimal irrigation scheduling and water
+management: a review of AI and ML approaches. Int. J. Manage. Technol. Soc. Sci.
+(IJMTS) 9 (2), 94–110.
+Wagle, N., Acharya, T.D., Lee, D.H., 2020. Comprehensive review on application of
+machine learning algorithms for water quality parameter estimation using remote
+sensing data. Sens. Mater. 32 (11), 3879–3892.
+Wallace, T.C., Bailey, R.L., Blumberg, J.B., Burton-Freeman, B., Chen, C.O., CroweWhite, K.M., Drewnowski, A., Hooshmand, S., Johnson, E., Lewis, R., 2020. Fruits,
+vegetables, and health: a comprehensive narrative, umbrella review of the science
+and recommendations for enhanced public policy to improve intake. Crit. Rev. Food
+Sci. Nutr. 60 (13), 2174–2211.
+Wan, A., Dunlap, L., Ho, D., Yin, J., Lee, S., Jin, H., Petryk, S., Bargal, S.A., & Gonzalez, J.
+E. (2020). NBDT: neural-backed decision trees. arXiv preprint arXiv:2004.00221.
+Wang, D., Thun´ell, S., Lindberg, U., Jiang, L., Trygg, J., Tysklind, M., 2022. Towards
+better process management in wastewater treatment plants: process analytics based
+on SHAP values for tree-based machine learning methods. J. Environ. Manage. 301,
+113941.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+15
+Wang, P., Yao, J., Wang, G., Hao, F., Shrestha, S., Xue, B., Peng, Y., 2019. Exploring the
+application of artificial intelligence technology for identification of water pollution
+characteristics and tracing the source of water quality pollutants. Sci. Total Environ.
+693, 133440.
+Wang, S., Gao, J., Zhuang, Q., Lu, Y., Gu, H., Jin, X., 2020. Multispectral remote sensing
+data are effective and robust in mapping regional forest soil organic carbon stocks in
+a northeast forest region in China. Remote Sens. (Basel) 12 (3), 393.
+Wei, Y., 2021. Application of artificial intelligence in the process of ecological water
+environment governance and its impact on economic growth. Math. Probl. Eng.
+2021, 1–9.
+Whang, S.E., Roh, Y., Song, H., Lee, J.-G., 2023. Data collection and quality challenges in
+deep learning: a data-centric ai perspective. VLDB J. 32 (4), 791–813.
+Willenbacher, M., 2022. Rebound Effects in the Use of Rare Earth Metals in ICT. Int. J.
+Environ. Sci. Natur. Res. 30. https://doi.org/10.19080/IJESNR.2022.30.556277.
+Wu, C.-J., Raghavendra, R., Gupta, U., Acun, B., Ardalani, N., Maeng, K., Chang, G.,
+Aga, F., Huang, J., Bai, C., 2022. Sustainable ai: environmental implications,
+challenges and opportunities. Proc. Mach. Learn. Syst. 4, 795–813.
+Wu, D., Wang, H., Mohammed, H., Seidu, R., 2019. Quality risk analysis for sustainable
+smart water supply using data perception. IEEE Trans. Sustain. Comput. 5 (3),
+377–388.
+Wu, J., Zhang, Z., Tong, R., Zhou, Y., Hu, Z., Liu, K., 2023. Imaging feature-based
+clustering of financial time series. PLoS One 18 (7), e0288836.
+Xiang, X., Li, Q., Khan, S., Khalaf, O.I., 2021. Urban water resource management for
+sustainable environment planning using artificial intelligence techniques. Environ.
+Impact Assess. Rev. 86, 106515.
+Yang, L., Driscol, J., Sarigai, S., Wu, Q., Chen, H., Lippitt, C.D., 2022. Google earth
+engine and artificial intelligence (AI): a comprehensive review. Remote Sens. (Basel)
+14 (14), 3253.
+Ye, Z., Yang, J., Zhong, N., Tu, X., Jia, J., Wang, J., 2020. Tackling environmental
+challenges in pollution controls using artificial intelligence: a review. Sci. Total
+Environ. 699, 134279. https://doi.org/10.1016/j.scitotenv.2019.134279.
+Yoon, S.N., Lee, D., Shin, Y., 2020. Innovative healthcare wearable device usage and
+service enhancement. Glob. Bus. Fin. Rev. (GBFR) 25 (2), 1–10.
+Zagajewski, B., Kluczek, M., Raczko, E., Njegovec, A., Dabija, A., Kycko, M., 2021.
+Comparison of random forest, support vector machines, and neural networks for
+post-disaster forest species mapping of the krkonoˇse/karkonosze transboundary
+biosphere reserve. Remote Sens. (Basel) 13 (13), 2581.
+Zakaria, M.Z., Malek, M.A., Zolkepli, M.B., Ahmed, A., 2021. Application of artificial
+intelligence algorithms for hourly river level forecast: a case study of Muda River,
+Malaysia. Alexandria Eng. J. 60 (4), 4015–4028. https://doi.org/10.1016/j.
+aej.2021.02.046.
+Zaresefat, M., Derakhshani, R., 2023. Revolutionizing groundwater management with
+hybrid AI models: a practical review. Water (Basel) 15 (9), 1750. https://doi.org/
+10.3390/w15091750.
+Zeng, D., Cao, Z., Neill, D.B., 2021. Artificial intelligence–enabled public health
+surveillance—From local detection to global epidemic monitoring and control.
+Artificial Intelligence in Medicine. Elsevier, pp. 437–453.
+Zhang, C., 2024. Fundamentals of Environmental Sampling and Analysis. John Wiley &
+Sons.
+Zhang, H., Zhang, L., Wang, S., Zhang, L., 2022. Online water quality monitoring based
+on UV–Vis spectrometry and artificial neural networks in a river confluence near
+Sherfield-on-Loddon. Environ. Monit. Assess. 194 (9). https://doi.org/10.1007/
+s10661-022-10118-4.
+Zhang, W.E., Sheng, Q.Z., Alhazmi, A., Li, C., 2020. Adversarial attacks on deep-learning
+models in natural language processing: a survey. ACM Trans. Intell. Syst. Technol.
+(TIST) 11 (3), 1–41.
+Zhang, X., Shu, K., Rajkumar, S., Sivakumar, V., 2021. Research on deep integration of
+application of artificial intelligence in environmental monitoring system and real
+economy. Environ. Impact Assess. Rev. 86, 106499.
+Zhao, L., Li, Z., Qu, L., 2024. A novel machine learning-based artificial intelligence
+method for predicting the air pollution index PM2. 5. J. Clean. Prod., 143042
+Zheng, T., Bergin, M., Wang, G., Carlson, D., 2021. Local PM2. 5 hotspot detector at 300
+m resolution: A random forest–convolutional neural network joint model jointly
+trained on satellite images and meteorology. Remote Sens. 13 (7), 1356.
+Zhou, X., Chai, C., Li, G., Sun, J., 2020. Database meets artificial intelligence: a survey.
+IEEE Trans. Knowl. Data Eng. 34 (3), 1096–1116.
+Zhu, M., Wang, J., Yang, X., Zhang, Y., Zhang, L., Ren, H., Ye, L., 2022. A review of the
+application of machine learning in water quality evaluation. Eco-Environ. Health.
+D.B. Olawade et al. Hygiene and Environmental Health Advances 12 (2024) 100114
+16
